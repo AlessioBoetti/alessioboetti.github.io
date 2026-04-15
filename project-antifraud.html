@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antifraud System — Alessio Boetti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08080C;
+    --bg2: #0E0E14;
+    --bg3: #14141C;
+    --surface: #1A1A24;
+    --border: rgba(255,255,255,0.07);
+    --border-bright: rgba(255,255,255,0.15);
+    --text: #F0EEF8;
+    --text2: #9997B0;
+    --text3: #5C5A72;
+    --accent: #7B5EFF;
+    --accent2: #B8A4FF;
+    --gold: #E8C87A;
+    --teal: #3ECFB2;
+    --coral: #FF6B6B;
+    --green: #4ADE80;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(123,94,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(123,94,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(8,8,12,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+  .nav-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
+
+  .nav-method-link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid rgba(123,94,255,0.3);
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .nav-method-link:hover { background: rgba(123,94,255,0.1); color: var(--text); }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── HERO ── */
+  .project-hero {
+    padding: 140px 0 5rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+  .breadcrumb a { color: var(--text3); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--text2); }
+  .breadcrumb span { color: var(--text3); }
+
+  .project-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--coral);
+    background: rgba(255,107,107,0.08);
+    border: 1px solid rgba(255,107,107,0.2);
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-hero h1 .accent { color: var(--accent); }
+
+  .project-hero .lead {
+    font-size: 1.1rem;
+    color: var(--text2);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+
+  .project-hero .lead strong { color: var(--text); font-weight: 500; }
+
+  /* ── META ROW ── */
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1.75rem 2rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .meta-item { flex: 1; min-width: 120px; }
+
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .meta-value {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* ── KPI STRIP ── */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 5rem;
+  }
+
+  .kpi-cell {
+    background: var(--bg2);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .kpi-cell:hover { background: var(--surface); }
+
+  .kpi-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .kpi-number.accent { color: var(--accent2); }
+  .kpi-number.teal { color: var(--teal); }
+  .kpi-number.gold { color: var(--gold); }
+  .kpi-number.green { color: var(--green); }
+
+  .kpi-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .kpi-sub {
+    font-size: 0.75rem;
+    color: var(--text3);
+    margin-top: 0.2rem;
+  }
+
+  /* ── CONTENT ── */
+  .content-section {
+    margin-bottom: 5rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.25rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .section-label.accent-label { color: var(--accent2); }
+  .section-label.accent-label::before { background: var(--accent2); }
+  .section-label.gold-label { color: var(--gold); }
+  .section-label.gold-label::before { background: var(--gold); }
+  .section-label.coral-label { color: var(--coral); }
+  .section-label.coral-label::before { background: var(--coral); }
+
+  h2.block-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose p {
+    color: var(--text2);
+    font-size: 0.975rem;
+    line-height: 1.85;
+    margin-bottom: 1.1rem;
+  }
+  .prose p strong { color: var(--text); font-weight: 500; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* ── ARCH DIAGRAM ── */
+  .arch-diagram {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+
+  .arch-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    min-width: 600px;
+  }
+
+  .arch-node {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-radius: 10px;
+    transition: border-color 0.2s;
+  }
+  .arch-node:hover { border-color: rgba(123,94,255,0.4); }
+
+  .arch-node-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+
+  .arch-node-title {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .arch-node-sub {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text3);
+  }
+
+  .arch-arrow {
+    color: var(--text3);
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* ── DECISION CARDS ── */
+  .decisions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .decision-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .decision-card:hover { border-color: rgba(123,94,255,0.3); transform: translateY(-2px); }
+
+  .decision-card-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .decision-card-title .badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 400;
+  }
+  .badge-why { background: rgba(123,94,255,0.12); color: var(--accent2); border: 1px solid rgba(123,94,255,0.2); }
+  .badge-how { background: rgba(62,207,178,0.1); color: var(--teal); border: 1px solid rgba(62,207,178,0.2); }
+  .badge-result { background: rgba(74,222,128,0.08); color: var(--green); border: 1px solid rgba(74,222,128,0.2); }
+
+  .decision-card p {
+    font-size: 0.85rem;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .decision-card p strong { color: var(--text); font-weight: 500; }
+
+  /* ── BEST PRACTICE PILLS ── */
+  .bp-section {
+    background: linear-gradient(135deg, rgba(123,94,255,0.05), rgba(62,207,178,0.03));
+    border: 1px solid rgba(123,94,255,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .bp-section-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent2);
+    margin-bottom: 1.25rem;
+  }
+
+  .bp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .bp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--text);
+    background: rgba(123,94,255,0.08);
+    border: 1px solid rgba(123,94,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .bp-pill:hover {
+    background: rgba(123,94,255,0.15);
+    border-color: var(--accent);
+    color: var(--accent2);
+    transform: translateY(-1px);
+  }
+  .bp-pill .pill-icon { font-size: 13px; }
+  .bp-pill .pill-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent2);
+    opacity: 0.7;
+  }
+
+  /* ── IMAGE PLACEHOLDER ── */
+  .visual-placeholder {
+    width: 100%;
+    aspect-ratio: 16/7;
+    background: var(--bg2);
+    border: 1px dashed rgba(255,255,255,0.12);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem 0;
+    color: var(--text3);
+  }
+  .visual-placeholder-icon { font-size: 2rem; opacity: 0.4; }
+  .visual-placeholder-text {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .project-image {
+    width: 100%;
+    border-radius: 16px;
+    display: block;
+    border: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  /* ── FEATURE ENGINEERING TABLE ── */
+  .feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+  }
+  .feature-table thead tr {
+    border-bottom: 1px solid var(--border-bright);
+  }
+  .feature-table th {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 400;
+  }
+  .feature-table td {
+    padding: 0.85rem 1rem;
+    color: var(--text2);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .feature-table td:first-child {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent2);
+    white-space: nowrap;
+  }
+  .feature-table td strong { color: var(--text); font-weight: 500; }
+  .feature-table tbody tr:hover td { background: rgba(255,255,255,0.015); }
+
+  /* ── STACK LIST ── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .stack-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--text2);
+    transition: border-color 0.2s;
+  }
+  .stack-item:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+
+  .stack-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-accent { background: var(--accent); }
+  .dot-teal { background: var(--teal); }
+  .dot-gold { background: var(--gold); }
+  .dot-coral { background: var(--coral); }
+
+  /* ── BUSINESS IMPACT BOX ── */
+  .impact-box {
+    background: linear-gradient(135deg, rgba(74,222,128,0.06), rgba(62,207,178,0.04));
+    border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .impact-box-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .impact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .impact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .impact-list li strong { color: var(--text); font-weight: 500; }
+
+  .impact-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(74,222,128,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 10px;
+    color: var(--green);
+  }
+
+  /* ── NAV BETWEEN PROJECTS ── */
+  .project-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0 5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 5rem;
+  }
+
+  .proj-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    max-width: 260px;
+  }
+  .proj-nav-link:hover { opacity: 0.7; }
+
+  .proj-nav-dir {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .proj-nav-dir svg { width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+  .proj-nav-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .proj-nav-link.right { text-align: right; }
+  .proj-nav-link.right .proj-nav-dir { justify-content: flex-end; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.75rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .footer-copy { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text3); }
+  .footer-copy a { color: var(--text3); text-decoration: none; }
+  .footer-copy a:hover { color: var(--text2); }
+
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .page-wrap { padding: 0 1.25rem; }
+    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    .decisions-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
+    .arch-flow { gap: 0.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">AB<span>.</span></a>
+  <a href="index.html#projects" class="nav-back">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    All Projects
+  </a>
+  <div class="nav-right">
+    <a href="methodology.html" class="nav-method-link">Methodology →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <header class="project-hero fade-in">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="index.html#projects">Projects</a>
+      <span>/</span>
+      <span>Antifraud System</span>
+    </div>
+    <div class="project-type-badge">🛡️ Production · Banking · Fraud Detection</div>
+    <h1><span class="accent">Antifraud</span> System</h1>
+    <p class="lead">
+      An end-to-end machine learning pipeline for <strong>real-time banking fraud prevention and detection</strong> — from raw transactional data to deployed, monitored models serving live traffic. Built for a high-stakes environment where a missed fraud costs thousands and a false positive damages customer trust.
+    </p>
+    <div class="meta-row">
+      <div class="meta-item">
+        <div class="meta-label">Company</div>
+        <div class="meta-value">TAS Group S.p.A.</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Domain</div>
+        <div class="meta-value">Banking & Payments</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">Lead Data Scientist</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Environment</div>
+        <div class="meta-value">AWS · Production</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Status</div>
+        <div class="meta-value" style="color:var(--green)">● Live</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-strip fade-in">
+    <div class="kpi-cell">
+      <div class="kpi-number accent">97.3%</div>
+      <div class="kpi-label">AUC PR</div>
+      <div class="kpi-sub">On holdout test set</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="kpi-number teal">~30%</div>
+      <div class="kpi-label">False Positive Reduction</div>
+      <div class="kpi-sub">vs previous rule-based system</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="kpi-number gold">&lt;100ms</div>
+      <div class="kpi-label">Inference Latency</div>
+      <div class="kpi-sub">P95 in production</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="kpi-number green">3</div>
+      <div class="kpi-label">Models in Production</div>
+      <div class="kpi-sub">Integrating multiple perspectives</div>
+    </div>
+  </div>
+
+  <!-- CONTEXT -->
+  <section class="content-section fade-in">
+    <div class="section-label">01 — Context & Problem</div>
+    <h2 class="block-title">The challenge of fraud at scale</h2>
+    <div class="prose">
+      <p>
+        Banking fraud is an adversarial problem: fraudsters continuously adapt their behavior to evade detection. A static rule-based system — however carefully tuned — inevitably becomes stale. The challenge was to build a <strong>model-driven detection system</strong> that could generalize to unseen fraud patterns while keeping false positive rates low enough to not disrupt legitimate customers.
+      </p>
+      <p>
+        The data was highly imbalanced (fraud events represent a fraction of a percent of all transactions, &lt;0.01%), with <strong>complex temporal and behavioral patterns</strong>: the same transaction amount might be perfectly normal for one customer and a strong fraud signal for another. Classical approaches failed to capture this context-dependency.
+      </p>
+      <p>
+        Additionally, the system needed to operate under strict <strong>latency constraints</strong> — decisions had to be made in near-real-time within the transaction authorization flow — and needed to be fully explainable to fraud analysts and compliance teams.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="content-section fade-in">
+    <div class="section-label">02 — System Architecture</div>
+    <h2 class="block-title">Pipeline overview</h2>
+    <div class="arch-diagram">
+      <div class="arch-flow">
+        <div class="arch-node">
+          <div class="arch-node-icon">📥</div>
+          <div class="arch-node-title">Raw Events</div>
+          <div class="arch-node-sub">Batches of transactions</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-icon">⚙️</div>
+          <div class="arch-node-title">Feature Engineering</div>
+          <div class="arch-node-sub">RFM, behavioural, advanced</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-icon">🧠</div>
+          <div class="arch-node-title">Model Training</div>
+          <div class="arch-node-sub">RandomForest, XGBoost, CatBoost, LGBM, & others</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-icon">📊</div>
+          <div class="arch-node-title">Calibration</div>
+          <div class="arch-node-sub">Probability output</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <div class="arch-node-icon">🚦</div>
+          <div class="arch-node-title">Decision</div>
+          <div class="arch-node-sub">Block / Review / Allow</div>
+        </div>
+      </div>
+    </div>
+    <div class="prose">
+      <p>
+        The pipeline is organized in three layers: <strong>offline training</strong> (batch feature computation, model training, hyperparameter optimization, evaluation), <strong>online serving</strong> (real-time feature lookup from a precomputed database, low-latency inference), and <strong>monitoring</strong> (human-in-the-loop evaluation and scheduled retraining triggers).
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURE ENGINEERING -->
+  <section class="content-section fade-in">
+    <div class="section-label accent-label">03 — Feature Engineering</div>
+    <h2 class="block-title">Turning raw transactions into signals</h2>
+    <div class="prose">
+      <p>
+        The most impactful work was not model selection — it was <strong>feature engineering</strong>. Fraud signals are rarely visible in a single transaction; they emerge from patterns over time and across customer context. The choice of which features to engineer was carefully evaluated with statistical methods and empirical rigor. Eventually, several types of features were engineered: RFM-based (Recency, Frequency, Monetary framework), behavioural-based, and more complex and diverse ones.
+      </p>
+    </div>
+
+    <a href="methodology.html#feature-engineering" class="bp-pill" style="display:inline-flex;margin-top:0.5rem">
+      <span class="pill-icon">⚗️</span>
+      Feature Engineering methodology
+      <span class="pill-arrow">→ Learn more</span>
+    </a>
+  </section>
+
+  <!-- MODEL DECISIONS -->
+  <section class="content-section fade-in">
+    <div class="section-label accent-label">04 — Model Decisions</div>
+    <h2 class="block-title">Why an ensemble, and how it's tuned</h2>
+
+    <div class="decisions-grid">
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Why gradient boosting? <span class="badge badge-why">Why</span>
+        </div>
+        <p>Tree-based ensembles handle <strong>mixed feature types, missing values, and non-linear interactions</strong> natively — all of which are common in transactional data. They also require less preprocessing than neural networks and are more interpretable under SHAP analysis.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Three models, not one <span class="badge badge-how">How</span>
+        </div>
+        <p>XGBoost, CatBoost, and LightGBM each have different inductive biases and error patterns. <strong>Soft voting on calibrated probabilities</strong> reduces variance and consistently outperforms any single model on the holdout set, especially on rare fraud typologies.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Handling class imbalance <span class="badge badge-how">How</span>
+        </div>
+        <p>Instead of oversampling (SMOTE introduces artificial correlations), I used <strong>scale_pos_weight tuning</strong> and cost-sensitive learning by optimizing directly for the F-beta score with a beta > 1 to prioritize recall. Threshold calibration was done separately after training.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Hyperparameter search <span class="badge badge-result">Result</span>
+        </div>
+        <p>Bayesian optimization via <strong>Optuna with Hyperband pruning</strong> — early-stopping underperforming trials rather than a full grid search. This cut tuning compute by ~70% while finding better configurations than random search.</p>
+      </div>
+    </div>
+
+    <div class="visual-placeholder">
+      <div class="visual-placeholder-icon">📊</div>
+      <div class="visual-placeholder-text">Model comparison — ROC curves · Precision-Recall</div>
+    </div>
+  </section>
+
+  <!-- BEST PRACTICES IN THIS PROJECT -->
+  <section class="content-section fade-in">
+    <div class="section-label gold-label">05 — Methodology Applied</div>
+    <h2 class="block-title">Best practices embedded in this project</h2>
+    <div class="prose">
+      <p>Each of the following practices was applied deliberately to improve both model quality and stakeholder trust. Click any to learn more about how and why I apply them across projects.</p>
+    </div>
+
+    <div class="bp-section">
+      <div class="bp-section-title">// Applied methodology in this project</div>
+      <div class="bp-pills">
+        <a href="methodology.html#uncertainty" class="bp-pill">
+          <span class="pill-icon">📐</span>
+          Uncertainty Quantification
+          <span class="pill-arrow">→ Learn more</span>
+        </a>
+        <a href="methodology.html#explainability" class="bp-pill">
+          <span class="pill-icon">🔍</span>
+          Explainability / SHAP
+          <span class="pill-arrow">→ Learn more</span>
+        </a>
+        <a href="methodology.html#ensemble" class="bp-pill">
+          <span class="pill-icon">🎯</span>
+          Ensemble & Calibration
+          <span class="pill-arrow">→ Learn more</span>
+        </a>
+        <a href="methodology.html#feature-engineering" class="bp-pill">
+          <span class="pill-icon">⚗️</span>
+          Feature Engineering
+          <span class="pill-arrow">→ Learn more</span>
+        </a>
+        <a href="methodology.html#monitoring" class="bp-pill">
+          <span class="pill-icon">📡</span>
+          Model Monitoring & Drift
+          <span class="pill-arrow">→ Learn more</span>
+        </a>
+        <a href="methodology.html#cicd" class="bp-pill">
+          <span class="pill-icon">🔄</span>
+          CI/CD for ML
+          <span class="pill-arrow">→ Learn more</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        <strong>Uncertainty Quantification</strong> was particularly critical here: the system outputs a calibrated probability score, not just a binary label. This lets fraud analysts and automated systems <strong>apply different decision thresholds</strong> for different transaction risk profiles — a €10 transaction might be blocked at 40% fraud probability, while a €50,000 wire transfer gets flagged at 5%. This nuance is only possible when the model's output is a well-calibrated probability.
+      </p>
+      <p>
+        <strong>SHAP values</strong> are computed for every flagged transaction and surfaced to fraud analysts in the review dashboard — explaining which features drove the prediction. This increases analyst trust, speeds up review time, and provides a feedback loop for feature improvement.
+      </p>
+    </div>
+  </section>
+
+  <!-- EXPLAINABILITY VISUAL -->
+  <section class="content-section fade-in">
+    <div class="section-label coral-label">06 — Explainability in Practice</div>
+    <h2 class="block-title">Making predictions auditable</h2>
+    <div class="prose">
+      <p>
+        In a regulated financial environment, "the model said so" is not acceptable. <strong>Every fraud block must be defensible</strong> — to compliance, to customers who dispute a blocked transaction, and to regulators. SHAP-based explanations were integrated directly into the analyst review workflow.
+      </p>
+    </div>
+
+    <div class="visual-placeholder">
+      <div class="visual-placeholder-icon">📉</div>
+      <div class="visual-placeholder-text">SHAP waterfall plot — Feature contribution per prediction</div>
+    </div>
+
+    <div class="decisions-grid">
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Global feature importance
+        </div>
+        <p>Across all predictions, <strong>velocity features and behavioral deviation</strong> consistently rank as the top contributors — confirming the feature engineering hypothesis and helping prioritize future data collection.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Local explanations
+        </div>
+        <p>Each individual prediction gets its own SHAP waterfall. Analysts can see: "this transaction was flagged because the amount is 4.2σ above this customer's 30-day average, combined with a new device and first-time geography."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="content-section fade-in">
+    <div class="section-label">07 — Technology Stack</div>
+    <h2 class="block-title">Tools & infrastructure</h2>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>Python 3.11</div>
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>XGBoost</div>
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>CatBoost</div>
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>LightGBM</div>
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>scikit-learn</div>
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>PyTorch</div>
+      <div class="stack-item"><div class="stack-dot dot-teal"></div>SHAP</div>
+      <div class="stack-item"><div class="stack-dot dot-teal"></div>Optuna</div>
+      <div class="stack-item"><div class="stack-dot dot-teal"></div>pandas / NumPy</div>
+      <div class="stack-item"><div class="stack-dot dot-gold"></div>AWS SageMaker</div>
+      <div class="stack-item"><div class="stack-dot dot-gold"></div>AWS S3 / ECR</div>
+      <div class="stack-item"><div class="stack-dot dot-gold"></div>Docker</div>
+      <div class="stack-item"><div class="stack-dot dot-coral"></div>FastAPI</div>
+      <div class="stack-item"><div class="stack-dot dot-coral"></div>PostgreSQL</div>
+      <div class="stack-item"><div class="stack-dot dot-coral"></div>Kubernetes</div>
+    </div>
+  </section>
+
+  <!-- BUSINESS IMPACT -->
+  <section class="content-section fade-in">
+    <div class="section-label gold-label">08 — Business Impact</div>
+    <h2 class="block-title">From model metrics to business value</h2>
+
+    <div class="impact-box">
+      <div class="impact-box-title">✦ Measurable outcomes</div>
+      <ul class="impact-list">
+        <li>
+          <div class="impact-check">✓</div>
+          <span><strong>Reduced false positive rate by ~30%</strong> vs the previous rule-based system — directly translating to fewer legitimate transactions blocked, fewer customer calls to support, and improved customer satisfaction scores.</span>
+        </li>
+        <li>
+          <div class="impact-check">✓</div>
+          <span><strong>Calibrated probability scores</strong> enable risk-proportional decision making: different thresholds for different customer segments, transaction types, and amounts — a level of nuance impossible with binary rules.</span>
+        </li>
+        <li>
+          <div class="impact-check">✓</div>
+          <span><strong>SHAP-powered analyst dashboard</strong> cut average fraud review time, enabling the operations team to process more cases per analyst per day without additional headcount.</span>
+        </li>
+        <li>
+          <div class="impact-check">✓</div>
+          <span><strong>Automated drift monitoring</strong> provides early warning of distribution shifts — e.g., new fraud patterns emerging after a data breach — and triggers retraining before performance degrades materially.</span>
+        </li>
+        <li>
+          <div class="impact-check">✓</div>
+          <span><strong>Full auditability</strong> satisfies regulatory and compliance requirements: every prediction is logged with its SHAP explanation, enabling retrospective review and model governance reporting.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECT NAV -->
+  <nav class="project-nav">
+    <span></span>
+    <a href="project-lia-chatbot.html" class="proj-nav-link right">
+      <div class="proj-nav-dir">
+        Next project
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="proj-nav-title">GenAI Customer Service Chatbot →</div>
+    </a>
+  </nav>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2025 <a href="index.html">Alessio Boetti</a></div>
+    <div class="footer-copy"><a href="methodology.html">Methodology</a> · <a href="index.html#contact">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.style.transitionDelay = (i * 40) + 'ms';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
