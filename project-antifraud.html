@@ -759,13 +759,13 @@
     <h2 class="block-title">The challenge of fraud at scale</h2>
     <div class="prose">
       <p>
-        Banking fraud is an adversarial problem: fraudsters continuously adapt their behavior to evade detection. A static rule-based system — however carefully tuned — inevitably becomes stale. The challenge was to build a <strong>model-driven detection system</strong> that could generalize to unseen fraud patterns while keeping false positive rates low enough to not disrupt legitimate customers.
+        Banking fraud is an adversarial problem: fraudsters continuously adapt their behavior to evade detection. A static rule-based system, however carefully tuned, inevitably becomes stale. The challenge was to build a <strong>model-driven detection system</strong> that could generalize to unseen fraud patterns while keeping false positive rates low enough to not disrupt legitimate customers.
       </p>
       <p>
         The data was highly imbalanced (fraud events represent a fraction of a percent of all transactions, &lt;0.01%), with <strong>complex temporal and behavioral patterns</strong>: the same transaction amount might be perfectly normal for one customer and a strong fraud signal for another. Classical approaches failed to capture this context-dependency.
       </p>
       <p>
-        Additionally, the system needed to operate under strict <strong>latency constraints</strong> — decisions had to be made in near-real-time within the transaction authorization flow — and needed to be fully explainable to fraud analysts and compliance teams.
+        Additionally, the system needed to operate under strict <strong>latency constraints</strong>: decisions had to be made in near-real-time within the transaction authorization flow and needed to be fully explainable to fraud analysts and compliance teams.
       </p>
     </div>
   </section>
@@ -791,25 +791,31 @@
         <div class="arch-node">
           <div class="arch-node-icon">🧠</div>
           <div class="arch-node-title">Model Training</div>
-          <div class="arch-node-sub">RandomForest, XGBoost, CatBoost, LGBM, & others</div>
+          <div class="arch-node-sub">XGBoost, CatBoost, LGBM, & others</div>
         </div>
         <div class="arch-arrow">→</div>
         <div class="arch-node">
           <div class="arch-node-icon">📊</div>
-          <div class="arch-node-title">Calibration</div>
+          <div class="arch-node-title">Evaluation</div>
           <div class="arch-node-sub">Probability output</div>
         </div>
         <div class="arch-arrow">→</div>
         <div class="arch-node">
+          <div class="arch-node-icon">🚀</div>
+          <div class="arch-node-title">Deployment</div>
+          <div class="arch-node-sub">SCA, Prevention, Detection</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
           <div class="arch-node-icon">🚦</div>
-          <div class="arch-node-title">Decision</div>
+          <div class="arch-node-title">Decision & Monitoring</div>
           <div class="arch-node-sub">Block / Review / Allow</div>
         </div>
       </div>
     </div>
     <div class="prose">
       <p>
-        The pipeline is organized in three layers: <strong>offline training</strong> (batch feature computation, model training, hyperparameter optimization, evaluation), <strong>online serving</strong> (real-time feature lookup from a precomputed database, low-latency inference), and <strong>monitoring</strong> (human-in-the-loop evaluation and scheduled retraining triggers).
+        The pipeline is organized in three layers: <strong>offline training</strong> (batch data ingestion, feature engineering, model training, hyperparameter optimization, evaluation), <strong>online serving</strong> (real-time feature lookup from a precomputed database, low-latency inference), and <strong>monitoring</strong> (fraud analyst decision and evaluation, scheduled retraining triggers).
       </p>
     </div>
   </section>
@@ -820,107 +826,70 @@
     <h2 class="block-title">Turning raw transactions into signals</h2>
     <div class="prose">
       <p>
-        The most impactful work was not model selection — it was <strong>feature engineering</strong>. Fraud signals are rarely visible in a single transaction; they emerge from patterns over time and across customer context. The choice of which features to engineer was carefully evaluated with statistical methods and empirical rigor. Eventually, several types of features were engineered: RFM-based (Recency, Frequency, Monetary framework), behavioural-based, and more complex and diverse ones.
+        The most impactful work was not model selection, it was <strong>feature engineering</strong>. Fraud signals are rarely visible in a single transaction, they emerge from patterns over time and across customer context. The choice of which features to engineer was carefully evaluated with statistical methods and empirical rigor. Eventually, several types of features were engineered: RFM-based (Recency, Frequency, Monetary framework), behavioural-based, and more complex and diverse ones.
       </p>
     </div>
-
     <a href="methodology.html#feature-engineering" class="bp-pill" style="display:inline-flex;margin-top:0.5rem">
-      <span class="pill-icon">⚗️</span>
-      Feature Engineering methodology
-      <span class="pill-arrow">→ Learn more</span>
+      Learn more
     </a>
   </section>
 
   <!-- MODEL DECISIONS -->
   <section class="content-section fade-in">
     <div class="section-label accent-label">04 — Model Decisions</div>
-    <h2 class="block-title">Why an ensemble, and how it's tuned</h2>
+    <h2 class="block-title">Why tree-based gradient boosting models, and how they are tuned</h2>
 
     <div class="decisions-grid">
       <div class="decision-card">
         <div class="decision-card-title">
-          Why gradient boosting? <span class="badge badge-why">Why</span>
+          Why tree-based models? <span class="badge badge-why">Why</span>
         </div>
-        <p>Tree-based ensembles handle <strong>mixed feature types, missing values, and non-linear interactions</strong> natively — all of which are common in transactional data. They also require less preprocessing than neural networks and are more interpretable under SHAP analysis.</p>
+        <p>Tree-based models handle <strong>mixed feature types, missing values, and complex, non-linear interactions</strong> natively, all of which are common in transactional data. They also require less preprocessing than neural networks, they are robust to noisy, real-world data, and they provide interpretable decision logic, making them well-suited for high-stakes domains like fraud detection where both accuracy and explainability matter.</p>
       </div>
       <div class="decision-card">
         <div class="decision-card-title">
-          Three models, not one <span class="badge badge-how">How</span>
+          Why gradient boosting? <span class="badge badge-why">Why</span>
         </div>
-        <p>XGBoost, CatBoost, and LightGBM each have different inductive biases and error patterns. <strong>Soft voting on calibrated probabilities</strong> reduces variance and consistently outperforms any single model on the holdout set, especially on rare fraud typologies.</p>
+        <p>Gradient boosting models deliver <strong>state-of-the-art predictive performance</strong> by combining multiple weak models into a highly accurate system. They are particularly effective at detecting subtle fraud patterns, improving detection rates while keeping false positives low.</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Three perspectives <span class="badge badge-how">How</span>
+        </div>
+        <p>Although similar, XGBoost, CatBoost, and LightGBM each have different inductive biases and error patterns. Each of them was evaluated in order to find the best model for each antifraud module based on performance and operational fit.
       </div>
       <div class="decision-card">
         <div class="decision-card-title">
           Handling class imbalance <span class="badge badge-how">How</span>
         </div>
-        <p>Instead of oversampling (SMOTE introduces artificial correlations), I used <strong>scale_pos_weight tuning</strong> and cost-sensitive learning by optimizing directly for the F-beta score with a beta > 1 to prioritize recall. Threshold calibration was done separately after training.</p>
+        <p>Instead of oversampling, which introduces artificial data, a mix of <strong>proprietary confidential techniques</strong> was used to accurately identify rare fraud events without increasing false positives and false negatives. Threshold calibration was done separately after training.</p>
       </div>
       <div class="decision-card">
         <div class="decision-card-title">
-          Hyperparameter search <span class="badge badge-result">Result</span>
+          Hyperparameter search <span class="badge badge-how">How</span>
         </div>
-        <p>Bayesian optimization via <strong>Optuna with Hyperband pruning</strong> — early-stopping underperforming trials rather than a full grid search. This cut tuning compute by ~70% while finding better configurations than random search.</p>
+        <p><strong>Bayesian optimization</strong> guided the search of optimal model hyperparameters. This cut tuning compute by ~70% while finding better configurations than random search.</p>
       </div>
-    </div>
-
-    <div class="visual-placeholder">
-      <div class="visual-placeholder-icon">📊</div>
-      <div class="visual-placeholder-text">Model comparison — ROC curves · Precision-Recall</div>
+      <div class="decision-card">
+        <div class="decision-card-title">
+          Model comparison <span class="badge badge-result">Result</span>
+        </div>
+        <p>Models were evaluated using ROC and PR curves due to the high class imbalance, obtaining ... AUC PR and ... AUC ROC</p>
+      </div>
     </div>
   </section>
 
-  <!-- BEST PRACTICES IN THIS PROJECT -->
+  <!-- UNCERTAINTY VISUAL -->
   <section class="content-section fade-in">
-    <div class="section-label gold-label">05 — Methodology Applied</div>
-    <h2 class="block-title">Best practices embedded in this project</h2>
+    <div class="section-label gold-label">05 — Uncertainty in Practice</div>
+    <h2 class="block-title">Making predictions nuanced</h2>
     <div class="prose">
-      <p>Each of the following practices was applied deliberately to improve both model quality and stakeholder trust. Click any to learn more about how and why I apply them across projects.</p>
+      <p>Prediction models can output binary labels to indicate the predicted outcome. However, rather than forcing a rigid approve/decline outcome, the system produces risk scores that reflect the likelihood of fraud. This lets fraud analysts or automated systems <strong>apply different decision thresholds</strong> for different transaction risk profiles and better handle edge cases: a €10 transaction might be blocked at 40% fraud probability, while a €50,000 wire transfer gets flagged at 5%.</p>
+      <!-- This nuance is only possible when the model's output is a well-calibrated probability. -->
     </div>
-
-    <div class="bp-section">
-      <div class="bp-section-title">// Applied methodology in this project</div>
-      <div class="bp-pills">
-        <a href="methodology.html#uncertainty" class="bp-pill">
-          <span class="pill-icon">📐</span>
-          Uncertainty Quantification
-          <span class="pill-arrow">→ Learn more</span>
-        </a>
-        <a href="methodology.html#explainability" class="bp-pill">
-          <span class="pill-icon">🔍</span>
-          Explainability / SHAP
-          <span class="pill-arrow">→ Learn more</span>
-        </a>
-        <a href="methodology.html#ensemble" class="bp-pill">
-          <span class="pill-icon">🎯</span>
-          Ensemble & Calibration
-          <span class="pill-arrow">→ Learn more</span>
-        </a>
-        <a href="methodology.html#feature-engineering" class="bp-pill">
-          <span class="pill-icon">⚗️</span>
-          Feature Engineering
-          <span class="pill-arrow">→ Learn more</span>
-        </a>
-        <a href="methodology.html#monitoring" class="bp-pill">
-          <span class="pill-icon">📡</span>
-          Model Monitoring & Drift
-          <span class="pill-arrow">→ Learn more</span>
-        </a>
-        <a href="methodology.html#cicd" class="bp-pill">
-          <span class="pill-icon">🔄</span>
-          CI/CD for ML
-          <span class="pill-arrow">→ Learn more</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="prose">
-      <p>
-        <strong>Uncertainty Quantification</strong> was particularly critical here: the system outputs a calibrated probability score, not just a binary label. This lets fraud analysts and automated systems <strong>apply different decision thresholds</strong> for different transaction risk profiles — a €10 transaction might be blocked at 40% fraud probability, while a €50,000 wire transfer gets flagged at 5%. This nuance is only possible when the model's output is a well-calibrated probability.
-      </p>
-      <p>
-        <strong>SHAP values</strong> are computed for every flagged transaction and surfaced to fraud analysts in the review dashboard — explaining which features drove the prediction. This increases analyst trust, speeds up review time, and provides a feedback loop for feature improvement.
-      </p>
-    </div>
+    <a href="methodology.html#uncertainty" class="bp-pill" style="display:inline-flex;margin-top:0.5rem">
+      Learn more
+    </a>
   </section>
 
   <!-- EXPLAINABILITY VISUAL -->
@@ -929,29 +898,12 @@
     <h2 class="block-title">Making predictions auditable</h2>
     <div class="prose">
       <p>
-        In a regulated financial environment, "the model said so" is not acceptable. <strong>Every fraud block must be defensible</strong> — to compliance, to customers who dispute a blocked transaction, and to regulators. SHAP-based explanations were integrated directly into the analyst review workflow.
+        In a regulated financial environment, "the model said so" is not acceptable. <strong>Every fraud block must be defensible</strong> to compliance, to customers who dispute a blocked transaction, and to regulators. SHAP-based explanations were integrated directly into the analyst review workflow, explaining which features drove the prediction. This increases analyst trust, speeds up review time, and provides a feedback loop for feature improvement.
       </p>
     </div>
-
-    <div class="visual-placeholder">
-      <div class="visual-placeholder-icon">📉</div>
-      <div class="visual-placeholder-text">SHAP waterfall plot — Feature contribution per prediction</div>
-    </div>
-
-    <div class="decisions-grid">
-      <div class="decision-card">
-        <div class="decision-card-title">
-          Global feature importance
-        </div>
-        <p>Across all predictions, <strong>velocity features and behavioral deviation</strong> consistently rank as the top contributors — confirming the feature engineering hypothesis and helping prioritize future data collection.</p>
-      </div>
-      <div class="decision-card">
-        <div class="decision-card-title">
-          Local explanations
-        </div>
-        <p>Each individual prediction gets its own SHAP waterfall. Analysts can see: "this transaction was flagged because the amount is 4.2σ above this customer's 30-day average, combined with a new device and first-time geography."</p>
-      </div>
-    </div>
+    <a href="methodology.html#explainability" class="bp-pill" style="display:inline-flex;margin-top:0.5rem">
+      Learn more
+    </a>
   </section>
 
   <!-- TECH STACK -->
@@ -959,26 +911,25 @@
     <div class="section-label">07 — Technology Stack</div>
     <h2 class="block-title">Tools & infrastructure</h2>
     <div class="stack-grid">
-      <div class="stack-item"><div class="stack-dot dot-accent"></div>Python 3.11</div>
+      <div class="stack-item"><div class="stack-dot dot-gold"></div>AWS</div>
+      <!-- <div class="stack-item"><div class="stack-dot dot-gold"></div>Docker</div> -->
+      <!-- <div class="stack-item"><div class="stack-dot dot-coral"></div>FastAPI</div> -->
+      <!-- <div class="stack-item"><div class="stack-dot dot-coral"></div>PostgreSQL</div> -->
+      <!-- <div class="stack-item"><div class="stack-dot dot-coral"></div>Kubernetes</div> -->
+      <div class="stack-item"><div class="stack-dot dot-accent"></div>Python</div>
       <div class="stack-item"><div class="stack-dot dot-accent"></div>XGBoost</div>
       <div class="stack-item"><div class="stack-dot dot-accent"></div>CatBoost</div>
       <div class="stack-item"><div class="stack-dot dot-accent"></div>LightGBM</div>
       <div class="stack-item"><div class="stack-dot dot-accent"></div>scikit-learn</div>
-      <div class="stack-item"><div class="stack-dot dot-accent"></div>PyTorch</div>
-      <div class="stack-item"><div class="stack-dot dot-teal"></div>SHAP</div>
-      <div class="stack-item"><div class="stack-dot dot-teal"></div>Optuna</div>
+      <!-- <div class="stack-item"><div class="stack-dot dot-accent"></div>PyTorch</div> -->
       <div class="stack-item"><div class="stack-dot dot-teal"></div>pandas / NumPy</div>
-      <div class="stack-item"><div class="stack-dot dot-gold"></div>AWS SageMaker</div>
-      <div class="stack-item"><div class="stack-dot dot-gold"></div>AWS S3 / ECR</div>
-      <div class="stack-item"><div class="stack-dot dot-gold"></div>Docker</div>
-      <div class="stack-item"><div class="stack-dot dot-coral"></div>FastAPI</div>
-      <div class="stack-item"><div class="stack-dot dot-coral"></div>PostgreSQL</div>
-      <div class="stack-item"><div class="stack-dot dot-coral"></div>Kubernetes</div>
+      <div class="stack-item"><div class="stack-dot dot-teal"></div>SHAP</div>
+      <div class="stack-item"><div class="stack-dot dot-teal"></div>HyperOpt</div>
     </div>
   </section>
 
   <!-- BUSINESS IMPACT -->
-  <section class="content-section fade-in">
+  <!-- <section class="content-section fade-in">
     <div class="section-label gold-label">08 — Business Impact</div>
     <h2 class="block-title">From model metrics to business value</h2>
 
@@ -1007,7 +958,7 @@
         </li>
       </ul>
     </div>
-  </section>
+  </section> -->
 
   <!-- PROJECT NAV -->
   <nav class="project-nav">
@@ -1026,7 +977,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-copy">© 2025 <a href="index.html">Alessio Boetti</a></div>
-    <div class="footer-copy"><a href="methodology.html">Methodology</a> · <a href="index.html#contact">Contact</a></div>
+    <div class="footer-copy"><a href="index.html">Home</a> · <a href="methodology.html">Methodology</a> · <a href="index.html#contact">Contact</a></div>
   </div>
 </footer>
 

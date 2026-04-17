@@ -1078,7 +1078,8 @@
           I'm an <strong>AI Engineer & Data Scientist</strong> based in Italy, specialized in building end-to-end ML pipelines that go all the way from messy raw data to deployed, monitored, production systems.
         </p>
         <p>
-          I work at the intersection of <strong>banking domain expertise</strong> and cutting-edge machine learning — from antifraud models protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs.
+          I work at the intersection of <strong>banking and fintech domain expertise</strong> and cutting-edge machine learning — from antifraud systems protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs.
+          However, my skills translate seamlessly across industries, making me effective in other domains, especially regulated ones, where data-driven decision-making is critical, such as insurance, IT & cybersecurity, but also e-commerce, healthcare & life sciences, pharma, legal and logistics.
         </p>
         <p>
           I'm driven by one question: <strong>how do we make AI that actually works in the real world?</strong> Scalable, reliable, explainable, and business-aligned.
@@ -1146,7 +1147,6 @@
           <span class="skill-pill">CatBoost</span>
           <span class="skill-pill">LGBM</span>
           <span class="skill-pill">PyTorch</span>
-          <span class="skill-pill">TensorFlow</span>
           <span class="skill-pill">LangChain</span>
           <span class="skill-pill">OpenAI SDK</span>
           <span class="skill-pill">Statsmodels</span>
@@ -1164,14 +1164,14 @@
         </div>
         <div class="skill-cat-label" style="margin-top:1rem">// APIs & Backend</div>
         <div class="skill-pills">
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">WebSocket</span>
           <span class="skill-pill">FastAPI</span>
           <span class="skill-pill">Flask</span>
           <span class="skill-pill">Django</span>
+          <span class="skill-pill">Pydantic</span>
           <span class="skill-pill">Streamlit</span>
           <span class="skill-pill">Gradio</span>
-          <span class="skill-pill">Pydantic</span>
-          <span class="skill-pill">REST APIs</span>
-          <span class="skill-pill">WebSocket</span>
         </div>
       </div>
       <div class="skill-category fade-in">
@@ -1179,16 +1179,19 @@
         <div class="skill-pills">
           <span class="skill-pill">AWS</span>
           <span class="skill-pill">Azure</span>
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">Kubernetes</span>
           <span class="skill-pill">Apache Spark</span>
           <span class="skill-pill">PySpark</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Kubernetes</span>
           <span class="skill-pill">Argo</span>
           <span class="skill-pill">Rancher</span>
+          <span class="skill-pill">K9S</span>
           <span class="skill-pill">Terraform</span>
-          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Git/GitHub/GitLab</span>
           <span class="skill-pill">PostgreSQL</span>
           <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">SQLAlchemy</span>
+          <span class="skill-pill">Liquibase</span>
         </div>
       </div>
     </div>
@@ -1218,7 +1221,7 @@
             <div class="project-type">Banking · Fraud Detection · Production</div>
             <h3 class="project-title">Antifraud Prediction System</h3>
             <p class="project-desc">
-              End-to-end ML pipeline for real-time banking fraud detection. Built ensemble models (XGBoost, CatBoost, LightGBM) on complex behavioral and transactional features. Implemented advanced feature engineering for temporal patterns and deployed to AWS production infrastructure serving live transaction traffic.
+              End-to-end ML pipeline for real-time banking fraud detection. Implemented advanced feature engineering and state-of-the-art models to capture complex and hidden patterns, deploying the system to AWS production infrastructure serving live transaction traffic.
             </p>
             <div class="project-tags">
               <span class="project-tag">Python</span>
@@ -1227,22 +1230,27 @@
               <span class="project-tag">LGBM</span>
               <span class="project-tag">AWS</span>
               <span class="project-tag">scikit-learn</span>
-              <span class="project-tag">PyTorch</span>
             </div>
+            <!-- <div class="project-links">
+              <a href="project-antifraud.html class="project-link" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Learn more
+              </a>
+            </div> -->
           </div>
         </div>
 
         <div class="project-card fade-in">
           <div class="project-img-placeholder">🤖</div>
           <div class="project-body">
-            <div class="project-type">GenAI · NLP · Customer Service</div>
+            <div class="project-type">GenAI · Chatbot · Customer Service</div>
             <h3 class="project-title">LIA — GenAI Customer Service Chatbot</h3>
             <p class="project-desc">
-              Built LIA, a production GenAI chatbot for TAS Group customer service, deployed on the company website. Handles real-time customer interactions at scale using WebSocket architecture and OpenAI APIs.
+              Built LIA, a production GenAI chatbot for TAS customer service, deployed on the company website. Handles real-time customer interactions at scale answering business questions.
             </p>
             <div class="project-tags">
               <span class="project-tag">Python</span>
-              <span class="project-tag">OpenAI SDK</span>
+              <!-- <span class="project-tag">OpenAI SDK</span> -->
               <span class="project-tag">Flask</span>
               <span class="project-tag">Docker</span>
               <span class="project-tag">Kubernetes</span>
@@ -1260,16 +1268,16 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">📈</div>
           <div class="project-body">
-            <div class="project-type">Finance · Time Series · Forecasting</div>
+            <div class="project-type">Reconciliation · Time Series · Forecasting</div>
             <h3 class="project-title">Treasury Funds Forecasting System</h3>
             <p class="project-desc">
-              Designed and deployed a multi-model time series forecasting system for treasury fund allocation. Implemented classical statistical models (ARIMA, exponential smoothing families) with automated model selection and confidence intervals for risk-aware decision making.
+              Designed and deployed a multi-model time series forecasting system for treasury fund allocation, ACH reconciliation and EBA Clearing services. Implemented classical statistical models with automated model selection and confidence intervals for risk-aware decision making.
             </p>
             <div class="project-tags">
+              <span class="project-tag">AWS</span>
               <span class="project-tag">Python</span>
               <span class="project-tag">Statsmodels</span>
               <span class="project-tag">Nixtla</span>
-              <span class="project-tag">AWS</span>
             </div>
           </div>
         </div>
@@ -1284,16 +1292,17 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">🕸️</div>
           <div class="project-body">
-            <div class="project-type">Graph ML · Research · Open Source</div>
-            <h3 class="project-title">Graph Neural Networks for Fraud</h3>
+            <div class="project-type">Graphs · Thesis · Experimental</div>
+            <h3 class="project-title">Graph Neural Networks for Fraud Detection and Anti-Money Laundering</h3>
             <p class="project-desc">
-              Experimental Master thesis applying Graph Neural Networks (PyTorch Geometric, DGL) to transaction graph analysis for fraud detection. Explores node and edge classification on heterogeneous financial graphs with relational behavioral features.
+              Experimental Master thesis applying Graph Neural Networks to transaction graph analysis for fraud detection and anti-money laundering (AML). Explores node and edge classification on heterogeneous financial graphs with relational behavioral features to detect non-linear and non-local interaction fraud patterns.
             </p>
             <div class="project-tags">
+              <span class="project-tag">Python</span>
               <span class="project-tag">PyTorch Geometric</span>
               <span class="project-tag">DGL</span>
               <span class="project-tag">NetworkX</span>
-              <span class="project-tag">Python</span>
+              <span class="project-tag">GPU</span>
             </div>
           </div>
         </div>
@@ -1307,9 +1316,9 @@
               Collection of deep learning experiments for Computer Vision: custom PyTorch architectures, training loops from scratch, and ablation studies. Covers CNNs, transformers, and hybrid architectures for various classification tasks.
             </p>
             <div class="project-tags">
+              <span class="project-tag">Python</span>
               <span class="project-tag">PyTorch</span>
               <span class="project-tag">GPU</span>
-              <span class="project-tag">Python</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/AlessioBoetti/deep-learning-applications" class="project-link" target="_blank">
@@ -1380,10 +1389,10 @@
         <div class="timeline-item">
           <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 0 3px rgba(232,200,122,0.2)"></div>
           <div class="timeline-meta">Research & Self-Study</div>
-          <div class="timeline-role">Graph ML, LLMs & Advanced Topics</div>
+          <div class="timeline-role">Graph ML, Time Series & Advanced Topics</div>
           <div class="timeline-company">Independent research alongside industry work</div>
           <div class="timeline-desc">
-            Ongoing exploration of Graph Neural Networks for financial fraud, LLM fine-tuning strategies, retrieval-augmented generation (RAG) systems, and advanced time series methods (neural forecasting, foundation models).
+            Ongoing exploration of a broad scope of statistical methods, from Graph Neural Networks, to retrieval-augmented generation (RAG) systems, to advanced time series models.
           </div>
         </div>
       </div>
@@ -1398,7 +1407,7 @@
       <div class="contact-text fade-in">
         <div class="section-header">
           <div class="section-tag">Let's talk</div>
-          <h2 class="section-title">Open to what's <span class="accent">next.</span></h2>
+          <h2 class="section-title">Open to what's <span class="accent">next</span></h2>
         </div>
         <p>
           Whether you're building the next generation of AI infrastructure, need someone who can own an ML system end-to-end, or just want to talk data science — I'd love to hear from you.
