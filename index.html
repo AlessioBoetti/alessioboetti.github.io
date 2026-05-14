@@ -741,6 +741,13 @@
     border-top: 1px solid var(--border);
   }
 
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
   .timeline {
     position: relative;
     padding-left: 2rem;
@@ -1042,7 +1049,9 @@
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
-    #experience .section-header { position: static; }
+    .experience-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    #experience .section-header { position: static !important; }
+    /* #experience .section-header { position: static !important; top: auto !important; } */
 
     /* Contact */
     .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1190,11 +1199,11 @@
           <h2 class="section-title">From raw data to <span class="accent">production impact</span></h2>
         </div>
         <p>
-          I'm an <strong>AI Engineer & Data Scientist</strong> based in Italy, specialized in building end-to-end ML pipelines that go all the way from messy raw data to deployed, monitored, production systems.
+          I'm an <strong>AI Engineer & Data Scientist</strong> with a Master's Degree in <strong>Artificial Intelligence</strong>. I'm based in Italy and I'm specialized in building end-to-end ML pipelines that go all the way from messy raw data to deployed, monitored, production systems.
         </p>
         <p>
-          I work at the intersection of <strong>banking and fintech domain expertise</strong> and cutting-edge machine learning — from antifraud systems protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs.
-          However, my skills translate seamlessly across industries, making me effective in other domains, especially regulated ones, where data-driven decision-making is critical, such as insurance, IT & cybersecurity, but also e-commerce, healthcare & life sciences, pharma, legal and logistics.
+          I work at the intersection of <strong>banking and fintech domain expertise</strong> and cutting-edge machine learning — from antifraud systems protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs through time series analysis.
+          However, my skills translate seamlessly across industries, making me effective in other domains, especially regulated ones, where data-driven decision-making is critical, such as insurance, IT & cybersecurity, but also e-commerce, healthcare & life sciences, pharma, legal, logistics and others.
         </p>
         <p>
           I'm driven by one question: <strong>how do we make AI that actually works in the real world?</strong> Scalable, reliable, explainable, and business-aligned.
@@ -1247,8 +1256,9 @@
         </div>
         <div class="skill-cat-label" style="margin-top:1rem">// Data Analysis</div>
         <div class="skill-pills">
-          <span class="skill-pill">pandas</span>
+          <span class="skill-pill">Pandas</span>
           <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Scipy</span>
           <span class="skill-pill">Matplotlib</span>
           <span class="skill-pill">Plotly</span>
           <span class="skill-pill">Seaborn</span>
@@ -1257,7 +1267,7 @@
       <div class="skill-category fade-in">
         <div class="skill-cat-label">// ML & AI Frameworks</div>
         <div class="skill-pills">
-          <span class="skill-pill">scikit-learn</span>
+          <span class="skill-pill">Scikit-learn</span>
           <span class="skill-pill">XGBoost</span>
           <span class="skill-pill">CatBoost</span>
           <span class="skill-pill">LGBM</span>
@@ -1271,7 +1281,7 @@
         </div>
       </div>
       <div class="skill-category fade-in">
-        <div class="skill-cat-label">// Graph & Optimization</div>
+        <div class="skill-cat-label">// Graph Frameworks</div>
         <div class="skill-pills">
           <span class="skill-pill">PyTorch Geometric</span>
           <span class="skill-pill">Deep Graph Library</span>
@@ -1287,6 +1297,7 @@
           <span class="skill-pill">Pydantic</span>
           <span class="skill-pill">Streamlit</span>
           <span class="skill-pill">Gradio</span>
+          <span class="skill-pill">Postman</span>
         </div>
       </div>
       <div class="skill-category fade-in">
@@ -1323,7 +1334,7 @@
 
     <div class="projects-tabs fade-in">
       <button class="tab-btn active" onclick="switchTab('professional', this)">Professional</button>
-      <button class="tab-btn" onclick="switchTab('personal', this)">Personal</button>
+      <button class="tab-btn" onclick="switchTab('personal', this)">University</button>
     </div>
 
     <!-- PROFESSIONAL PROJECTS -->
@@ -1344,7 +1355,7 @@
               <span class="project-tag">CatBoost</span>
               <span class="project-tag">LGBM</span>
               <span class="project-tag">AWS</span>
-              <span class="project-tag">scikit-learn</span>
+              <span class="project-tag">Scikit-learn</span>
             </div>
             <!-- <div class="project-links">
               <a href="project-antifraud.html class="project-link" target="_blank">
@@ -1356,10 +1367,47 @@
         </div>
 
         <div class="project-card fade-in">
+          <div class="project-img-placeholder">🛡️</div>
+          <div class="project-body">
+            <div class="project-type">Banking · Fraud Detection · Production</div>
+            <h3 class="project-title">Antifraud Rules Generator</h3>
+            <p class="project-desc">
+              On-demand tool to generate fraud alert rules from historical data. Using advanced strategies to extract meaningful signals from complex and messy data. Used to evaluate alert criteria in the past or to simulate future scenarios.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">XGBoost</span>
+              <span class="project-tag">CatBoost</span>
+              <span class="project-tag">LGBM</span>
+              <span class="project-tag">AWS</span>
+              <span class="project-tag">Scikit-learn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-img-placeholder">🤖</div>
+          <div class="project-body">
+            <div class="project-type">GenAI · Fraud Detection · Chatbot</div>
+            <h3 class="project-title">IVIC —  Identity Verifier Intelligent Chatbot</h3>
+            <p class="project-desc">
+              GenAI Fraud Detection chatbot to screen potential fraudsters as part of the identity verification process. IVIC interacts with users in real time via mobile chat, asking dynamic questions based on their data and behavior to assess fraud risk before letting them carry out a transaction.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Flask</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">Kubernetes</span>
+              <span class="project-tag">WebSocket</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
           <div class="project-img-placeholder">🤖</div>
           <div class="project-body">
             <div class="project-type">GenAI · Chatbot · Customer Service</div>
-            <h3 class="project-title">LIA — GenAI Customer Service Chatbot</h3>
+            <h3 class="project-title">LIA — Customer Service Chatbot</h3>
             <p class="project-desc">
               Built LIA, a production GenAI chatbot for TAS customer service, deployed on the company website. Handles real-time customer interactions at scale answering business questions.
             </p>
@@ -1372,10 +1420,10 @@
               <span class="project-tag">WebSocket</span>
             </div>
             <div class="project-links">
-              <a href="https://www.tasgroup.eu/it" class="project-link" target="_blank">
+              <!-- <a href="https://www.tasgroup.eu/it" class="project-link" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live site
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -1393,6 +1441,31 @@
               <span class="project-tag">Python</span>
               <span class="project-tag">Statsmodels</span>
               <span class="project-tag">Nixtla</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-img-placeholder">📊</div>
+          <div class="project-body">
+            <div class="project-type">Business Intelligence · Production</div>
+            <h3 class="project-title">Payment Intelligence & Fraud Intelligence</h3>
+            <p class="project-desc">
+              Built two BI solutions to extract valuable insights from payment and fraud data, enabling data-driven decision making and enhancing operational efficiency.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <!-- <span class="project-tag">OpenAI SDK</span> -->
+              <span class="project-tag">Flask</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">Kubernetes</span>
+              <span class="project-tag">WebSocket</span>
+            </div>
+            <div class="project-links">
+              <!-- <a href="https://www.tasgroup.eu/it" class="project-link" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live site
+              </a> -->
             </div>
           </div>
         </div>
@@ -1459,7 +1532,7 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1.8fr;gap:6rem;align-items:start;">
+    <div class="experience-grid">
       <div class="section-header fade-in" style="position:sticky;top:120px;">
         <div class="section-tag">Career</div>
         <h2 class="section-title">Where I've <span class="accent">built</span> things</h2>
@@ -1480,7 +1553,7 @@
           <div class="timeline-role">Consultant Analytics Intelligence</div>
           <div class="timeline-company">Proxima Group</div>
           <div class="timeline-desc">
-            For a market-leading company in the FinTech sector, contributed to the development of a new advanced simulation component within an ERM platform for banks.
+            For a market-leading company in the FinTech sector, contributed to the development of a new advanced simulation component within an Enterprise Risk Management (ERM) platform for banks.
           </div>
         </div>
         <div class="timeline-item">
@@ -1489,7 +1562,7 @@
           <div class="timeline-role">AI Engineer & Data Scientist</div>
           <div class="timeline-company">TAS S.p.A.</div>
           <div class="timeline-desc">
-            Building production ML systems for the banking and payments industry. Core work spans antifraud ML pipelines, GenAI chatbots, and financial time series forecasting. Full ownership from data engineering to model deployment on AWS/Kubernetes infrastructure.
+            Building production ML systems for the banking and payments industry. Core work spans antifraud ML pipelines, GenAI chatbots, and financial time series forecasting. Full ownership from data engineering to model deployment on cloud (AWS) or on-premise (Docker/Kubernetes) infrastructure.
           </div>
         </div>
         <div class="timeline-item">
