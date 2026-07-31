@@ -126,6 +126,42 @@
     color: var(--text);
   }
 
+  .nav-lang-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.03);
+    padding: 0.5rem 0.9rem;
+    border-radius: 100px;
+    transition: all 0.2s;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .nav-lang-toggle .lang-option {
+    opacity: 0.55;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-lang-toggle .lang-option.active {
+    opacity: 1;
+    color: var(--accent2);
+  }
+
+  .nav-lang-toggle .lang-divider {
+    margin: 0 0.35rem;
+    opacity: 0.45;
+  }
+
+  .nav-lang-toggle:hover {
+    border-color: rgba(123,94,255,0.45);
+    background: rgba(123,94,255,0.1);
+    color: var(--accent2);
+  }
+
   .nav-hamburger { display: none; }
 
   /* ── SECTIONS ── */
@@ -1065,6 +1101,7 @@
   @media (max-width: 480px) {
     nav { padding: 1rem; }
     .nav-cta { display: none; } /* troppo stretto, basta hamburger */
+    .nav-lang-toggle { padding: 0.45rem 0.7rem; }
 
     .hero-title { font-size: clamp(2rem, 9vw, 2.8rem); }
     .hero-sub { font-size: 0.95rem; }
@@ -1100,14 +1137,19 @@
 <nav>
   <a href="#" class="nav-logo">AB<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-i18n="nav-about">About</a></li>
+    <li><a href="#skills" data-i18n="nav-skills">Skills</a></li>
+    <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
+    <li><a href="#experience" data-i18n="nav-experience">Experience</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem;">
-    <a href="mailto:alessio.boetti@gmail.com" class="nav-cta">Get in touch</a>
+    <a href="mailto:alessio.boetti@gmail.com" class="nav-cta" data-i18n="nav-cta">Get in touch</a>
+    <button class="nav-lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+      <span class="lang-option" data-lang="it">ITA</span>
+      <span class="lang-divider">/</span>
+      <span class="lang-option" data-lang="en">ENG</span>
+    </button>
     <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1118,24 +1160,27 @@
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-tag">AI Engineer & Banking Data Scientist</div>
+      <div class="hero-tag" data-i18n="hero-tag">AI Engineer & Banking Data Scientist</div>
       <h1 class="hero-title">
-        <span class="line"><span>Building</span></span>
-        <span class="line"><span class="accent">intelligent</span></span>
-        <span class="line"><span>systems that</span></span>
-        <span class="line"><span class="gold">matter.</span></span>
+        <span class="line"><span data-i18n="hero-title-1">Building</span></span>
+        <span class="line"><span class="accent" data-i18n="hero-title-2">intelligent</span></span>
+        <span class="line"><span data-i18n="hero-title-3">systems that</span></span>
+        <span class="line"><span class="gold" data-i18n="hero-title-4">matter.</span></span>
       </h1>
-      <p class="hero-sub">
+      <p class="hero-sub" data-i18n-html="hero-sub">
         I'm <strong>Alessio Boetti</strong> — an AI Engineer and Data Scientist with 3+ years turning complex, messy data into <strong>production-grade ML systems</strong> that drive real business value. From fraud detection at scale to GenAI chatbots.
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          View my work
+          <span data-i18n="hero-work">View my work</span>
         </a>
-        <a href="resume (ENG).pdf" class="btn-ghost" target="_blank">
+        <a href="resume [ENG].pdf" class="btn-ghost" target="_blank">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          Resume
+          <span data-i18n="hero-resume-eng">Resume (ENG)</span>
+        </a>
+        <a href="resume (ITA).pdf" target="_blank" class="btn-ghost" style="width:fit-content">
+          <span data-i18n="hero-resume-ita">Resume (IT)</span>
         </a>
       </div>
     </div>
@@ -1156,7 +1201,7 @@
         </div>
         <div class="floating-card">
           <div class="card-label">Stack coverage</div>
-          <div class="card-metric teal">40+</div>
+          <div class="card-metric teal">30+</div>
           <div class="card-sub">Technologies mastered</div>
           <div class="card-bar">
             <div class="bar-seg teal-filled"></div>
@@ -1195,43 +1240,43 @@
       </div>
       <div class="about-text fade-in">
         <div class="section-header">
-          <div class="section-tag">About me</div>
-          <h2 class="section-title">From raw data to <span class="accent">production impact</span></h2>
+            <div class="section-tag" data-i18n="about-tag">About me</div>
+            <h2 class="section-title" data-i18n-html="about-title">From raw data to <span class="accent">production impact</span></h2>
         </div>
-        <p>
+          <p data-i18n-html="about-p1">
           Based in Italy, I hold a <strong>Master's Degree in Artificial Intelligence</strong>. My path into the field started during my studies, when I joined the fintech sector and began building end-to-end ML pipelines — from raw data ingestion to deployed, monitored production systems. Working at the intersection of academia and industry let me continuously bridge theory and practice, each reinforcing the other.
         </p>
-        <p>
+          <p data-i18n-html="about-p2">
           I work at the intersection of <strong>banking and fintech domain expertise</strong> and <strong>cutting-edge machine learning</strong> — from antifraud systems protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs through time series analysis.
           However, my skills translate seamlessly across industries, making me effective in other domains, especially regulated ones, where data-driven decision-making is critical, such as insurance, IT & cybersecurity, healthcare & life sciences, pharma, legal, but also e-commerce, logistics, marketing and others.
         </p>
-        <p>
-          I'm driven by one question: <strong>how do we make AI that actually works in the real world?</strong> Scalable, reliable, explainable, and business-aligned.
-        </p>
+          <!-- <p data-i18n-html="about-p3">
+          I'm driven by one question: <strong>how do we make AI that actually works in the real world? It must be </strong>scalable, reliable, explainable, and business-aligned.
+        </p> -->
         <div class="expertise-grid">
           <div class="expertise-item">
             <div class="expertise-icon">🧠</div>
-            <div class="expertise-name">Machine Learning & Deep Learning</div>
+              <div class="expertise-name" data-i18n="expertise-ml">Machine Learning & Deep Learning</div>
           </div>
           <div class="expertise-item">
             <div class="expertise-icon">💬</div>
-            <div class="expertise-name">NLP & GenAI Systems</div>
+              <div class="expertise-name" data-i18n="expertise-genai">NLP & GenAI Systems</div>
           </div>
           <div class="expertise-item">
             <div class="expertise-icon">📈</div>
-            <div class="expertise-name">Time Series Forecasting</div>
+              <div class="expertise-name" data-i18n="expertise-ts">Time Series Forecasting</div>
           </div>
           <div class="expertise-item">
             <div class="expertise-icon">🔍</div>
-            <div class="expertise-name">Anomaly & Fraud Detection</div>
+              <div class="expertise-name" data-i18n="expertise-fraud">Anomaly & Fraud Detection</div>
           </div>
           <div class="expertise-item">
             <div class="expertise-icon">🔗</div>
-            <div class="expertise-name">Graph Neural Networks</div>
+              <div class="expertise-name" data-i18n="expertise-gnn">Graph Neural Networks</div>
           </div>
           <div class="expertise-item">
             <div class="expertise-icon">⚙️</div>
-            <div class="expertise-name">MLOps & Cloud Deployment</div>
+              <div class="expertise-name" data-i18n="expertise-mlops">MLOps & Cloud Deployment</div>
           </div>
         </div>
       </div>
@@ -1243,8 +1288,8 @@
 <section id="skills">
   <div class="container">
     <div class="section-header fade-in">
-      <div class="section-tag">Technical Stack</div>
-      <h2 class="section-title">Tools I build <span class="accent">real things</span> with</h2>
+      <div class="section-tag" data-i18n="skills-tag">Technical Stack</div>
+      <h2 class="section-title" data-i18n-html="skills-title">Tools I build <span class="accent">real things</span> with</h2>
     </div>
     <div class="skills-grid">
       <div class="skill-category fade-in">
@@ -1254,7 +1299,87 @@
           <span class="skill-pill">R</span>
           <span class="skill-pill">SQL</span>
         </div>
-        <div class="skill-cat-label" style="margin-top:1rem">// Data Analysis</div>
+        <div class="skill-cat-label" style="margin-top:1rem">// Cloud & MLOps</div>
+        <div class="skill-pills">
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">Azure</span>
+          <span class="skill-pill">Apache Spark</span>
+          <span class="skill-pill">PySpark</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Docker Compose</span>
+          <span class="skill-pill">Kubernetes</span>
+          <span class="skill-pill">Kaniko</span>
+          <span class="skill-pill">Rancher</span>
+          <span class="skill-pill">Argo</span>
+          <span class="skill-pill">K9S</span>
+          <span class="skill-pill">Terraform</span>
+          <span class="skill-pill">Git/GitHub/GitLab</span>
+          <span class="skill-pill">Liquibase</span>
+          <span class="skill-pill">Coverity</span>
+          <span class="skill-pill">SonarQube</span>
+          <span class="skill-pill">BlackDuck</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <div class="skill-cat-label">// ML & AI Frameworks</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Scikit-learn</span>
+          <span class="skill-pill">XGBoost</span>
+          <span class="skill-pill">CatBoost</span>
+          <span class="skill-pill">LGBM</span>
+          <span class="skill-pill">Imbalanced-learn</span>
+          <span class="skill-pill">SHAP</span>
+          <span class="skill-pill">LIME</span>
+          <span class="skill-pill">Statsmodels</span>
+          <span class="skill-pill">Nixtla</span>
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">Torchvision</span>
+          <span class="skill-pill">CUDA</span>
+          <span class="skill-pill">HuggingFace</span>
+          <span class="skill-pill">LangChain</span>
+          <span class="skill-pill">OpenAI SDK</span>
+          <span class="skill-pill">ChromaDB</span>
+          <span class="skill-pill">NLTK</span>
+          <span class="skill-pill">spaCy</span>
+          <span class="skill-pill">fastText</span>
+          <span class="skill-pill">gensim</span>
+          <span class="skill-pill">Tesseract</span>
+          <span class="skill-pill">PaddleOCR</span>
+          <span class="skill-pill">HyperOpt</span>
+          <span class="skill-pill">Optuna</span>
+          <span class="skill-pill">WandB</span>
+          <!-- <span class="skill-pill">GPU</span> -->
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <div class="skill-cat-label">// APIs & Backend</div>
+        <div class="skill-pills">
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">WebSocket APIs</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">Django</span>
+          <span class="skill-pill">Pydantic</span>
+          <span class="skill-pill">Pytest</span>
+          <span class="skill-pill">Ruff</span>
+          <span class="skill-pill">Poetry</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">Redis</span>
+          <span class="skill-pill">DuckDB</span>
+          <span class="skill-pill">SQLAlchemy</span>
+          <span class="skill-pill">KeyCloak</span>
+          <span class="skill-pill">DUO</span>
+          <span class="skill-pill">Celery</span>
+          <span class="skill-pill">RabbitMQ</span>
+          <span class="skill-pill">Streamlit</span>
+          <span class="skill-pill">Gradio</span>
+          <span class="skill-pill">Dash</span>
+          <span class="skill-pill">Postman</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <div class="skill-cat-label">// Data Analysis</div>
         <div class="skill-pills">
           <span class="skill-pill">Pandas</span>
           <span class="skill-pill">NumPy</span>
@@ -1264,82 +1389,12 @@
           <span class="skill-pill">Seaborn</span>
           <!-- <span class="skill-pill">Bokeh</span> -->
         </div>
-      </div>
-      <div class="skill-category fade-in">
-        <div class="skill-cat-label">// ML & AI Frameworks</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Scikit-learn</span>
-          <span class="skill-pill">Imbalanced-learn</span>
-          <span class="skill-pill">XGBoost</span>
-          <span class="skill-pill">CatBoost</span>
-          <span class="skill-pill">LGBM</span>
-          <span class="skill-pill">PyTorch</span>
-          <span class="skill-pill">Torchvision</span>
-          <span class="skill-pill">HuggingFace</span>
-          <span class="skill-pill">WandB</span>
-          <span class="skill-pill">LangChain</span>
-          <span class="skill-pill">OpenAI SDK</span>
-          <span class="skill-pill">ChromaDB</span>
-          <span class="skill-pill">Statsmodels</span>
-          <span class="skill-pill">Nixtla</span>
-          <span class="skill-pill">HyperOpt</span>
-          <span class="skill-pill">Optuna</span>
-          <span class="skill-pill">NLTK</span>
-          <span class="skill-pill">spaCy</span>
-          <span class="skill-pill">fastText</span>
-          <span class="skill-pill">gensim</span>
-          <span class="skill-pill">PaddleOCR</span>
-          <span class="skill-pill">Tesseract</span>
-          <span class="skill-pill">SHAP</span>
-          <span class="skill-pill">LIME</span>
-          <span class="skill-pill">CUDA</span>
-          <!-- <span class="skill-pill">GPU</span> -->
-        </div>
-      </div>
-      <div class="skill-category fade-in">
-        <div class="skill-cat-label">// Graph Frameworks</div>
+        <div class="skill-cat-label" style="margin-top:1rem">// Graph Frameworks</div>
         <div class="skill-pills">
           <span class="skill-pill">PyTorch Geometric</span>
           <span class="skill-pill">Deep Graph Library</span>
           <span class="skill-pill">NetworkX</span>
           <span class="skill-pill">igraph</span>
-        </div>
-        <div class="skill-cat-label" style="margin-top:1rem">// APIs & Backend</div>
-        <div class="skill-pills">
-          <span class="skill-pill">REST APIs</span>
-          <span class="skill-pill">WebSocket APIs</span>
-          <span class="skill-pill">FastAPI</span>
-          <span class="skill-pill">Flask</span>
-          <span class="skill-pill">Django</span>
-          <span class="skill-pill">Pydantic</span>
-          <span class="skill-pill">PostgreSQL</span>
-          <span class="skill-pill">MongoDB</span>
-          <span class="skill-pill">SQLAlchemy</span>
-          <span class="skill-pill">DuckDB</span>
-          <span class="skill-pill">Celery</span>
-          <span class="skill-pill">RabbitMQ</span>
-          <span class="skill-pill">Redis</span>
-          <span class="skill-pill">Streamlit</span>
-          <span class="skill-pill">Gradio</span>
-          <span class="skill-pill">Dash</span>
-          <span class="skill-pill">Postman</span>
-        </div>
-      </div>
-      <div class="skill-category fade-in">
-        <div class="skill-cat-label">// Cloud & MLOps</div>
-        <div class="skill-pills">
-          <span class="skill-pill">AWS</span>
-          <span class="skill-pill">Azure</span>
-          <span class="skill-pill">Apache Spark</span>
-          <span class="skill-pill">PySpark</span>
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">Kubernetes</span>
-          <span class="skill-pill">Argo</span>
-          <span class="skill-pill">Rancher</span>
-          <span class="skill-pill">K9S</span>
-          <span class="skill-pill">Terraform</span>
-          <span class="skill-pill">Git/GitHub/GitLab</span>
-          <span class="skill-pill">Liquibase</span>
         </div>
       </div>
     </div>
@@ -1350,14 +1405,14 @@
 <section id="projects">
   <div class="container">
     <div class="section-header fade-in">
-      <div class="section-tag">Work & Research</div>
-      <h2 class="section-title">Projects that <span class="accent">ship</span></h2>
+      <div class="section-tag" data-i18n="projects-tag">Work & Research</div>
+      <h2 class="section-title" data-i18n-html="projects-title">Projects that <span class="accent">ship</span></h2>
     </div>
 
     <div class="projects-tabs fade-in">
-      <button class="tab-btn active" onclick="switchTab('professional', this)">Professional</button>
-      <button class="tab-btn" onclick="switchTab('personal', this)">University</button>
-      <button class="tab-btn" onclick="switchTab('other', this)">Other</button>
+      <button class="tab-btn active" onclick="switchTab('professional', this)" data-i18n="tab-professional">Professional</button>
+      <button class="tab-btn" onclick="switchTab('personal', this)" data-i18n="tab-university">University</button>
+      <button class="tab-btn" onclick="switchTab('other', this)" data-i18n="tab-other">Other</button>
     </div>
 
     <!-- PROFESSIONAL PROJECTS -->
@@ -1367,9 +1422,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">🛡️</div>
           <div class="project-body">
-            <div class="project-type">Banking · Fraud Detection · Production</div>
-            <h3 class="project-title">Antifraud Prediction System</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-p1-type">Banking · Fraud Detection · Production</div>
+            <h3 class="project-title" data-i18n="proj-p1-title">Antifraud Prediction System</h3>
+            <p class="project-desc" data-i18n="proj-p1-desc">
               End-to-end ML pipeline for real-time banking fraud detection. Implemented advanced feature engineering and state-of-the-art models to capture complex and hidden patterns, deploying the system to AWS production infrastructure serving live transaction traffic.
             </p>
             <div class="project-tags">
@@ -1394,9 +1449,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">📋</div>
           <div class="project-body">
-            <div class="project-type">Banking · Fraud Detection · Production</div>
-            <h3 class="project-title">Antifraud Rules Generator</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-p2-type">Banking · Fraud Detection · Production</div>
+            <h3 class="project-title" data-i18n="proj-p2-title">Antifraud Rules Generator</h3>
+            <p class="project-desc" data-i18n="proj-p2-desc">
               On-demand tool to generate fraud alert rules from historical data. Using advanced strategies to extract meaningful signals from complex and messy data. Used to evaluate alert criteria in the past or to simulate future scenarios.
             </p>
             <div class="project-tags">
@@ -1417,9 +1472,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">🤖</div>
           <div class="project-body">
-            <div class="project-type">GenAI · Fraud Detection · Chatbot</div>
-            <h3 class="project-title">IVIC —  Identity Verifier Intelligent Chatbot</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-p3-type">GenAI · Fraud Detection · Chatbot</div>
+            <h3 class="project-title" data-i18n="proj-p3-title">IVIC —  Identity Verifier Intelligent Chatbot</h3>
+            <p class="project-desc" data-i18n="proj-p3-desc">
               GenAI Fraud Detection chatbot to screen potential fraudsters as part of the identity verification process. IVIC interacts with users in real time via mobile chat, asking dynamic questions based on their data and behavior to assess fraud risk before letting them carry out a transaction.
             </p>
             <div class="project-tags">
@@ -1436,9 +1491,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">🤖</div>
           <div class="project-body">
-            <div class="project-type">GenAI · Chatbot · Customer Service</div>
-            <h3 class="project-title">LIA — Customer Service Chatbot</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-p4-type">GenAI · Chatbot · Customer Service</div>
+            <h3 class="project-title" data-i18n="proj-p4-title">LIA — Customer Service Chatbot</h3>
+            <p class="project-desc" data-i18n="proj-p4-desc">
               Built LIA, a production GenAI chatbot for TAS customer service, deployed on the company website. Handles real-time customer interactions at scale answering business questions.
             </p>
             <div class="project-tags">
@@ -1461,9 +1516,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">📈</div>
           <div class="project-body">
-            <div class="project-type">Reconciliation · Time Series · Forecasting</div>
-            <h3 class="project-title">Treasury Funds Forecasting System</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-p5-type">Reconciliation · Time Series · Forecasting</div>
+            <h3 class="project-title" data-i18n="proj-p5-title">Treasury Funds Forecasting System</h3>
+            <p class="project-desc" data-i18n="proj-p5-desc">
               Designed and deployed a multi-model time series forecasting system for treasury fund allocation, ACH reconciliation and EBA Clearing services. Implemented classical statistical models with automated model selection and confidence intervals for risk-aware decision making.
             </p>
             <div class="project-tags">
@@ -1481,9 +1536,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">📊</div>
           <div class="project-body">
-            <div class="project-type">Business Intelligence · Production</div>
-            <h3 class="project-title">Payment Intelligence & Fraud Intelligence</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-p6-type">Business Intelligence · Production</div>
+            <h3 class="project-title" data-i18n="proj-p6-title">Payment Intelligence & Fraud Intelligence</h3>
+            <p class="project-desc" data-i18n="proj-p6-desc">
               Built two BI solutions to extract valuable insights from payment and fraud data, enabling data-driven decision making and enhancing operational efficiency.
             </p>
             <div class="project-tags">
@@ -1506,7 +1561,7 @@
       <div style="margin-top:2rem;text-align:center">
         <a href="https://www.tasgroup.eu/it/insight/news/investiamo-sullai-dai-chatbot-intelligenti-alla-prevenzione-delle-frodi/" target="_blank" class="btn-ghost">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          See TAS blog post on AI projects
+          <span data-i18n="projects-tas-cta">See TAS blog post on AI projects</span>
         </a>
       </div>
       
@@ -1519,9 +1574,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">🕸️</div>
           <div class="project-body">
-            <div class="project-type">Graphs · Thesis · Experimental</div>
-            <h3 class="project-title">Graph Neural Networks for Fraud Detection and Anti-Money Laundering</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-u1-type">Graphs · Thesis · Experimental</div>
+            <h3 class="project-title" data-i18n="proj-u1-title">Graph Neural Networks for Fraud Detection and Anti-Money Laundering</h3>
+            <p class="project-desc" data-i18n="proj-u1-desc">
               Experimental Master thesis applying Graph Neural Networks to transaction graph analysis for fraud detection and anti-money laundering (AML). Explores relationships between users and their transactions to detect non-linear and non-local interaction fraud patterns with advanced AI models.
             </p>
             <div class="project-tags">
@@ -1537,9 +1592,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">⚡</div>
           <div class="project-body">
-            <div class="project-type">Deep Learning · Computer Vision · NLP</div>
-            <h3 class="project-title">Deep Learning Experiments</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-u2-type">Deep Learning · Computer Vision · NLP</div>
+            <h3 class="project-title" data-i18n="proj-u2-title">Deep Learning Experiments</h3>
+            <p class="project-desc" data-i18n="proj-u2-desc">
               Collection of deep learning experiments focused on Computer Vision, NLP and LLMs: created from scratch several AI models covering CNNs, transformers, and hybrid architectures for various classification tasks.
             </p>
             <div class="project-tags">
@@ -1551,7 +1606,7 @@
             <div class="project-links">
               <a href="https://github.com/AlessioBoetti/deep-learning-applications" class="project-link" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-                GitHub
+                <span data-i18n="projects-github-label">GitHub</span>
               </a>
             </div>
           </div>
@@ -1562,7 +1617,7 @@
       <div style="margin-top:2rem;text-align:center">
         <a href="https://github.com/AlessioBoetti" target="_blank" class="btn-ghost">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          See all repos on GitHub
+          <span data-i18n="projects-all-repos-cta">See all repos on GitHub</span>
         </a>
       </div>
     </div>
@@ -1574,9 +1629,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">⚕️</div>
           <div class="project-body">
-            <div class="project-type">Health · Machine Learning · Research</div>
-            <h3 class="project-title">ESO-PROST</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-o1-type">Health · Machine Learning · Research</div>
+            <h3 class="project-title" data-i18n="proj-o1-title">ESO-PROST</h3>
+            <p class="project-desc" data-i18n="proj-o1-desc">
               Took part in a clinical research program with a certified medical practitioner to assess the quality of a new healthcare tool for the early diagnosis and risk evaluation of prostate cancer based on patient health data. My contribution focused on the data analysis and modeling aspects, applying machine learning techniques to extract insights from the clinical data and support the evaluation of the tool's effectiveness.
             </p>
             <div class="project-tags">
@@ -1589,7 +1644,7 @@
             <div class="project-links">
               <a href="http://www.carlobellorofonte.it/esoprost.html" class="project-link" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-                More on ESO-PROST
+                <span data-i18n="proj-o1-link">More on ESO-PROST</span>
               </a>
             </div>
           </div>
@@ -1598,9 +1653,9 @@
         <div class="project-card fade-in">
           <div class="project-img-placeholder">⚖️</div>
           <div class="project-body">
-            <div class="project-type">OCR · Anonymization · Legal</div>
-            <h3 class="project-title">CercaOSEP</h3>
-            <p class="project-desc">
+            <div class="project-type" data-i18n="proj-o2-type">OCR · Anonymization · Legal</div>
+            <h3 class="project-title" data-i18n="proj-o2-title">CercaOSEP</h3>
+            <p class="project-desc" data-i18n="proj-o2-desc">
               Took part in a project to develop an OCR-based tool for the anonymization of legal documents, designed to automatically identify and redact sensitive information from legal texts while preserving their overall structure and readability. My contribution focused on the data processing and modeling aspects, applying NLP techniques to enhance the accuracy of sensitive information detection and ensure compliance with privacy regulations.
             </p>
             <div class="project-tags">
@@ -1637,54 +1692,54 @@
   <div class="container">
     <div class="experience-grid">
       <div class="section-header fade-in" style="position:sticky;top:120px;">
-        <div class="section-tag">Career</div>
-        <h2 class="section-title">Where I've <span class="accent">built</span> things</h2>
+        <div class="section-tag" data-i18n="career-tag">Career</div>
+        <h2 class="section-title" data-i18n-html="career-title">Where I've <span class="accent">built</span> things</h2>
         <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
-          <a href="resume (ENG).pdf" target="_blank" class="btn-primary" style="width:fit-content">
+          <a href="resume [ENG].pdf" target="_blank" class="btn-primary" style="width:fit-content">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Resume (EN)
+            <span data-i18n="resume-en">Resume (EN)</span>
           </a>
-          <a href="resume (ITA).pdf" target="_blank" class="btn-ghost" style="width:fit-content">
-            Resume (IT)
+          <a href="resume [ITA].pdf" target="_blank" class="btn-ghost" style="width:fit-content">
+            <span data-i18n="resume-it">Resume (IT)</span>
           </a>
         </div>
       </div>
       <div class="timeline fade-in">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-meta">2025 — Present</div>
-          <div class="timeline-role">Consultant Analytics Intelligence</div>
-          <div class="timeline-company">Proxima Group</div>
-          <div class="timeline-desc">
+          <div class="timeline-meta" data-i18n="exp-1-meta">2025 — Present</div>
+          <div class="timeline-role" data-i18n="exp-1-role">Consultant Analytics Intelligence</div>
+          <div class="timeline-company" data-i18n="exp-1-company">Proxima Group</div>
+          <div class="timeline-desc" data-i18n="exp-1-desc">
             For a market-leading company in the FinTech sector, I contributed to the development of a new advanced simulation component within an Enterprise Risk Management (ERM) platform for banks.
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-meta">2022 — 2025</div>
-          <div class="timeline-role">AI Engineer & Data Scientist</div>
-          <div class="timeline-company">TAS S.p.A.</div>
-          <div class="timeline-desc">
+          <div class="timeline-meta" data-i18n="exp-2-meta">2022 — 2025</div>
+          <div class="timeline-role" data-i18n="exp-2-role">AI Engineer & Data Scientist</div>
+          <div class="timeline-company" data-i18n="exp-2-company">TAS S.p.A.</div>
+          <div class="timeline-desc" data-i18n="exp-2-desc">
             Built production ML systems for the banking and payments industry. Core work spans antifraud ML pipelines, GenAI chatbots, and financial time series forecasting. Full ownership from data engineering to model deployment on cloud (AWS) or on-premise (Docker/Kubernetes) infrastructure.
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--teal);box-shadow:0 0 0 3px rgba(62,207,178,0.2)"></div>
-          <div class="timeline-meta">Domain Expertise</div>
-          <div class="timeline-role">Banking, Payments & FinTech</div>
-          <div class="timeline-company">Deep specialization in financial systems</div>
-          <div class="timeline-desc">
+          <!-- <div class="timeline-dot" style="background:var(--teal);box-shadow:0 0 0 3px rgba(62,207,178,0.2)"></div> -->
+          <!-- <div class="timeline-meta" data-i18n="exp-3-meta">Domain Expertise</div>
+          <div class="timeline-role" data-i18n="exp-3-role">Banking, Payments & FinTech</div>
+          <div class="timeline-company" data-i18n="exp-3-company">Deep specialization in financial systems</div>
+          <div class="timeline-desc" data-i18n="exp-3-desc">
             3+ years of domain-specific experience in banking AI. Strong understanding of regulatory context (PSD2, AML), transaction processing pipelines, and the operational constraints of deploying ML in high-stakes financial environments.
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 0 3px rgba(232,200,122,0.2)"></div>
-          <div class="timeline-meta">Research & Self-Study</div>
-          <div class="timeline-role">Graph ML, Time Series & Advanced Topics</div>
-          <div class="timeline-company">Independent research alongside industry work</div>
-          <div class="timeline-desc">
+          <div class="timeline-meta" data-i18n="exp-4-meta">Research & Self-Study</div>
+          <div class="timeline-role" data-i18n="exp-4-role">Graph ML, Time Series & Advanced Topics</div>
+          <div class="timeline-company" data-i18n="exp-4-company">Independent research alongside industry work</div>
+          <div class="timeline-desc" data-i18n="exp-4-desc">
             Ongoing exploration of a broad scope of statistical methods, from Graph Neural Networks, to retrieval-augmented generation (RAG) systems, to advanced time series models.
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -1697,10 +1752,10 @@
     <div class="contact-inner">
       <div class="contact-text fade-in">
         <div class="section-header">
-          <div class="section-tag">Let's talk</div>
-          <h2 class="section-title">Open to what's <span class="accent">next</span></h2>
+          <div class="section-tag" data-i18n="contact-tag">Let's talk</div>
+          <h2 class="section-title" data-i18n-html="contact-title">Open to what's <span class="accent">next</span></h2>
         </div>
-        <p>
+        <p data-i18n="contact-copy">
           Whether you're building the next generation of AI infrastructure, need someone who can own an ML system end-to-end, or just want to talk data science — I'd love to hear from you.
         </p>
         <div class="social-links">
@@ -1719,15 +1774,15 @@
         </div>
       </div>
       <div class="contact-cta-box fade-in">
-        <h3>Want to work together?</h3>
-        <p>I'm currently open to senior AI/ML engineering roles, data science positions, and consulting engagements — especially in FinTech, enterprise AI, and high-impact startups.</p>
+        <h3 data-i18n="contact-cta-title">Want to work together?</h3>
+        <p data-i18n="contact-cta-copy">I'm currently open to senior AI/ML engineering roles, data science positions, and consulting engagements — especially in FinTech, enterprise AI, and high-impact startups.</p>
         <div style="display:flex;flex-direction:column;gap:0.75rem;">
           <a href="mailto:alessio.boetti@gmail.com" class="btn-primary" style="justify-content:center">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Send me an email
+            <span data-i18n="contact-email">Send me an email</span>
           </a>
           <a href="https://linkedin.com/in/alessio-boetti" target="_blank" class="btn-ghost" style="justify-content:center">
-            Connect on LinkedIn
+            <span data-i18n="contact-linkedin">Connect on LinkedIn</span>
           </a>
         </div>
       </div>
@@ -1746,8 +1801,229 @@
 </footer>
 
 <script>
+  const translations = {
+    en: {
+      'nav-about': 'About',
+      'nav-skills': 'Skills',
+      'nav-projects': 'Projects',
+      'nav-experience': 'Experience',
+      'nav-contact': 'Contact',
+      'nav-cta': 'Get in touch',
+      'hero-tag': 'AI Engineer & Banking Data Scientist',
+      'hero-title-1': 'Building',
+      'hero-title-2': 'intelligent',
+      'hero-title-3': 'systems that',
+      'hero-title-4': 'matter.',
+      'hero-sub': "I'm <strong>Alessio Boetti</strong> — an AI Engineer and Data Scientist with 3+ years turning complex, messy data into <strong>production-grade ML systems</strong> that drive real business value. From fraud detection at scale to GenAI chatbots.",
+      'hero-work': 'View my work',
+      'hero-resume-eng': 'Resume (EN)',
+      'hero-resume-ita': 'Resume (IT)',
+      'about-tag': 'About me',
+      'about-title': 'From raw data to <span class="accent">production impact</span>',
+      'about-p1': "Based in Italy, I hold a <strong>Master's Degree in Artificial Intelligence</strong>. My path into the field started during my studies, when I joined the fintech sector and began building end-to-end ML pipelines — from raw data ingestion to deployed, monitored production systems. Working at the intersection of academia and industry let me continuously bridge theory and practice, each reinforcing the other.",
+      'about-p2': 'I work at the intersection of <strong>banking and fintech domain expertise</strong> and <strong>cutting-edge machine learning</strong> — from antifraud systems protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs through time series analysis.<br>However, my skills translate seamlessly across industries, making me effective in other domains, especially regulated ones, where data-driven decision-making is critical, such as insurance, IT & cybersecurity, healthcare & life sciences, pharma, legal, but also e-commerce, logistics, marketing and others.',
+      // 'about-p3': "I'm driven by one question: how do we make AI that actually works in the real world? It must be <strong>scalable, reliable, explainable, and business-aligned</strong>.",
+      'expertise-ml': 'Machine Learning & Deep Learning',
+      'expertise-genai': 'NLP & GenAI Systems',
+      'expertise-ts': 'Time Series Forecasting',
+      'expertise-fraud': 'Anomaly & Fraud Detection',
+      'expertise-gnn': 'Graph Neural Networks',
+      'expertise-mlops': 'MLOps & Cloud Deployment',
+      'skills-tag': 'Technical Stack',
+      'skills-title': 'Tools I use <span class="accent">to create</span> with',
+      'projects-tag': 'Work & Research',
+      'projects-title': 'Projects <span class="accent">I\'ve worked on</span>',
+      'tab-professional': 'Professional',
+      'tab-university': 'University',
+      'tab-other': 'Other',
+      'proj-p1-type': 'Banking · Fraud Detection · Production',
+      'proj-p1-title': 'Antifraud Prediction System',
+      'proj-p1-desc': 'End-to-end ML pipeline for real-time banking fraud detection. Implemented advanced feature engineering and state-of-the-art models to capture complex and hidden patterns, deploying the system to AWS production infrastructure serving live transaction traffic.',
+      'proj-p2-type': 'Banking · Fraud Detection · Production',
+      'proj-p2-title': 'Antifraud Rules Generator',
+      'proj-p2-desc': 'On-demand tool to generate fraud alert rules from historical data. Using advanced strategies to extract meaningful signals from complex and messy data. Used to evaluate alert criteria in the past or to simulate future scenarios.',
+      'proj-p3-type': 'GenAI · Fraud Detection · Chatbot',
+      'proj-p3-title': 'IVIC —  Identity Verifier Intelligent Chatbot',
+      'proj-p3-desc': 'GenAI Fraud Detection chatbot to screen potential fraudsters as part of the identity verification process. IVIC interacts with users in real time via mobile chat, asking dynamic questions based on their data and behavior to assess fraud risk before letting them carry out a transaction.',
+      'proj-p4-type': 'GenAI · Chatbot · Customer Service',
+      'proj-p4-title': 'LIA — Customer Service Chatbot',
+      'proj-p4-desc': 'Built LIA, a production GenAI chatbot for TAS customer service, deployed on the company website. Handles real-time customer interactions at scale answering business questions.',
+      'proj-p5-type': 'Reconciliation · Time Series · Forecasting',
+      'proj-p5-title': 'Treasury Funds Forecasting System',
+      'proj-p5-desc': 'Designed and deployed a multi-model time series forecasting system for treasury fund allocation, ACH reconciliation and EBA Clearing services. Implemented classical statistical models with automated model selection and confidence intervals for risk-aware decision making.',
+      'proj-p6-type': 'Business Intelligence · Production',
+      'proj-p6-title': 'Payment Intelligence & Fraud Intelligence',
+      'proj-p6-desc': 'Built two BI solutions to extract valuable insights from payment and fraud data, enabling data-driven decision making and enhancing operational efficiency.',
+      'proj-u1-type': 'Graphs · Thesis · Experimental',
+      'proj-u1-title': 'Graph Neural Networks for Fraud Detection and Anti-Money Laundering',
+      'proj-u1-desc': 'Experimental Master thesis applying Graph Neural Networks to transaction graph analysis for fraud detection and anti-money laundering (AML). Explores relationships between users and their transactions to detect non-linear and non-local interaction fraud patterns with advanced AI models.',
+      'proj-u2-type': 'Deep Learning · Computer Vision · NLP',
+      'proj-u2-title': 'Deep Learning Experiments',
+      'proj-u2-desc': 'Collection of deep learning experiments focused on Computer Vision, NLP and LLMs: created from scratch several AI models covering CNNs, transformers, and hybrid architectures for various classification tasks.',
+      'proj-o1-type': 'Health · Machine Learning · Research',
+      'proj-o1-title': 'ESO-PROST',
+      'proj-o1-desc': "Took part in a clinical research program with a certified medical practitioner to assess the quality of a new healthcare tool for the early diagnosis and risk evaluation of prostate cancer based on patient health data. My contribution focused on the data analysis and modeling aspects, applying machine learning techniques to extract insights from the clinical data and support the evaluation of the tool's effectiveness.",
+      'proj-o2-type': 'OCR · Anonymization · Legal',
+      'proj-o2-title': 'CercaOSEP',
+      'proj-o2-desc': 'Took part in a project to develop an OCR-based tool for the anonymization of legal documents, designed to automatically identify and redact sensitive information from legal texts while preserving their overall structure and readability. My contribution focused on the data processing and modeling aspects, applying NLP techniques to enhance the accuracy of sensitive information detection and ensure compliance with privacy regulations.',
+      'projects-tas-cta': 'See TAS blog post on AI projects',
+      'projects-all-repos-cta': 'See all repos on GitHub',
+      'projects-github-label': 'GitHub',
+      'proj-o1-link': 'More on ESO-PROST',
+      'career-tag': 'Career',
+      'career-title': "Where I've <span class=\"accent\">built</span> things",
+      'exp-1-meta': '2025 — Present',
+      'exp-1-role': 'Consultant Analytics Intelligence',
+      'exp-1-company': 'Proxima Group',
+      'exp-1-desc': 'For a market-leading company in the FinTech sector, I contributed to the development of a new advanced simulation component within an Enterprise Risk Management (ERM) platform for banks.',
+      'exp-2-meta': '2022 — 2025',
+      'exp-2-role': 'AI Engineer & Data Scientist',
+      'exp-2-company': 'TAS S.p.A.',
+      'exp-2-desc': 'Built production ML systems for the banking and payments industry. Core work spans antifraud ML pipelines, GenAI chatbots, and financial time series forecasting. Full ownership from data engineering to model deployment on cloud (AWS) or on-premise (Docker/Kubernetes) infrastructure.',
+      // 'exp-3-meta': 'Domain Expertise',
+      // 'exp-3-role': 'Banking, Payments & FinTech',
+      // 'exp-3-company': 'Deep specialization in financial systems',
+      // 'exp-3-desc': '3+ years of domain-specific experience in banking AI. Strong understanding of regulatory context (PSD2, AML), transaction processing pipelines, and the operational constraints of deploying ML in high-stakes financial environments.',
+      // 'exp-4-meta': 'Research & Self-Study',
+      // 'exp-4-role': 'Graph ML, Time Series & Advanced Topics',
+      // 'exp-4-company': 'Independent research alongside industry work',
+      // 'exp-4-desc': 'Ongoing exploration of a broad scope of statistical methods, from Graph Neural Networks, to retrieval-augmented generation (RAG) systems, to advanced time series models.',
+      'resume-en': 'Resume (EN)',
+      'resume-it': 'Resume (IT)',
+      'contact-tag': "Let's talk",
+      'contact-title': "Open to what's <span class=\"accent\">next</span>",
+      'contact-copy': "Whether you're building the next generation of AI infrastructure, need someone who can own an ML system end-to-end, or just want to talk data science — I'd love to hear from you.",
+      'contact-cta-title': 'Want to work together?',
+      'contact-cta-copy': "I'm currently open to senior AI/ML engineering roles, data science positions, and consulting engagements — especially in FinTech, enterprise AI, and high-impact startups.",
+      'contact-email': 'Send me an email',
+      'contact-linkedin': 'Connect on LinkedIn'
+    },
+    it: {
+      'nav-about': 'Chi sono',
+      'nav-skills': 'Skill',
+      'nav-projects': 'Progetti',
+      'nav-experience': 'Esperienza',
+      'nav-contact': 'Contatti',
+      'nav-cta': 'Contattami',
+      'hero-tag': 'AI Engineer & Banking Data Scientist',
+      'hero-title-1': 'Costruisco',
+      'hero-title-2': 'sistemi di IA',
+      'hero-title-3': 'dal prototipo',
+      'hero-title-4': 'alla produzione.',
+      'hero-sub': "Sono <strong>Alessio Boetti</strong> — AI Engineer e Data Scientist specializzato nel settore banking & fintech, con oltre 3 anni di esperienza nella progettazione di <strong>sistemi di Machine Learning e GenAI end-to-end</strong> in contesti enterprise regolamentati cloud e on-premise, dove affidabilità e impatto sul business sono cruciali. Dal rilevamento di frodi su larga scala ai chatbot basati sull'IA generativa.",
+      'hero-work': 'Progetti',
+      'hero-resume-eng': 'CV (EN)',
+      'hero-resume-ita': 'CV (IT)',
+      'about-tag': 'Chi sono',
+      'about-title': 'Dai dati grezzi all\'<span class="accent">impatto in produzione</span>',
+      'about-p1': "Sono un ingegnere con una <strong>laurea magistrale in Intelligenza Artificiale</strong>. Il mio percorso nel settore è iniziato durante gli studi, quando sono entrato nel mondo fintech e ho cominciato a costruire pipeline ML end-to-end, dall'acquisizione dei dati fino alla messa in produzione con monitoraggio continuo. Lavorare sia in ambito accademico che industriale mi ha permesso di unire teoria e pratica, con ciascuna che ha rafforzato e arricchito l'altra, come dimostra la scelta del mio argomento di tesi.",
+      'about-p2': 'Lavoro all\'intersezione tra<strong>expertise nei settori banking e fintech</strong> e < strong > machine learning avanzato</strong>, sviluppando soluzioni che spaziano dai sistemi antifrode che analizzano migliaia di transazioni ogni giorno, anche in questo momento, ai chatbot basati su IA generativa per customer service o uso interno, fino a modelli di previsione dei fabbisogni di liquidità tramite analisi di serie temporali.<b > Tuttavia, le mie competenze sono facilmente trasferibili in altri settori regolamentati, dove il decision-making basato sui dati è critico.',
+      // 'about-p3': 'C\'è una domanda che guida il mio lavoro: come applicare l\'IA in modo che produca valore concreto nel mondo reale? Deve essere <strong>scalabile, affidabile, spiegabile e allineata alle esigenze di business</strong>.',
+      'expertise-ml': 'Machine Learning e Deep Learning',
+      'expertise-genai': 'NLP e sistemi GenAI',
+      'expertise-ts': 'Forecasting di serie temporali',
+      'expertise-fraud': 'Anomaly e Fraud Detection',
+      'expertise-gnn': 'Graph Neural Networks',
+      'expertise-mlops': 'MLOps e deployment cloud',
+      'skills-tag': 'Stack Tecnico',
+      'skills-title': 'Strumenti con cui <span class="accent">costruisco</span>',
+      'projects-tag': 'Lavoro e ricerca',
+      'projects-title': 'Progetti <span class="accent">a cui ho lavorato</span>',
+      'tab-professional': 'Professionali',
+      'tab-university': 'Università',
+      'tab-other': 'Altro',
+      'proj-p1-type': 'Banking · Fraud Detection · AWS',
+      'proj-p1-title': 'Sistema di rilevamento antifrode',
+      'proj-p1-desc': 'Pipeline ML end-to-end per il rilevamento di frodi bancarie in tempo reale, dall\'ingestione dei dati alla segnalazione automatica. Ho implementato tecniche di feature engineering e modelli avanzati per catturare pattern complessi e nascosti, deployando il sistema su un\'infrastruttura AWS per analizzare il traffico di transazioni real-time e fornire uno score di rischio in meno di 100 millisecondi. La soluzione ha contribuito all\'individuazione di oltre €25.000 di frodi.',
+      'proj-p2-type': 'Banking · Fraud Detection · AWS',
+      'proj-p2-title': 'Generatore di regole antifrode',
+      'proj-p2-desc': 'Strumento on-demand per generare regole di allerta frodi a partire da dati storici. Utilizza strategie avanzate per estrarre segnali significativi da dati complessi. Usato per valutare criteri di segnalazione su eventi passati o simulare scenari futuri.',
+      'proj-p3-type': 'Banking · Fraud Detection · Chatbot · On Premise',
+      'proj-p3-title': 'IVIC — Identity Verifier Intelligent Chatbot',
+      'proj-p3-desc': 'Chatbot GenAI che intercetta potenziali frodatori durante il processo di verifica dell\'identità. IVIC interagisce in tempo reale via mobile prima di consentire al cliente di disporre una transazione, ponendo domande dinamiche basate su dati e comportamento  dell\'utente per valutare il rischio di frode.',
+      'proj-p4-type': 'Banking · Customer Service · Chatbot · On Premise',
+      'proj-p4-title': 'LIA — Chatbot di customer service',
+      'proj-p4-desc': 'Chatbot GenAI per il customer service TAS. Gestisce interazioni clienti in tempo reale su larga scala, rispondendo a domande di business.',
+      'proj-p5-type': 'Banking · Forecasting · Riconciliazione · Serie temporali · AWS',
+      'proj-p5-title': 'Sistema di forecasting della liquidità di tesoreria',
+      'proj-p5-desc': 'Sistema multi-modello di forecasting su serie temporali per allocazione fondi di tesoreria, riconciliazione ACH e servizi EBA Clearing. Implementati modelli statistici classici con selezione automatica e intervalli di confidenza per decisioni risk-aware.',
+      'proj-p6-type': 'Banking · Business Intelligence · AWS',
+      'proj-p6-title': 'Payment Intelligence e Fraud Intelligence',
+      'proj-p6-desc': 'Sviluppate due soluzioni BI per estrarre insight da dati di pagamento e dati sulle frodi, abilitando decisioni data-driven e migliorando l\'efficienza operativa.',
+      'proj-u1-type': 'Tesi · Fraud Detection · Grafi · Sperimentale',
+      'proj-u1-title': 'Reti Neurali a Grafo per il Rilevamento di Frodi in Ambito Bancario',
+      'proj-u1-desc': 'Tesi sperimentale di laurea magistrale che applica le Graph Neural Networks all\'analisi dei grafi transazionali per il rilevamento di frodi e l\'antiriciclaggio (AML). Esplora le relazioni tra utenti e transazioni per individuare pattern fraudolenti non lineari e non locali con modelli AI avanzati.',
+      'proj-u2-type': 'Deep Learning · Computer Vision · NLP',
+      'proj-u2-title': 'Esperimenti di deep learning',
+      'proj-u2-desc': 'Raccolta di esperimenti di deep learning focalizzati su Computer Vision, NLP e LLM: sviluppo da zero di diversi modelli AI, tra cui CNN, transformer, LLM e architetture ibride per vari task di classificazione.',
+      'proj-o1-type': 'Salute · Ricerca · Machine Learning',
+      'proj-o1-title': 'ESO-PROST',
+      'proj-o1-desc': 'Partecipazione a un programma di ricerca clinica con un medico specialista per valutare la qualità di un nuovo strumento sanitario per la diagnosi precoce e la stima del rischio di tumore alla prostata, basato su dati clinici dei pazienti. Il mio contributo si e focalizzato sull\'analisi dati e sullo sviluppo di modelli di machine learning.',
+      'proj-o2-type': 'Legale · Anonimizzazione · OCR',
+      'proj-o2-title': 'CercaOSEP',
+      'proj-o2-desc': 'Partecipazione allo sviluppo di uno strumento OCR per l\'anonimizzazione di documenti legali, progettato per identificare e oscurare automaticamente informazioni sensibili preservando struttura e leggibilita dei testi.',
+      'projects-tas-cta': 'Vedi il blog post di TAS sui progetti AI',
+      'projects-all-repos-cta': 'Vedi tutti i repository su GitHub',
+      'projects-github-label': 'GitHub',
+      'proj-o1-link': 'Approfondisci ESO-PROST',
+      'career-tag': 'Carriera',
+      'career-title': 'Dove ho <span class="accent">costruito</span> soluzioni',
+      'exp-1-meta': 'Ottobre 2025 — Oggi',
+      'exp-1-role': 'Consulente Analytics Intelligence',
+      'exp-1-company': 'Proxima Group',
+      'exp-1-desc': 'Per una realta leader di mercato nel settore FinTech, ho contribuito allo sviluppo di un nuovo componente avanzato di simulazione all\'interno di una piattaforma di Enterprise Risk Management (ERM) per banche.',
+      'exp-2-meta': 'Ottobre 2022 — Ottobre 2025',
+      'exp-2-role': 'AI Engineer & Data Scientist',
+      'exp-2-company': 'TAS S.p.A.',
+      'exp-2-desc': 'Ho sviluppato sistemi ML in produzione per il settore banking e pagamenti. Solida comprensione del contesto regolatorio (PSD2, SCA, AML, KYC), delle pipeline di processamento transazioni e dei vincoli operativi del deployment ML in contesti finanziari ad alta criticità. Le attività principali includono pipeline antifrode, generatore di regole antifrode, forecasting su serie temporali, chatbot GenAI, BI. Ownership end-to-end: dal data engineering al deployment cloud (AWS) o on-premise (Docker/Kubernetes).',
+      // 'exp-3-meta': 'Expertise di dominio',
+      // 'exp-3-role': 'Banking, Payments e FinTech',
+      // 'exp-3-company': 'Specializzazione profonda nei sistemi finanziari',
+      // 'exp-3-desc': 'Oltre 3 anni di esperienza di dominio nell\'AI bancaria. ',
+      // 'exp-4-meta': 'Ricerca e studio autonomo',
+      // 'exp-4-role': 'Graph ML, serie temporali e temi avanzati',
+      // 'exp-4-company': 'Ricerca indipendente parallela all\'attivita professionale',
+      // 'exp-4-desc': 'Esplorazione continua di metodi statistici avanzati, dalle Graph Neural Networks ai sistemi retrieval-augmented generation (RAG), fino a modelli evoluti per serie temporali.',
+      'resume-en': 'CV (EN)',
+      'resume-it': 'CV (IT)',
+      'contact-tag': 'Contattami',
+      'contact-title': 'Aperto alle <span class="accent">opportunità</span>',
+      'contact-copy': 'Se stai costruendo la prossima generazione di soluzioni e infrastrutture AI, se cerchi qualcuno capace di occuparsi di un sistema di machine learning dall\'ideazione alla produzione, o se semplicemente desideri fare due chiacchiere sulla data science, sono a disposizione.',
+      'contact-cta-title': 'Ti interesso?',
+      'contact-cta-copy': 'Sono attualmente disponibile per ruoli senior in AI/ML engineering e data science, così come per incarichi di consulenza, con particolare interesse per FinTech, AI enterprise e startup ad alto impatto.',
+      'contact-email': 'Inviami una email',
+      'contact-linkedin': 'Connettiti su LinkedIn'
+    }
+  };
+
+  function applyLanguage(lang) {
+    const dictionary = translations[lang] || translations.en;
+    document.documentElement.lang = lang;
+    localStorage.setItem('siteLanguage', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const value = dictionary[element.dataset.i18n];
+      if (typeof value === 'string') {
+        element.textContent = value;
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+      const value = dictionary[element.dataset.i18nHtml];
+      if (typeof value === 'string') {
+        element.innerHTML = value;
+      }
+    });
+
+    langToggle.querySelectorAll('.lang-option').forEach((option) => {
+      option.classList.toggle('active', option.dataset.lang === lang);
+    });
+    langToggle.setAttribute('aria-label', lang === 'en' ? 'Italiano and English language toggle, currently English' : 'Italiano and English language toggle, currently Italian');
+  }
+
   // Cursor glow
   const glow = document.getElementById('cursorGlow');
+  const langToggle = document.getElementById('langToggle');
   // Hamburger menu
   const hamburger = document.getElementById('navHamburger');
   const navLinks = document.querySelector('.nav-links');
@@ -1761,6 +2037,10 @@
       hamburger.classList.remove('open');
       navLinks.classList.remove('open');
     });
+  });
+  langToggle.addEventListener('click', () => {
+    const nextLang = document.documentElement.lang === 'it' ? 'en' : 'it';
+    applyLanguage(nextLang);
   });
   document.addEventListener('mousemove', e => {
     glow.style.left = e.clientX + 'px';
@@ -1819,6 +2099,9 @@
     .hero-tag, .hero-sub, .hero-actions { opacity: 0; }
   `;
   document.head.appendChild(style);
+
+  const savedLanguage = localStorage.getItem('siteLanguage') || (navigator.language && navigator.language.toLowerCase().startsWith('it') ? 'it' : 'en');
+  applyLanguage(savedLanguage);
 </script>
 
 </body>
