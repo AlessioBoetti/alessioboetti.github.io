@@ -1430,6 +1430,7 @@
             <div class="project-tags">
               <span class="project-tag">AWS</span>
               <span class="project-tag">Python</span>
+              <span class="project-tag">PySpark</span>
               <span class="project-tag">Pandas</span>
               <span class="project-tag">Numpy</span>
               <span class="project-tag">Scikit-learn</span>
@@ -1459,6 +1460,7 @@
               <span class="project-tag">Docker</span>
               <span class="project-tag">Kubernetes</span>
               <span class="project-tag">Python</span>
+              <span class="project-tag">PySpark</span>
               <span class="project-tag">Pandas</span>
               <span class="project-tag">Numpy</span>
               <span class="project-tag">Scikit-learn</span>
@@ -1524,6 +1526,7 @@
             <div class="project-tags">
               <span class="project-tag">AWS</span>
               <span class="project-tag">Python</span>
+              <span class="project-tag">PySpark</span>
               <span class="project-tag">Pandas</span>
               <span class="project-tag">Numpy</span>
               <span class="project-tag">Scikit-learn</span>
@@ -1544,15 +1547,36 @@
             <div class="project-tags">
               <span class="project-tag">AWS</span>
               <span class="project-tag">Python</span>
+              <span class="project-tag">PySpark</span>
               <span class="project-tag">Pandas</span>
               <span class="project-tag">Numpy</span>
               <span class="project-tag">Scikit-learn</span>
             </div>
-            <div class="project-links">
-              <!-- <a href="https://www.tasgroup.eu/it" class="project-link" target="_blank">
+            <!-- <div class="project-links">
+              <a href="https://www.tasgroup.eu/it" class="project-link" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live site
-              </a> -->
+              </a>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-img-placeholder">📈</div>
+          <div class="project-body">
+            <div class="project-type" data-i18n="proj-p7-type">Banking · ERM · On Premise</div>
+            <h3 class="project-title" data-i18n="proj-p7-title">ERM Modeling Platform</h3>
+            <p class="project-desc" data-i18n="proj-p7-desc">
+              Contributed to the development of an advanced balance sheet simulation component for a market-leading FinTech's
+              Enterprise Risk Management platform, enabling banks to model financial scenarios, assess geopolitical and socioeconomic
+              risk, and support strategic decision-making.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Azure</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">Pandas</span>
+              <span class="project-tag">Numpy</span>
             </div>
           </div>
         </div>
@@ -1811,17 +1835,17 @@
       'nav-cta': 'Get in touch',
       'hero-tag': 'AI Engineer & Banking Data Scientist',
       'hero-title-1': 'Building',
-      'hero-title-2': 'intelligent',
-      'hero-title-3': 'systems that',
-      'hero-title-4': 'matter.',
-      'hero-sub': "I'm <strong>Alessio Boetti</strong> — an AI Engineer and Data Scientist with 3+ years turning complex, messy data into <strong>production-grade ML systems</strong> that drive real business value. From fraud detection at scale to GenAI chatbots.",
+      'hero-title-2': 'AI systems',
+      'hero-title-3': 'from prototype',
+      'hero-title-4': 'to production.',
+      'hero-sub': "I'm <strong>Alessio Boetti</strong> — an AI Engineer and Data Scientist specialized in the banking & fintech sector, with more than 3 years of experience designing <strong>end-to-end Machine Learning and GenAI systems</strong> in regulated enterprise environments, both cloud and on-premise, where reliability and business impact are critical. From large-scale fraud detection to generative AI - based chatbots.",
       'hero-work': 'View my work',
       'hero-resume-eng': 'Resume (EN)',
       'hero-resume-ita': 'Resume (IT)',
       'about-tag': 'About me',
       'about-title': 'From raw data to <span class="accent">production impact</span>',
-      'about-p1': "Based in Italy, I hold a <strong>Master's Degree in Artificial Intelligence</strong>. My path into the field started during my studies, when I joined the fintech sector and began building end-to-end ML pipelines — from raw data ingestion to deployed, monitored production systems. Working at the intersection of academia and industry let me continuously bridge theory and practice, each reinforcing the other.",
-      'about-p2': 'I work at the intersection of <strong>banking and fintech domain expertise</strong> and <strong>cutting-edge machine learning</strong> — from antifraud systems protecting millions of transactions, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs through time series analysis.<br>However, my skills translate seamlessly across industries, making me effective in other domains, especially regulated ones, where data-driven decision-making is critical, such as insurance, IT & cybersecurity, healthcare & life sciences, pharma, legal, but also e-commerce, logistics, marketing and others.',
+      'about-p1': "I'm an engineer with a <strong>Master's Degree in Artificial Intelligence</strong>. My path into the field started during my studies, when I joined the fintech sector and began building end-to-end ML pipelines, from raw data ingestion to deployed, monitored production systems. Working both in academia and in industry environments let me bridge theory and practice, each reinforcing the other, as demonstrated by the choice of my thesis topic.",
+      'about-p2': 'I work at the intersection of <strong>banking and fintech domain expertise</strong> and <strong>cutting-edge machine learning</strong>, from antifraud systems analysing millions of transactions, even in this moment, to GenAI chatbots for customer service or internal use, to forecasting business liquidity needs through time series analysis.<br>However, my skills translate seamlessly across industries, making me effective in other regulated domains, where data-driven decision-making is critical.', // such as insurance, IT & cybersecurity, healthcare & life sciences, pharma, legal, but also e-commerce, logistics, marketing and others.
       // 'about-p3': "I'm driven by one question: how do we make AI that actually works in the real world? It must be <strong>scalable, reliable, explainable, and business-aligned</strong>.",
       'expertise-ml': 'Machine Learning & Deep Learning',
       'expertise-genai': 'NLP & GenAI Systems',
@@ -1830,56 +1854,59 @@
       'expertise-gnn': 'Graph Neural Networks',
       'expertise-mlops': 'MLOps & Cloud Deployment',
       'skills-tag': 'Technical Stack',
-      'skills-title': 'Tools I use <span class="accent">to create</span> with',
+      'skills-title': 'Tools I <span class="accent">create</span> with',
       'projects-tag': 'Work & Research',
       'projects-title': 'Projects <span class="accent">I\'ve worked on</span>',
       'tab-professional': 'Professional',
       'tab-university': 'University',
       'tab-other': 'Other',
-      'proj-p1-type': 'Banking · Fraud Detection · Production',
-      'proj-p1-title': 'Antifraud Prediction System',
-      'proj-p1-desc': 'End-to-end ML pipeline for real-time banking fraud detection. Implemented advanced feature engineering and state-of-the-art models to capture complex and hidden patterns, deploying the system to AWS production infrastructure serving live transaction traffic.',
-      'proj-p2-type': 'Banking · Fraud Detection · Production',
+      'proj-p1-type': 'Banking · Fraud Detection · AWS',
+      'proj-p1-title': 'Antifraud Detection System',
+      'proj-p1-desc': 'End-to-end ML pipeline for real-time banking fraud detection, from data ingestion to automatic alerts. Implemented advanced feature engineering techniques and state-of-the-art models to capture complex and hidden patterns, deploying the system on AWS infrastructure to analyse real-time transaction traffic and provide a risk score in under 100 milliseconds. The solution contributed to detecting over €25,000 in fraud.',
+      'proj-p2-type': 'Banking · Fraud Detection · AWS',
       'proj-p2-title': 'Antifraud Rules Generator',
-      'proj-p2-desc': 'On-demand tool to generate fraud alert rules from historical data. Using advanced strategies to extract meaningful signals from complex and messy data. Used to evaluate alert criteria in the past or to simulate future scenarios.',
-      'proj-p3-type': 'GenAI · Fraud Detection · Chatbot',
+      'proj-p2-desc': 'On-demand tool to generate fraud alert rules from historical data. Using advanced strategies to extract meaningful signals from complex data. Used to evaluate alert criteria in the past or to simulate future scenarios.',
+      'proj-p3-type': 'Banking · Fraud Detection · Chatbot · On Premise',
       'proj-p3-title': 'IVIC —  Identity Verifier Intelligent Chatbot',
-      'proj-p3-desc': 'GenAI Fraud Detection chatbot to screen potential fraudsters as part of the identity verification process. IVIC interacts with users in real time via mobile chat, asking dynamic questions based on their data and behavior to assess fraud risk before letting them carry out a transaction.',
-      'proj-p4-type': 'GenAI · Chatbot · Customer Service',
+      'proj-p3-desc': 'GenAI chatbot to screen potential fraudsters as part of the identity verification process. IVIC interacts with users in real time via mobile chat before letting them carry out a transaction, asking dynamic questions based on their data and behavior to assess fraud risk.',
+      'proj-p4-type': 'Banking · Customer Service · Chatbot · On Premise',
       'proj-p4-title': 'LIA — Customer Service Chatbot',
-      'proj-p4-desc': 'Built LIA, a production GenAI chatbot for TAS customer service, deployed on the company website. Handles real-time customer interactions at scale answering business questions.',
-      'proj-p5-type': 'Reconciliation · Time Series · Forecasting',
+      'proj-p4-desc': 'GenAI chatbot for TAS customer service. Handles real-time customer interactions at scale answering business questions.',
+      'proj-p5-type': 'Banking · Forecasting · Reconciliation · Time Series · AWS',
       'proj-p5-title': 'Treasury Funds Forecasting System',
-      'proj-p5-desc': 'Designed and deployed a multi-model time series forecasting system for treasury fund allocation, ACH reconciliation and EBA Clearing services. Implemented classical statistical models with automated model selection and confidence intervals for risk-aware decision making.',
-      'proj-p6-type': 'Business Intelligence · Production',
+      'proj-p5-desc': 'Multi-model time series forecasting system for treasury fund allocation, ACH reconciliation and EBA Clearing services. Implemented classical statistical models with automated model selection and confidence intervals for risk-aware decision making.',
+      'proj-p6-type': 'Banking · Business Intelligence · AWS',
       'proj-p6-title': 'Payment Intelligence & Fraud Intelligence',
-      'proj-p6-desc': 'Built two BI solutions to extract valuable insights from payment and fraud data, enabling data-driven decision making and enhancing operational efficiency.',
-      'proj-u1-type': 'Graphs · Thesis · Experimental',
-      'proj-u1-title': 'Graph Neural Networks for Fraud Detection and Anti-Money Laundering',
-      'proj-u1-desc': 'Experimental Master thesis applying Graph Neural Networks to transaction graph analysis for fraud detection and anti-money laundering (AML). Explores relationships between users and their transactions to detect non-linear and non-local interaction fraud patterns with advanced AI models.',
+      'proj-p6-desc': 'Two BI solutions to extract insights from payment and fraud data, enabling data-driven decision making and enhancing operational efficiency.',
+      'proj-p7-type': 'Banking · ERM · On Premise',
+      'proj-p7-title': 'ERM Modeling Platform',
+      'proj-p7-desc': 'Contributed to the development of an advanced balance sheet simulation component for a market-leading FinTech\'s Enterprise Risk Management platform, enabling banks to model financial scenarios, assess geopolitical and socioeconomic risk, and support strategic decision-making.',
+      'proj-u1-type': 'Thesis · Fraud Detection · Graphs · Experimental',
+      'proj-u1-title': 'Graph Neural Networks for Banking Fraud Detection',
+      'proj-u1-desc': 'Experimental Master thesis applying Graph Neural Networks (GNN) to transaction graph analysis for fraud detection and anti-money laundering (AML). Explores relationships between users and their transactions to detect non-linear and non-local interaction fraud patterns with advanced AI models.',
       'proj-u2-type': 'Deep Learning · Computer Vision · NLP',
       'proj-u2-title': 'Deep Learning Experiments',
       'proj-u2-desc': 'Collection of deep learning experiments focused on Computer Vision, NLP and LLMs: created from scratch several AI models covering CNNs, transformers, and hybrid architectures for various classification tasks.',
-      'proj-o1-type': 'Health · Machine Learning · Research',
+      'proj-o1-type': 'Health · Research · Machine Learning',
       'proj-o1-title': 'ESO-PROST',
       'proj-o1-desc': "Took part in a clinical research program with a certified medical practitioner to assess the quality of a new healthcare tool for the early diagnosis and risk evaluation of prostate cancer based on patient health data. My contribution focused on the data analysis and modeling aspects, applying machine learning techniques to extract insights from the clinical data and support the evaluation of the tool's effectiveness.",
-      'proj-o2-type': 'OCR · Anonymization · Legal',
+      'proj-o2-type': 'Legal · Anonymization · OCR',
       'proj-o2-title': 'CercaOSEP',
       'proj-o2-desc': 'Took part in a project to develop an OCR-based tool for the anonymization of legal documents, designed to automatically identify and redact sensitive information from legal texts while preserving their overall structure and readability. My contribution focused on the data processing and modeling aspects, applying NLP techniques to enhance the accuracy of sensitive information detection and ensure compliance with privacy regulations.',
       'projects-tas-cta': 'See TAS blog post on AI projects',
-      'projects-all-repos-cta': 'See all repos on GitHub',
+      'projects-all-repos-cta': 'See all repositories on GitHub',
       'projects-github-label': 'GitHub',
       'proj-o1-link': 'More on ESO-PROST',
       'career-tag': 'Career',
       'career-title': "Where I've <span class=\"accent\">built</span> things",
-      'exp-1-meta': '2025 — Present',
+      'exp-1-meta': 'October 2025 — Present',
       'exp-1-role': 'Consultant Analytics Intelligence',
       'exp-1-company': 'Proxima Group',
       'exp-1-desc': 'For a market-leading company in the FinTech sector, I contributed to the development of a new advanced simulation component within an Enterprise Risk Management (ERM) platform for banks.',
-      'exp-2-meta': '2022 — 2025',
+      'exp-2-meta': 'October 2022 — October 2025',
       'exp-2-role': 'AI Engineer & Data Scientist',
       'exp-2-company': 'TAS S.p.A.',
-      'exp-2-desc': 'Built production ML systems for the banking and payments industry. Core work spans antifraud ML pipelines, GenAI chatbots, and financial time series forecasting. Full ownership from data engineering to model deployment on cloud (AWS) or on-premise (Docker/Kubernetes) infrastructure.',
+      'exp-2-desc': 'Built production ML systems for the banking and payments industry. Solid understanding of the regulatory context (PSD2, SCA, AML, KYC), transaction processing pipelines, and the operational constraints of ML deployment in high-criticality financial contexts. Core work spans antifraud ML pipelines, GenAI chatbots, and financial time series forecasting. Full ownership from data engineering to model deployment on cloud (AWS) or on-premise (Docker/Kubernetes) infrastructure.',
       // 'exp-3-meta': 'Domain Expertise',
       // 'exp-3-role': 'Banking, Payments & FinTech',
       // 'exp-3-company': 'Deep specialization in financial systems',
@@ -1917,7 +1944,7 @@
       'about-tag': 'Chi sono',
       'about-title': 'Dai dati grezzi all\'<span class="accent">impatto in produzione</span>',
       'about-p1': "Sono un ingegnere con una <strong>laurea magistrale in Intelligenza Artificiale</strong>. Il mio percorso nel settore è iniziato durante gli studi, quando sono entrato nel mondo fintech e ho cominciato a costruire pipeline ML end-to-end, dall'acquisizione dei dati fino alla messa in produzione con monitoraggio continuo. Lavorare sia in ambito accademico che industriale mi ha permesso di unire teoria e pratica, con ciascuna che ha rafforzato e arricchito l'altra, come dimostra la scelta del mio argomento di tesi.",
-      'about-p2': 'Lavoro all\'intersezione tra<strong>expertise nei settori banking e fintech</strong> e < strong > machine learning avanzato</strong>, sviluppando soluzioni che spaziano dai sistemi antifrode che analizzano migliaia di transazioni ogni giorno, anche in questo momento, ai chatbot basati su IA generativa per customer service o uso interno, fino a modelli di previsione dei fabbisogni di liquidità tramite analisi di serie temporali.<b > Tuttavia, le mie competenze sono facilmente trasferibili in altri settori regolamentati, dove il decision-making basato sui dati è critico.',
+      'about-p2': 'Lavoro all\'intersezione tra <strong>expertise nei settori banking e fintech</strong> e <strong> machine learning avanzato</strong>, sviluppando soluzioni che spaziano dai sistemi antifrode che analizzano migliaia di transazioni ogni giorno, anche in questo momento, ai chatbot basati su IA generativa per customer service o uso interno, fino a modelli di previsione dei fabbisogni di liquidità tramite analisi di serie temporali.<br> Tuttavia, le mie competenze sono facilmente trasferibili in altri settori regolamentati, dove il decision-making basato sui dati è critico.',
       // 'about-p3': 'C\'è una domanda che guida il mio lavoro: come applicare l\'IA in modo che produca valore concreto nel mondo reale? Deve essere <strong>scalabile, affidabile, spiegabile e allineata alle esigenze di business</strong>.',
       'expertise-ml': 'Machine Learning e Deep Learning',
       'expertise-genai': 'NLP e sistemi GenAI',
@@ -1948,11 +1975,14 @@
       'proj-p5-title': 'Sistema di forecasting della liquidità di tesoreria',
       'proj-p5-desc': 'Sistema multi-modello di forecasting su serie temporali per allocazione fondi di tesoreria, riconciliazione ACH e servizi EBA Clearing. Implementati modelli statistici classici con selezione automatica e intervalli di confidenza per decisioni risk-aware.',
       'proj-p6-type': 'Banking · Business Intelligence · AWS',
-      'proj-p6-title': 'Payment Intelligence e Fraud Intelligence',
-      'proj-p6-desc': 'Sviluppate due soluzioni BI per estrarre insight da dati di pagamento e dati sulle frodi, abilitando decisioni data-driven e migliorando l\'efficienza operativa.',
+      'proj-p6-title': 'Payment Intelligence & Fraud Intelligence',
+      'proj-p6-desc': 'Due soluzioni BI per estrarre insight da dati di pagamento e dati sulle frodi, abilitando decisioni data-driven e migliorando l\'efficienza operativa.',
+      'proj-p7-type': 'Banking · ERM · On Premise',
+      'proj-p7-title': 'ERM Modeling Platform',
+      'proj-p7-desc': 'Contribuito allo sviluppo di un componente avanzato per la simulazione del bilancio all\'interno della piattaforma di Enterprise Risk Management di un\'azienda FinTech market leader, consentendo alle banche di modellare scenari finanziari, valutare rischi geopolitici e socioeconomici, e supportare il processo decisionale strategico.',
       'proj-u1-type': 'Tesi · Fraud Detection · Grafi · Sperimentale',
       'proj-u1-title': 'Reti Neurali a Grafo per il Rilevamento di Frodi in Ambito Bancario',
-      'proj-u1-desc': 'Tesi sperimentale di laurea magistrale che applica le Graph Neural Networks all\'analisi dei grafi transazionali per il rilevamento di frodi e l\'antiriciclaggio (AML). Esplora le relazioni tra utenti e transazioni per individuare pattern fraudolenti non lineari e non locali con modelli AI avanzati.',
+      'proj-u1-desc': 'Tesi sperimentale di laurea magistrale che applica le Graph Neural Networks (GNN) all\'analisi dei grafi transazionali per il rilevamento di frodi e l\'antiriciclaggio (AML). Esplora le relazioni tra utenti e transazioni per individuare pattern fraudolenti non lineari e non locali con modelli AI avanzati.',
       'proj-u2-type': 'Deep Learning · Computer Vision · NLP',
       'proj-u2-title': 'Esperimenti di deep learning',
       'proj-u2-desc': 'Raccolta di esperimenti di deep learning focalizzati su Computer Vision, NLP e LLM: sviluppo da zero di diversi modelli AI, tra cui CNN, transformer, LLM e architetture ibride per vari task di classificazione.',
