@@ -3,510 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methodology — Alessio Boetti</title>
+<title>How I work — Alessio Boetti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #08080C;
-    --bg2: #0E0E14;
-    --bg3: #14141C;
-    --surface: #1A1A24;
-    --border: rgba(255,255,255,0.07);
-    --border-bright: rgba(255,255,255,0.15);
-    --text: #F0EEF8;
-    --text2: #9997B0;
-    --text3: #5C5A72;
-    --accent: #7B5EFF;
-    --accent2: #B8A4FF;
-    --gold: #E8C87A;
-    --teal: #3ECFB2;
-    --coral: #FF6B6B;
-    --green: #4ADE80;
-    --amber: #FBBF24;
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(123,94,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(123,94,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 4rem;
-    background: rgba(8,8,12,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo { font-family:var(--font-display); font-size:1.1rem; font-weight:800; color:var(--text); text-decoration:none; letter-spacing:-0.02em; }
-  .nav-logo span { color: var(--accent); }
-
-  .nav-back { display:flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.78rem; color:var(--text2); text-decoration:none; letter-spacing:0.05em; transition:color 0.2s; }
-  .nav-back:hover { color: var(--text); }
-  .nav-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-
-  /* ── PAGE LAYOUT ── */
-  .page-layout {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  /* ── SIDEBAR TOC ── */
-  .toc {
-    position: sticky;
-    top: 110px;
-    padding-top: 120px;
-  }
-
-  .toc-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text3);
-    margin-bottom: 1.25rem;
-  }
-
-  .toc-list { list-style: none; }
-
-  .toc-item { margin-bottom: 0.1rem; }
-
-  .toc-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.84rem;
-    color: var(--text3);
-    transition: all 0.15s;
-    border-left: 2px solid transparent;
-  }
-  .toc-link:hover { color: var(--text2); background: rgba(255,255,255,0.03); }
-  .toc-link.active { color: var(--text); border-left-color: var(--accent); background: rgba(123,94,255,0.07); }
-
-  .toc-num {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text3);
-    flex-shrink: 0;
-  }
-
-  .toc-divider { height: 1px; background: var(--border); margin: 1rem 0.75rem; }
-
-  .toc-footer {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 0.78rem;
-    color: var(--text3);
-    line-height: 1.6;
-  }
-  .toc-footer a { color: var(--accent2); text-decoration: none; }
-  .toc-footer a:hover { text-decoration: underline; }
-
-  /* ── MAIN CONTENT ── */
-  .main-content { padding-top: 100px; padding-bottom: 5rem; }
-
-  /* ── PAGE HEADER ── */
-  .page-header {
-    margin-bottom: 5rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .page-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--accent2);
-    background: rgba(123,94,255,0.08);
-    border: 1px solid rgba(123,94,255,0.2);
-    padding: 0.35rem 0.9rem;
-    border-radius: 100px;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .page-header h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 3.5vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    line-height: 1.05;
-    margin-bottom: 1.25rem;
-  }
-
-  .page-header h1 .accent { color: var(--accent); }
-
-  .page-header .intro {
-    font-size: 1.05rem;
-    color: var(--text2);
-    line-height: 1.8;
-    max-width: 620px;
-  }
-  .page-header .intro strong { color: var(--text); font-weight: 500; }
-
-  /* ── METHOD SECTION ── */
-  .method-section {
-    margin-bottom: 5rem;
-    scroll-margin-top: 100px;
-  }
-
-  .method-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .method-icon-wrap {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    border: 1px solid;
-  }
-
-  .icon-purple { background: rgba(123,94,255,0.1); border-color: rgba(123,94,255,0.25); }
-  .icon-teal { background: rgba(62,207,178,0.08); border-color: rgba(62,207,178,0.2); }
-  .icon-gold { background: rgba(232,200,122,0.08); border-color: rgba(232,200,122,0.2); }
-  .icon-coral { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.2); }
-  .icon-green { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.2); }
-  .icon-amber { background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.2); }
-
-  .method-header-text {}
-
-  .method-num {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text3);
-    margin-bottom: 0.4rem;
-  }
-
-  .method-title {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-
-  .method-subtitle {
-    font-size: 0.9rem;
-    color: var(--text3);
-    margin-top: 0.25rem;
-    font-style: italic;
-  }
-
-  .method-divider {
-    height: 1px;
-    background: var(--border);
-    margin-bottom: 2rem;
-  }
-
-  /* ── PROSE ── */
-  .prose p {
-    color: var(--text2);
-    font-size: 0.975rem;
-    line-height: 1.85;
-    margin-bottom: 1.1rem;
-  }
-  .prose p:last-child { margin-bottom: 0; }
-  .prose p strong { color: var(--text); font-weight: 500; }
-
-  /* ── WHAT / WHY / HOW ── */
-  .three-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    margin: 2rem 0;
-  }
-
-  .three-col-cell {
-    background: var(--bg2);
-    padding: 1.5rem;
-  }
-
-  .three-col-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.75rem;
-  }
-  .label-what { color: var(--accent2); }
-  .label-why { color: var(--teal); }
-  .label-how { color: var(--gold); }
-
-  .three-col-text {
-    font-size: 0.875rem;
-    color: var(--text2);
-    line-height: 1.7;
-  }
-  .three-col-text strong { color: var(--text); font-weight: 500; }
-
-  /* ── CALLOUT ── */
-  .callout {
-    display: flex;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
-    border-radius: 12px;
-    margin: 1.75rem 0;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    border-left: 3px solid;
-  }
-
-  .callout-purple { background: rgba(123,94,255,0.06); border-color: var(--accent); color: var(--text2); }
-  .callout-teal { background: rgba(62,207,178,0.06); border-color: var(--teal); color: var(--text2); }
-  .callout-gold { background: rgba(232,200,122,0.06); border-color: var(--gold); color: var(--text2); }
-  .callout-green { background: rgba(74,222,128,0.06); border-color: var(--green); color: var(--text2); }
-
-  .callout strong { color: var(--text); font-weight: 500; }
-
-  .callout-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-
-  /* ── TECHNIQUE LIST ── */
-  .technique-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin: 1.5rem 0;
-  }
-
-  .technique-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    transition: border-color 0.2s;
-  }
-  .technique-item:hover { border-color: var(--border-bright); }
-
-  .technique-marker {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--accent2);
-    background: rgba(123,94,255,0.1);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .technique-marker.teal { color: var(--teal); background: rgba(62,207,178,0.08); }
-  .technique-marker.gold { color: var(--gold); background: rgba(232,200,122,0.08); }
-
-  .technique-body {}
-
-  .technique-name {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.2rem;
-  }
-
-  .technique-desc {
-    font-size: 0.83rem;
-    color: var(--text2);
-    line-height: 1.6;
-  }
-
-  /* ── BUSINESS VALUE BOX ── */
-  .biz-value {
-    background: linear-gradient(135deg, rgba(74,222,128,0.05), rgba(62,207,178,0.03));
-    border: 1px solid rgba(74,222,128,0.15);
-    border-radius: 14px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .biz-value-icon {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-  }
-
-  .biz-value-content {}
-
-  .biz-value-title {
-    font-family: var(--font-display);
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--green);
-    margin-bottom: 0.4rem;
-  }
-
-  .biz-value-text {
-    font-size: 0.875rem;
-    color: var(--text2);
-    line-height: 1.7;
-  }
-  .biz-value-text strong { color: var(--text); font-weight: 500; }
-
-  /* ── CODE BLOCK ── */
-  .code-block {
-    background: var(--bg3);
-    border: 1px solid var(--border-bright);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 1.75rem 0;
-    overflow-x: auto;
-  }
-  .code-block pre {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text2);
-    line-height: 1.75;
-    margin: 0;
-    white-space: pre;
-  }
-  .code-block .code-kw { color: var(--accent2); }
-  .code-block .code-fn { color: var(--teal); }
-  .code-block .code-str { color: var(--gold); }
-  .code-block .code-cm { color: var(--text3); font-style: italic; }
-  .code-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text3);
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* ── PROJECT LINKS ── */
-  .used-in {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .used-in-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text3);
-    margin-bottom: 0.75rem;
-  }
-
-  .used-in-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .used-in-link {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text2);
-    text-decoration: none;
-    padding: 0.3rem 0.75rem;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: all 0.15s;
-  }
-  .used-in-link:hover { color: var(--text); border-color: var(--border-bright); }
-
-  /* ── FADE IN ── */
-  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--border); padding: 1.75rem 0; position: relative; z-index: 1; }
-  .footer-inner { display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; padding:0 2rem; }
-  .footer-copy { font-family:var(--font-mono); font-size:0.72rem; color:var(--text3); }
-  .footer-copy a { color:var(--text3); text-decoration:none; }
-  .footer-copy a:hover { color:var(--text2); }
-
-  @media (max-width: 900px) {
-    .page-layout { grid-template-columns: 1fr; gap: 0; }
-    .toc { display: none; }
-    .three-col { grid-template-columns: 1fr; }
-    nav { padding: 1rem 1.5rem; }
-  }
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">AB<span>.</span></a>
-  <a href="index.html" class="nav-back">
-    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Back to portfolio
-  </a>
-</nav>
+<!-- NAV -->
+<div id="nav-placeholder"></div>
 
-<div class="page-layout">
+<!-- <div class="page-layout"> -->
+<div class="page-layout no-toc">
 
   <!-- SIDEBAR TOC -->
-  <aside class="toc">
-    <div class="toc-label">// On this page</div>
+  <!-- <aside class="toc">
+    <div class="toc-label">// Contents</div>
     <ul class="toc-list">
       <li class="toc-item"><a href="#uncertainty" class="toc-link" data-section="uncertainty"><span class="toc-num">01</span> Uncertainty Quantification</a></li>
       <li class="toc-item"><a href="#explainability" class="toc-link" data-section="explainability"><span class="toc-num">02</span> Explainability / SHAP</a></li>
@@ -520,61 +33,368 @@
       These practices apply across all my projects.<br>
       See them in action → <a href="project-antifraud.html">Antifraud System</a>
     </div>
-  </aside>
+  </aside> -->
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
 
     <header class="page-header fade-in">
-      <div class="page-tag">How I work</div>
-      <h1>Production <span class="accent">ML</span> Methodology</h1>
+      <div class="page-tag">AI Engineer & Banking Data Scientist</div>
+      <h1>How I <span class="accent">work</span></h1>
       <p class="intro">
-        A model that performs well in a notebook is not an ML system. These are the <strong>engineering and scientific practices</strong> I apply consistently across projects — not as checklists, but as principles that translate statistical rigor into <strong>reliable business outcomes</strong>.
+        <h2>From data to reliable results</h2>
+        A model that performs well in a notebook is not an ML system, and anyone can throw an XGBoost model at a bunch of raw data and get something nice out of it.
+      </p>
+      <br>
+      <p>
+        I aim to achieve <strong>top-notch implementations</strong>. I like <strong>complexity</strong>.
+      </p>
+      <br>
+      <p>
+        These are the principles and practices I apply consistently across projects that translate statistical rigor into <strong>reliable business outcomes</strong>.
       </p>
     </header>
 
-    <!-- ── 01: UNCERTAINTY QUANTIFICATION ── -->
+    <!-- ── 01: DATA ANALYSIS ── -->
+    <section class="method-section fade-in" id="data-analysis">
+      <div class="method-header">
+        <div class="method-icon-wrap icon-gold">🔎</div>
+        <div class="method-header-text">
+          <!-- <div class="method-num">01 — Methodology</div> -->
+          <h2 class="method-title">Data Analysis</h2>
+          <div class="method-subtitle">Understanding is the first and most important step</div>
+        </div>
+      </div>
+      <!-- <div class="method-divider"></div> -->
+    
+      <div class="three-col">
+        <div class="three-col-cell">
+          <div class="three-col-label label-what">What</div>
+          <div class="three-col-text">Using statistical summaries, tests, and visual diagnostics, such as distributions, correlations and decompositions, to spot
+          inconsistencies, build an accurate mental model of the problem, and surface where the pain points are before any further decision is made.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-why">Why</div>
+          <div class="three-col-text">Basic summary statistics alone are dangerous: the same mean and variance can hide wildly different distributions, and a single correlation coefficient can mask non-linear or segment-specific relationships. Visualization isn't a reporting step at the end, it's how you discover what questions to even ask.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-how">How</div>
+          <div class="three-col-text">Univariate profiling → bivariate & multivariate relationships → distributional diagnostics → dimensionality reduction → statistical tests → testing hypothesis and statistical assumptions.</div>
+        </div>
+      </div>
+    
+      <div class="prose">
+        <p>
+          My approach treats every plot as a hypothesis, not a deliverable. I start with univariate distributions to understand shape, skew, and multimodality — a bimodal distribution often means there are two different populations hiding in one
+          column. From there I move to bivariate relationships, favoring visual diagnostics over correlation coefficients alone, since Pearson's r assumes linearity that real-world data rarely respects. 
+        </p>
+        <p>
+          For multivariate problems, I use dimensionality reduction not to build features but to look — projecting high-dimensional data into 2-3 components to check for clusters, outliers, or structure that would be invisible one variable at a time. 
+        </p>
+        <p>
+          Every statistical claim I make is paired with the plot that supports it, so <strong>the reasoning is auditable, not just asserted</strong>.
+        </p>
+      </div>
+    
+      <ul class="technique-list">
+        <li class="technique-item">
+          <div class="technique-marker">Analysis</div>
+          <div class="technique-body">
+            <div class="technique-name">Distributional Diagnostics</div>
+            <div class="technique-desc">Histograms, KDEs, and Q-Q plots to assess normality, skew, and multimodality.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker">Analysis</div>
+          <div class="technique-body">
+            <div class="technique-name">Correlation & Dependency Mapping</div>
+            <div class="technique-desc">Pairwise correlation matrices combined with scatter matrices and mutual information scores, to catch non-linear dependencies that a single correlation coefficient would miss.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker">Analysis</div>
+          <div class="technique-body">
+            <div class="technique-name">Graph & Network Analysis</div>
+            <div class="technique-desc">Modeling entities and their relationships as nodes and edges to surface structure invisible in tabular form, centrality measures to identify influential nodes, community detection to find natural clusters, and path analysis to trace how effects propagate through a system.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker teal">Decomposition</div>
+          <div class="technique-body">
+            <div class="technique-name">Dimensionality Reduction</div>
+            <div class="technique-desc">PCA, Kernel PCA, t-SNE and UMAP used exploratively, not as preprocessing, but to visually surface clusters, separability, and outlier structure in high-dimensional data.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker teal">Decomposition</div>
+          <div class="technique-body">
+            <div class="technique-name">Time Series Decomposition</div>
+            <div class="technique-desc">Splitting series into trend, seasonality, and residual components to distinguish genuine signal from cyclical noise before drawing conclusions about behavior or performance.</div>
+          </div>
+        </li>
+      </ul>
+    
+      <div class="biz-value">
+        <div class="biz-value-icon">⚙️</div>
+        <div class="biz-value-content">
+          <div class="biz-value-title">Business impact</div>
+          <div class="biz-value-text">
+            Rigorous data analysis prevents the most expensive kind of error: <strong>building the right solution to the wrong problem</strong>. Understanding distributions, segments, and biases before modeling catches misleading signals early, when fixing them costs a day, not a failed production deployment because the model does not work. A well-run exploratory phase routinely surfaces key insights: the "underperforming" segment that's actually a data collection artifact, the trend that's a Simpson's paradox, the outlier that's the most valuable customer cohort. Because <strong>every finding is grounded in a visible, auditable chain of evidence</strong>, decisions survive scrutiny instead of collapsing under the first "Are you sure?".
+          </div>
+        </div>
+      </div>
+    
+      <!-- <div class="used-in">
+        <div class="used-in-label">// Applied in</div>
+        <div class="used-in-links">
+          <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
+          <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- ── 02: FEATURE ENGINEERING ── -->
+    <section class="method-section fade-in" id="feature-engineering">
+      <div class="method-header">
+        <div class="method-icon-wrap icon-gold">⚗️</div>
+        <div class="method-header-text">
+          <!-- <div class="method-num">02 — Methodology</div> -->
+          <h2 class="method-title">Feature Engineering & Selection</h2>
+          <div class="method-subtitle">Data representation is the leverage point</div>
+        </div>
+      </div>
+      <!-- <div class="method-divider"></div> -->
+    
+      <div class="three-col">
+        <div class="three-col-cell">
+          <div class="three-col-label label-what">What</div>
+          <div class="three-col-text">Extracting hidden information from raw data, combining domain knowledge, statistical analysis, and automated selection to surface the signals a model needs.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-why">Why</div>
+          <div class="three-col-text">Model architecture accounts for perhaps 20% of final performance. The other 80% is data quality and representation. <strong>A mediocre model on great features beats a sophisticated model on raw data</strong>.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-how">How</div>
+          <div class="three-col-text">Domain-driven hypothesis → statistical validation → SHAP-based importance → collinearity analysis → ablation testing. <strong>Every feature must earn its place.</strong></div>
+        </div>
+      </div>
+    
+      <div class="prose">
+        <p>
+          My approach to feature engineering is hypothesis-driven: I start from <strong>domain knowledge</strong> to generate candidate features, then use statistical tests and agnostic- and model-based importance criteria to filter them. This avoids the trap of blind feature generation that adds more complexity without improving signal.
+        </p>
+        <!-- <p>
+          For temporal data specifically, I rely on <strong>rolling window aggregations at multiple timescales</strong> (capturing both short-term anomalies and long-term behavioral drift), lag features for autocorrelation structures, and interaction terms grounded in domain logic.
+        </p> -->
+      </div>
+    
+      <ul class="technique-list">
+        <li class="technique-item">
+          <div class="technique-marker">Design</div>
+          <div class="technique-body">
+            <div class="technique-name">Rolling Window Aggregations</div>
+            <div class="technique-desc">Computing statistics (mean, std, count, sum) over multiple temporal and grouped-based windows to capture behavior at different timescales simultaneously.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker">Design</div>
+          <div class="technique-body">
+            <div class="technique-name">Behavioral Deviation Features</div>
+            <div class="technique-desc">Z-scores and percentile ranks computed against both the individual entity's own historical distribution and the whole population distribution, personalizing the signal while also relying on global statistics.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker teal">Selection</div>
+          <div class="technique-body">
+            <div class="technique-name">SHAP-based Feature Selection</div>
+            <div class="technique-desc">Using SHAP mean absolute values as a principled importance metric, combined with correlation analysis to remove redundant features while preserving complementary ones.</div>
+          </div>
+        </li>
+        <li class="technique-item">
+          <div class="technique-marker teal">selection</div>
+          <div class="technique-body">
+            <div class="technique-name">Ablation Testing</div>
+            <div class="technique-desc">Removing feature groups one at a time and measuring the impact on validation metrics. Validates importance, reveals redundancy, and informs feature engineering priorities.</div>
+          </div>
+        </li>
+      </ul>
+    
+      <div class="biz-value">
+        <div class="biz-value-icon">⚙️</div>
+        <div class="biz-value-content">
+          <div class="biz-value-title">Business impact</div>
+          <div class="biz-value-text">
+            <strong>Better features → smaller models → faster inference → lower infrastructure costs.</strong> A well-engineered feature set often allows simpler models to reach the same performance as complex ones on raw data with less compute, faster latency, and easier maintenance. Feature selection also reduces overfitting and improves out-of-distribution generalization.
+          </div>
+        </div>
+      </div>
+    
+      <!-- <div class="used-in">
+        <div class="used-in-label">// Applied in</div>
+        <div class="used-in-links">
+          <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
+          <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- ── 03: CALIBRATION ── -->
+    <section class="method-section fade-in" id="calibration">
+      <div class="method-header">
+        <div class="method-icon-wrap icon-coral">🎯</div>
+        <div class="method-header-text">
+          <!-- <div class="method-num">03 — Methodology</div> -->
+          <h2 class="method-title">Calibration Methods</h2>
+          <div class="method-subtitle">Calibrating models for reliable outputs</div>
+        </div>
+      </div>
+      <!-- <div class="method-divider"></div> -->
+    
+      <div class="three-col">
+        <div class="three-col-cell">
+          <div class="three-col-label label-what">What</div>
+          <div class="three-col-text">Calibrating model output to produce <strong>reliable probability estimates</strong> rather than arbitrary scores.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-why">Why</div>
+          <div class="three-col-text">Calibration ensures that a machine learning model's predicted probabilities genuinely match <strong>real-world likelihoods</strong>.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-how">How</div>
+          <div class="three-col-text">Venn-Abers calibration, validation with ECE and reliability diagrams on held-out data.</div>
+        </div>
+      </div>
+    
+      <div class="prose">
+        <p>
+          Calibration is the step that turns raw model scores into decision-grade probabilities. In practice, this means a predicted risk of 0.30 should correspond to to a 30% chance of risk, which is not assured by directly using model outputs. 
+        </p>
+        <p>  
+          I typically use Venn-Abers when I need stable calibration under class imbalance and distribution shift, because it provides valid probability intervals rather than a single overconfident point estimate. This is especially valuable in fraud and risk systems, where uncertainty must be explicit and operationally usable.
+        </p>
+      </div>
+    
+      <div class="biz-value">
+        <div class="biz-value-icon">🛡️</div>
+        <div class="biz-value-content">
+          <div class="biz-value-title">Business impact</div>
+          <div class="biz-value-text">
+            Calibrated probabilities make risk policies economically consistent. Teams can set thresholds based on expected cost, define gray zones for manual review, and adapt actions by segment, channel, or transaction value. The result is fewer unnecessary blocks, better customer experience, and more reliable loss prevention, because decisions are driven by true likelihoods instead of arbitrary scores.
+          </div>
+        </div>
+      </div>
+    
+      <!-- <div class="used-in">
+            <div class="used-in-label">// Applied in</div>
+            <div class="used-in-links">
+              <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
+              <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
+            </div>
+          </div> -->
+    </section>
+
+    <!-- ── 04: ENSEMBLE ── -->
+    <section class="method-section fade-in" id="ensemble">
+      <div class="method-header">
+        <div class="method-icon-wrap icon-coral">🎯</div>
+        <div class="method-header-text">
+          <!-- <div class="method-num">04 — Methodology</div> -->
+          <h2 class="method-title">Ensemble Methods</h2>
+          <div class="method-subtitle">Combining models for robust outputs</div>
+        </div>
+      </div>
+      <!-- <div class="method-divider"></div> -->
+    
+      <div class="three-col">
+        <div class="three-col-cell">
+          <div class="three-col-label label-what">What</div>
+          <div class="three-col-text">Combining multiple models to reduce variance and bias, canceling out individual weaknesses, while keeping system complexity proportional to the performance gain.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-why">Why</div>
+          <div class="three-col-text">Single models have correlated failure modes. Ensembles with <strong>diverse inductive biases</strong> fail on different examples: their combination is more robust than any individual model.</div>
+        </div>
+        <div class="three-col-cell">
+          <div class="three-col-label label-how">How</div>
+          <div class="three-col-text">Soft voting → Stacking with a meta-learner for more complex scenarios.</div>
+        </div>
+      </div>
+    
+      <div class="prose">
+        <p>
+          The choice between bagging, boosting, and stacking depends on the error structure of the problem. For tabular data with complex interactions, I typically start with <strong>diverse boosting implementations</strong> (XGBoost, CatBoost, LightGBM), each with different handling of categorical features, regularization approaches, and tree construction algorithms, giving them genuinely different error patterns.
+        </p>
+        <p>
+          Ensemble combination is done via <strong>soft voting on calibrated probabilities</strong> rather than raw scores. This is critical: averaging uncalibrated scores is mathematically unsound (the scores are on different scales and distributions). Calibrating first, then averaging, produces a coherent joint probability.
+        </p>
+      </div>
+    
+      <!-- <div class="callout callout-gold">
+        <div class="callout-icon">⚠️</div>
+        <div><strong>Common mistake to avoid:</strong> Averaging raw model scores directly without calibration is
+          theoretically unjustified. Each model's raw output is on a different implicit scale. Calibrate to probabilities
+          first, then combine — the ensemble's output will be better calibrated and more interpretable.</div>
+      </div> -->
+    
+      <div class="biz-value">
+        <div class="biz-value-icon">🛡️</div>
+        <div class="biz-value-content">
+          <div class="biz-value-title">Business impact</div>
+          <div class="biz-value-text">
+            <strong>Reduced risk and higher reliability.</strong> Ensembles consistently reduce the variance of predictions, particularly important for rare event detection where a single model's blind spots can be costly. In production, a 1-2% improvement in AUC ROC or AUC PR translates to meaningful reductions in fraud losses or false positive costs at transaction scale.
+          </div>
+        </div>
+      </div>
+    
+      <!-- <div class="used-in">
+        <div class="used-in-label">// Applied in</div>
+        <div class="used-in-links">
+          <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
+          <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- ── 05: UNCERTAINTY QUANTIFICATION ── -->
     <section class="method-section fade-in" id="uncertainty">
       <div class="method-header">
         <div class="method-icon-wrap icon-purple">📐</div>
         <div class="method-header-text">
-          <div class="method-num">01 — Methodology</div>
+          <!-- <div class="method-num">05 — Methodology</div> -->
           <h2 class="method-title">Uncertainty Quantification</h2>
           <div class="method-subtitle">Knowing what the model doesn't know</div>
         </div>
       </div>
-      <div class="method-divider"></div>
+      <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
           <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Quantifying how <strong>confident</strong> a model is in its predictions — not just outputting a label, but a calibrated probability that reflects the true likelihood of an event.</div>
+          <div class="three-col-text">Quantifying how <strong>confident</strong> a model is in its predictions: not just outputting a decision, but a probability range that reflects the true likelihood of an event.</div>
         </div>
         <div class="three-col-cell">
           <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Overconfident models make brittle systems. A model saying "99% fraud" when the true uncertainty is high leads to <strong>over-automation and poor edge case handling</strong>.</div>
+          <div class="three-col-text">Overconfident models make brittle systems. A model saying "99% fraud" when the true uncertainty is high leads to poor decision-making and <strong>potential harm or losses</strong>.</div>
         </div>
         <div class="three-col-cell">
           <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Platt scaling, isotonic regression, temperature scaling. Validated with <strong>calibration curves and Expected Calibration Error (ECE)</strong> on holdout sets.</div>
+          <div class="three-col-text">Conformal Prediction → prediction bands that ensure bounded errors.</div>
         </div>
       </div>
 
       <div class="prose">
         <p>
-          Most classification models output a raw score, not a probability. Without calibration, a gradient boosting model's "0.85" output doesn't mean there's an 85% chance of fraud — it's an uncalibrated logit. <strong>Probability calibration</strong> maps these raw scores to meaningful probabilities.
-        </p>
-        <p>
-          Beyond single-point calibration, in high-stakes settings I also apply <strong>conformal prediction</strong> to generate prediction sets with guaranteed coverage — rather than "this is fraud," the model can say "with 95% confidence, this transaction belongs to one of these classes." This is especially useful when the cost of an error is asymmetric.
+          Beyond single-point calibration, I also apply <strong>conformal prediction</strong> to generate prediction sets with guaranteed coverage: rather than "this is fraud", the model can say "with 95% confidence, this transaction belongs to one of these classes". This is especially useful when the cost of an error is asymmetric.
         </p>
       </div>
 
-      <div class="callout callout-purple">
+      <!-- <div class="callout callout-purple">
         <div class="callout-icon">💡</div>
         <div><strong>Business translation:</strong> A well-calibrated model enables risk-proportional decisions. A fraud system can apply different blocking thresholds for a €5 transaction vs a €50,000 wire transfer. Without calibration, this nuance is impossible — you're just thresholding on an arbitrary score.</div>
-      </div>
+      </div> -->
 
-      <ul class="technique-list">
+      <!-- <ul class="technique-list">
         <li class="technique-item">
           <div class="technique-marker">method</div>
           <div class="technique-body">
@@ -603,91 +423,92 @@
             <div class="technique-desc">Distribution-free framework producing prediction sets with guaranteed finite-sample coverage. Applied in uncertainty-critical decisions to bound the error rate.</div>
           </div>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="biz-value">
         <div class="biz-value-icon">📈</div>
         <div class="biz-value-content">
           <div class="biz-value-title">Business impact</div>
           <div class="biz-value-text">
-            <strong>Risk-proportional automation:</strong> different decision thresholds per transaction segment, customer risk profile, and channel. This directly reduces false positives on low-value transactions while maintaining high recall on high-value fraud — optimizing both user experience and loss prevention simultaneously.
+            A narrow prediction band indicates high certainty and can be auto-routed, while wider sets trigger manual review or additional verification steps. This turns uncertainty into a controllable business signal: confidence determines action intensity, not just model score magnitude.
+            <!-- <strong>Risk-proportional automation:</strong> different decision thresholds per transaction segment, customer risk profile, and channel. This directly reduces false positives on low-value transactions while maintaining high recall on high-value fraud — optimizing both user experience and loss prevention simultaneously. -->
           </div>
         </div>
       </div>
 
-      <div class="used-in">
+      <!-- <div class="used-in">
         <div class="used-in-label">// Applied in</div>
         <div class="used-in-links">
           <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
           <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
         </div>
-      </div>
+      </div> -->
     </section>
 
-    <!-- ── 02: EXPLAINABILITY ── -->
+    <!-- ── 06: EXPLAINABILITY ── -->
     <section class="method-section fade-in" id="explainability">
       <div class="method-header">
         <div class="method-icon-wrap icon-teal">🔍</div>
         <div class="method-header-text">
-          <div class="method-num">02 — Methodology</div>
-          <h2 class="method-title">Explainability / SHAP</h2>
-          <div class="method-subtitle">Models that can justify their decisions</div>
+          <!-- <div class="method-num">06 — Methodology</div> -->
+          <h2 class="method-title">Explainability</h2>
+          <div class="method-subtitle">Justifying model decisions</div>
         </div>
       </div>
-      <div class="method-divider"></div>
+      <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
           <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Techniques that decompose a model's output into <strong>per-feature contributions</strong>, making predictions auditable by humans — developers, analysts, compliance teams, and regulators.</div>
+          <div class="three-col-text">Techniques that decompose a model's output into <strong>per-feature contributions</strong>, making predictions auditable by managers, compliance teams, and regulators.</div>
         </div>
         <div class="three-col-cell">
           <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Black-box models erode trust, block regulatory approval, and make debugging nearly impossible. <strong>Explainability is not optional</strong> in production systems — it's a prerequisite for stakeholder adoption.</div>
+          <div class="three-col-text">Black-box models erode trust, block regulatory approval, and make debugging nearly impossible. <strong>Explainability is not optional</strong> in production systems, it's a prerequisite for stakeholder adoption.</div>
         </div>
         <div class="three-col-cell">
           <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">SHAP (SHapley Additive exPlanations) for tree models — consistent, theoretically grounded. LIME as a complementary local approximation for sanity checks and non-tree architectures.</div>
+          <div class="three-col-text">SHAP for tree models: consistent, theoretically grounded. LIME as a complementary local approximation for sanity checks and non-tree architectures.</div>
         </div>
       </div>
 
       <div class="prose">
         <p>
-          SHAP values assign each feature a contribution to the prediction relative to a baseline. Unlike simple feature importance, SHAP is <strong>per-prediction and directional</strong>: it tells you not just which feature mattered, but by how much and in which direction.
+          SHAP values assign each feature a contribution to the prediction. Unlike other simpler methods, SHAP is <strong>per-prediction and directional</strong>: it tells you not just which feature mattered, but by how much and in which direction.
         </p>
         <p>
-          I distinguish between two levels of explanation: <strong>global</strong> (aggregated SHAP values across all predictions, used for model validation, feature selection, and stakeholder communication) and <strong>local</strong> (per-prediction SHAP waterfall plots, used in analyst-facing dashboards and audit trails).
+          I distinguish between two levels of explanation: <strong>global</strong> (aggregated SHAP values across all predictions, used for model validation, feature selection, and stakeholder communication) and <strong>local</strong> (per-prediction SHAP plots, used in analyst-facing dashboards and audit trails).
         </p>
       </div>
 
-      <div class="callout callout-teal">
+      <div class="callout callout-gold">
         <div class="callout-icon">⚖️</div>
         <div><strong>Regulatory relevance:</strong> In banking and finance, regulators (EBA, GDPR, AI Act) increasingly require that automated decisions be explainable to affected individuals. A SHAP-powered audit trail is both a technical tool and a compliance asset.</div>
       </div>
 
-      <ul class="technique-list">
+      <!-- <ul class="technique-list">
         <li class="technique-item">
-          <div class="technique-marker">global</div>
+          <div class="technique-marker">Global</div>
           <div class="technique-body">
             <div class="technique-name">SHAP Summary Plots</div>
-            <div class="technique-desc">Beeswarm plots showing the distribution and magnitude of each feature's impact across all predictions. Used for model validation, feature selection, and cross-team communication.</div>
+            <div class="technique-desc">Plots showing the distribution and magnitude of each feature's impact across all predictions. Used for model validation, feature selection, and cross-team communication.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker">local</div>
+          <div class="technique-marker">Local</div>
           <div class="technique-body">
-            <div class="technique-name">SHAP Waterfall Plots</div>
+            <div class="technique-name">SHAP Plots</div>
             <div class="technique-desc">Per-prediction breakdown: "this transaction was flagged because amount is +0.32 risk units, new device is +0.18, and geography is +0.21." Embedded in fraud analyst dashboards.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker teal">debug</div>
+          <div class="technique-marker teal">Debug</div>
           <div class="technique-body">
             <div class="technique-name">Dependence Plots</div>
             <div class="technique-desc">Plots SHAP value vs feature value for a single feature, revealing non-linear effects and interactions. Critical for validating that the model learned the expected relationships.</div>
           </div>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="biz-value">
         <div class="biz-value-icon">🏦</div>
@@ -699,171 +520,25 @@
         </div>
       </div>
 
-      <div class="used-in">
+      <!-- <div class="used-in">
         <div class="used-in-label">// Applied in</div>
         <div class="used-in-links">
           <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
         </div>
-      </div>
+      </div> -->
     </section>
 
-    <!-- ── 03: FEATURE ENGINEERING ── -->
-    <section class="method-section fade-in" id="feature-engineering">
-      <div class="method-header">
-        <div class="method-icon-wrap icon-gold">⚗️</div>
-        <div class="method-header-text">
-          <div class="method-num">03 — Methodology</div>
-          <h2 class="method-title">Feature Engineering & Selection</h2>
-          <div class="method-subtitle">Data representation is the leverage point</div>
-        </div>
-      </div>
-      <div class="method-divider"></div>
-
-      <div class="three-col">
-        <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Systematically constructing informative input representations from raw data — combining <strong>domain knowledge, statistical analysis, and automated selection</strong> to surface the signals a model needs.</div>
-        </div>
-        <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Model architecture accounts for perhaps 20% of final performance. <strong>The other 80% is data quality and representation.</strong> A mediocre model on great features beats a sophisticated model on raw data.</div>
-        </div>
-        <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Domain-driven hypothesis → statistical validation → SHAP-based importance → collinearity analysis → ablation testing. Every feature must earn its place.</div>
-        </div>
-      </div>
-
-      <div class="prose">
-        <p>
-          My approach to feature engineering is hypothesis-driven: I start from <strong>domain knowledge</strong> to generate candidate features, then use statistical tests and model-based importance to filter them. This avoids the trap of blind feature generation that inflates dimensionality without improving signal.
-        </p>
-        <p>
-          For temporal data specifically, I rely on <strong>rolling window aggregations at multiple timescales</strong> (capturing both short-term anomalies and long-term behavioral drift), lag features for autocorrelation structures, and interaction terms grounded in domain logic.
-        </p>
-      </div>
-
-      <ul class="technique-list">
-        <li class="technique-item">
-          <div class="technique-marker">design</div>
-          <div class="technique-body">
-            <div class="technique-name">Rolling Window Aggregations</div>
-            <div class="technique-desc">Computing statistics (mean, std, count, sum) over multiple temporal windows to capture behavior at different timescales simultaneously.</div>
-          </div>
-        </li>
-        <li class="technique-item">
-          <div class="technique-marker">design</div>
-          <div class="technique-body">
-            <div class="technique-name">Behavioral Deviation Features</div>
-            <div class="technique-desc">Z-scores and percentile ranks computed against the individual entity's own historical distribution — personalizing the signal rather than relying on global statistics.</div>
-          </div>
-        </li>
-        <li class="technique-item">
-          <div class="technique-marker teal">selection</div>
-          <div class="technique-body">
-            <div class="technique-name">SHAP-based Feature Selection</div>
-            <div class="technique-desc">Using SHAP mean absolute values as a principled importance metric, combined with correlation analysis to remove redundant features while preserving complementary ones.</div>
-          </div>
-        </li>
-        <li class="technique-item">
-          <div class="technique-marker teal">selection</div>
-          <div class="technique-body">
-            <div class="technique-name">Ablation Testing</div>
-            <div class="technique-desc">Removing feature groups one at a time and measuring the impact on validation metrics. Validates importance, reveals redundancy, and informs feature engineering priorities.</div>
-          </div>
-        </li>
-      </ul>
-
-      <div class="biz-value">
-        <div class="biz-value-icon">⚙️</div>
-        <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
-            <strong>Better features → smaller models → faster inference → lower infrastructure costs.</strong> A well-engineered feature set often allows simpler models to reach the same performance as complex ones on raw data — with less compute, faster latency, and easier maintenance. Feature selection also reduces overfitting and improves out-of-distribution generalization.
-          </div>
-        </div>
-      </div>
-
-      <div class="used-in">
-        <div class="used-in-label">// Applied in</div>
-        <div class="used-in-links">
-          <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
-          <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 04: ENSEMBLE & CALIBRATION ── -->
-    <section class="method-section fade-in" id="ensemble">
-      <div class="method-header">
-        <div class="method-icon-wrap icon-coral">🎯</div>
-        <div class="method-header-text">
-          <div class="method-num">04 — Methodology</div>
-          <h2 class="method-title">Ensemble & Calibration Methods</h2>
-          <div class="method-subtitle">Combining models for robust, reliable outputs</div>
-        </div>
-      </div>
-      <div class="method-divider"></div>
-
-      <div class="three-col">
-        <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Combining multiple models to reduce variance and bias, then calibrating their joint output to produce <strong>reliable probability estimates</strong> rather than arbitrary scores.</div>
-        </div>
-        <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Single models have correlated failure modes. Ensembles with <strong>diverse inductive biases</strong> fail on different examples — their combination is more robust than any individual model.</div>
-        </div>
-        <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Soft voting on calibrated probabilities. Stacking with a meta-learner for more complex scenarios. Calibration validation with ECE and reliability diagrams on held-out data.</div>
-        </div>
-      </div>
-
-      <div class="prose">
-        <p>
-          The choice between bagging, boosting, and stacking depends on the error structure of the problem. For tabular data with complex interactions, I typically start with <strong>diverse boosting implementations</strong> (XGBoost, CatBoost, LightGBM) — each with different handling of categorical features, regularization approaches, and tree construction algorithms, giving them genuinely different error patterns.
-        </p>
-        <p>
-          Ensemble combination is done via <strong>soft voting on calibrated probabilities</strong> rather than raw scores. This is critical: averaging uncalibrated scores is mathematically unsound (the scores are on different scales and distributions). Calibrating first, then averaging, produces a coherent joint probability.
-        </p>
-      </div>
-
-      <div class="callout callout-gold">
-        <div class="callout-icon">⚠️</div>
-        <div><strong>Common mistake to avoid:</strong> Averaging raw model scores directly without calibration is theoretically unjustified. Each model's raw output is on a different implicit scale. Calibrate to probabilities first, then combine — the ensemble's output will be better calibrated and more interpretable.</div>
-      </div>
-
-      <div class="biz-value">
-        <div class="biz-value-icon">🛡️</div>
-        <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
-            <strong>Reduced tail risk and higher reliability.</strong> Ensembles consistently reduce the variance of predictions — particularly important for rare event detection where a single model's blind spots can be costly. In production, a 1–2% improvement in AUC translates to meaningful reductions in fraud losses or false positive costs at transaction scale.
-          </div>
-        </div>
-      </div>
-
-      <div class="used-in">
-        <div class="used-in-label">// Applied in</div>
-        <div class="used-in-links">
-          <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
-          <a href="project-forecasting.html" class="used-in-link">Time Series Forecasting</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 05: MONITORING & DRIFT ── -->
+    <!-- ── 07: MONITORING & DRIFT ── -->
     <section class="method-section fade-in" id="monitoring">
       <div class="method-header">
         <div class="method-icon-wrap icon-green">📡</div>
         <div class="method-header-text">
-          <div class="method-num">05 — Methodology</div>
+          <!-- <div class="method-num">07 — Methodology</div> -->
           <h2 class="method-title">Model Monitoring & Data Drift</h2>
-          <div class="method-subtitle">Models degrade — detect it before it costs you</div>
+          <div class="method-subtitle">Detect model degradation it before it costs you</div>
         </div>
       </div>
-      <div class="method-divider"></div>
+      <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
@@ -876,7 +551,7 @@
         </div>
         <div class="three-col-cell">
           <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Statistical tests for distribution shift (KS, PSI, Jensen-Shannon divergence). Performance monitoring on labeled windows. Automated alerts and retraining triggers when drift thresholds are exceeded.</div>
+          <div class="three-col-text">Statistical tests for distribution shift → Performance monitoring on labeled windows → Automated alerts and retraining triggers when drift thresholds are exceeded.</div>
         </div>
       </div>
 
@@ -885,20 +560,20 @@
           I separate <strong>data drift</strong> (input distribution shift), <strong>concept drift</strong> (the relationship between inputs and outputs changes), and <strong>performance drift</strong> (observed metrics degrading). Each requires a different detection and response strategy.
         </p>
         <p>
-          For adversarial domains like fraud, I additionally monitor for <strong>adversarial drift</strong> — intentional shifts where fraudsters have learned to mimic legitimate patterns. This is detected through analysis of the score distribution of flagged transactions over time, not just raw feature distributions.
+          For adversarial domains like fraud, I additionally monitor for <strong>adversarial drift</strong>, intentional shifts where fraudsters have learned to mimic legitimate patterns. This is detected through analysis of the score distribution of flagged transactions over time, not just raw feature distributions.
         </p>
       </div>
 
-      <ul class="technique-list">
+      <!-- <ul class="technique-list">
         <li class="technique-item">
-          <div class="technique-marker">detect</div>
+          <div class="technique-marker">Detect</div>
           <div class="technique-body">
             <div class="technique-name">Population Stability Index (PSI)</div>
             <div class="technique-desc">Compares the distribution of a feature between training and production windows. PSI > 0.2 triggers investigation; > 0.25 triggers retraining consideration.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker">detect</div>
+          <div class="technique-marker">Detect</div>
           <div class="technique-body">
             <div class="technique-name">Kolmogorov-Smirnov Test</div>
             <div class="technique-desc">Non-parametric test for distribution equality. Applied per-feature on rolling windows to detect statistically significant shifts as early as possible.</div>
@@ -911,42 +586,42 @@
             <div class="technique-desc">When drift metrics exceed thresholds, an automated pipeline re-trains the model on recent data, runs validation, and promotes it to production via the standard CI/CD flow — without manual intervention.</div>
           </div>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="biz-value">
         <div class="biz-value-icon">⏱️</div>
         <div class="biz-value-content">
           <div class="biz-value-title">Business impact</div>
           <div class="biz-value-text">
-            <strong>Proactive degradation detection vs reactive crisis management.</strong> Without monitoring, performance degradation is discovered through business KPI drops — often weeks after the model started failing. Drift monitoring catches issues before they compound into significant losses or customer experience failures.
+            <strong>Proactive degradation detection vs reactive crisis management.</strong> Without monitoring, performance degradation is discovered through business KPI drops, often weeks after the model started failing. Drift monitoring catches issues before they compound into significant losses or customer experience failures.
           </div>
         </div>
       </div>
 
-      <div class="used-in">
+      <!-- <div class="used-in">
         <div class="used-in-label">// Applied in</div>
         <div class="used-in-links">
           <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
         </div>
-      </div>
+      </div> -->
     </section>
 
-    <!-- ── 06: CI/CD FOR ML ── -->
+    <!-- ── 08: CI/CD FOR ML ── -->
     <section class="method-section fade-in" id="cicd">
       <div class="method-header">
         <div class="method-icon-wrap icon-amber">🔄</div>
         <div class="method-header-text">
-          <div class="method-num">06 — Methodology</div>
+          <!-- <div class="method-num">08 — Methodology</div> -->
           <h2 class="method-title">CI/CD for ML (MLOps)</h2>
           <div class="method-subtitle">Treating model deployment as software engineering</div>
         </div>
       </div>
-      <div class="method-divider"></div>
+      <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
           <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Applying software engineering best practices — <strong>version control, automated testing, staged deployment, and continuous integration</strong> — to the full ML lifecycle: data, code, and models.</div>
+          <div class="three-col-text">Applying software engineering best practices to the full ML lifecycle: <strong>version control, automated testing, staged deployment, and continuous integration</strong> on data, code, and models.</div>
         </div>
         <div class="three-col-cell">
           <div class="three-col-label label-why">Why</div>
@@ -967,12 +642,12 @@
         </p>
       </div>
 
-      <div class="callout callout-green">
+      <div class="callout callout-gold">
         <div class="callout-icon">✅</div>
         <div><strong>Reproducibility as a first principle:</strong> Every training run is reproducible — the same code, data version, and random seeds produce the same model. This is enforced through pipeline tooling, not convention. Without this, debugging production issues is guesswork.</div>
       </div>
 
-      <ul class="technique-list">
+      <!-- <ul class="technique-list">
         <li class="technique-item">
           <div class="technique-marker">pipeline</div>
           <div class="technique-body">
@@ -1001,7 +676,7 @@
             <div class="technique-desc">Promotion to production requires the new model to exceed the current production model's metrics on a held-out validation set. No human approval required — but any regression blocks automatically.</div>
           </div>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="biz-value">
         <div class="biz-value-icon">🚀</div>
@@ -1013,53 +688,17 @@
         </div>
       </div>
 
-      <div class="used-in">
+      <!-- <div class="used-in">
         <div class="used-in-label">// Applied in</div>
         <div class="used-in-links">
           <a href="project-antifraud.html" class="used-in-link">Antifraud Prediction System</a>
         </div>
-      </div>
+      </div> -->
     </section>
 
   </main>
 </div>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© 2025 <a href="index.html">Alessio Boetti</a></div>
-    <div class="footer-copy"><a href="index.html#projects">Projects</a> · <a href="index.html#contact">Contact</a></div>
-  </div>
-</footer>
-
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.06 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // TOC active state
-  const sections = document.querySelectorAll('.method-section');
-  const tocLinks = document.querySelectorAll('.toc-link[data-section]');
-
-  const tocObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        tocLinks.forEach(link => {
-          link.classList.toggle('active', link.dataset.section === id);
-        });
-      }
-    });
-  }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
-
-  sections.forEach(s => tocObserver.observe(s));
-</script>
+<script src="assets/js/scripts.js"></script>
 </body>
 </html>
