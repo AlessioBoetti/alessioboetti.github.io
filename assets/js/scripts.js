@@ -42,13 +42,13 @@ const translations = {
         'proj-p2-type': 'Banking · Fraud Detection · AWS',
         'proj-p2-title': 'Antifraud Rules Generator',
         'proj-p2-desc': 'On-demand tool to generate fraud alert rules from historical data. Using advanced strategies to extract meaningful signals from complex data. Used to evaluate alert criteria in the past or to simulate future scenarios.',
-        'proj-p3-type': 'Banking · Fraud Detection · Chatbot · On Premise',
+        'proj-p3-type': 'Banking · Fraud Detection · On Premise',
         'proj-p3-title': 'IVIC —  Identity Verifier Intelligent Chatbot',
         'proj-p3-desc': 'GenAI chatbot to screen potential fraudsters as part of the identity verification process. IVIC interacts with users in real time via mobile chat before letting them carry out a transaction, asking dynamic questions based on their data and behavior to assess fraud risk.',
-        'proj-p4-type': 'Banking · Customer Service · Chatbot · On Premise',
+        'proj-p4-type': 'Banking · Customer Service · On Premise',
         'proj-p4-title': 'LIA — Customer Service Chatbot',
         'proj-p4-desc': 'GenAI chatbot for TAS customer service. Handles real-time customer interactions at scale answering business questions.',
-        'proj-p5-type': 'Banking · Forecasting · Reconciliation · Time Series · AWS',
+        'proj-p5-type': 'Banking · Forecasting · Reconciliation · AWS',
         'proj-p5-title': 'Treasury Funds Forecasting System',
         'proj-p5-desc': 'Multi-model time series forecasting system for treasury fund allocation, ACH reconciliation and EBA Clearing services. Implemented classical statistical models with automated model selection and confidence intervals for risk-aware decision making.',
         'proj-p6-type': 'Banking · Business Intelligence · AWS',
@@ -243,13 +243,13 @@ const translations = {
         'proj-p2-type': 'Banking · Fraud Detection · AWS',
         'proj-p2-title': 'Generatore di regole antifrode',
         'proj-p2-desc': 'Strumento on-demand per generare regole di allerta frodi a partire da dati storici. Utilizza strategie avanzate per estrarre segnali significativi da dati complessi. Usato per valutare criteri di segnalazione su eventi passati o simulare scenari futuri.',
-        'proj-p3-type': 'Banking · Fraud Detection · Chatbot · On Premise',
+        'proj-p3-type': 'Banking · Fraud Detection · On Premise',
         'proj-p3-title': 'IVIC — Identity Verifier Intelligent Chatbot',
         'proj-p3-desc': 'Chatbot GenAI che intercetta potenziali frodatori durante il processo di verifica dell\'identità. IVIC interagisce in tempo reale via mobile prima di consentire al cliente di disporre una transazione, ponendo domande dinamiche basate su dati e comportamento  dell\'utente per valutare il rischio di frode.',
-        'proj-p4-type': 'Banking · Customer Service · Chatbot · On Premise',
+        'proj-p4-type': 'Banking · Customer Service · On Premise',
         'proj-p4-title': 'LIA — Chatbot di customer service',
         'proj-p4-desc': 'Chatbot GenAI per il customer service TAS. Gestisce interazioni clienti in tempo reale su larga scala, rispondendo a domande di business.',
-        'proj-p5-type': 'Banking · Forecasting · Riconciliazione · Serie temporali · AWS',
+        'proj-p5-type': 'Banking · Forecasting · Riconciliazione · AWS',
         'proj-p5-title': 'Sistema di forecasting della liquidità di tesoreria',
         'proj-p5-desc': 'Sistema multi-modello di forecasting su serie temporali per allocazione fondi di tesoreria, riconciliazione ACH e servizi EBA Clearing. Implementati modelli statistici classici con selezione automatica e intervalli di confidenza per decisioni risk-aware.',
         'proj-p6-type': 'Banking · Business Intelligence · AWS',
@@ -279,7 +279,7 @@ const translations = {
         'exp-1-meta': 'Ottobre 2025 — Oggi',
         'exp-1-role': 'Consulente Analytics Intelligence',
         'exp-1-company': 'Proxima Group',
-        'exp-1-desc': 'Per una realta leader di mercato nel settore FinTech, ho contribuito allo sviluppo di un nuovo componente avanzato di simulazione all\'interno di una piattaforma di Enterprise Risk Management (ERM) per banche.',
+        'exp-1-desc': 'Per una realtà leader di mercato nel settore FinTech, ho contribuito allo sviluppo di un nuovo componente avanzato di simulazione all\'interno di una piattaforma di Enterprise Risk Management (ERM) per banche.',
         'exp-2-meta': 'Ottobre 2022 — Ottobre 2025',
         'exp-2-role': 'AI Engineer & Data Scientist',
         'exp-2-company': 'TAS S.p.A.',
@@ -428,6 +428,12 @@ function applyLanguage(lang) {
         });
         langToggle.setAttribute('aria-label', lang === 'en' ? 'Italiano and English language toggle, currently English' : 'Italiano and English language toggle, currently Italian');
     }
+
+    document.querySelectorAll('.resume-link[data-resume-lang]').forEach((link) => {
+        const isActive = link.dataset.resumeLang === lang;
+        link.classList.toggle('active-resume', isActive);
+        link.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
 }
 
 // Cursor glow
