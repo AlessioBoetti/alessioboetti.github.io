@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How I work — Alessio Boetti</title>
+<title data-i18n="method-page-title">How I work — Alessio Boetti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -39,18 +39,18 @@
   <main class="main-content">
 
     <header class="page-header fade-in">
-      <div class="page-tag">AI Engineer & Banking Data Scientist</div>
-      <h1>How I <span class="accent">work</span></h1>
+      <div class="page-tag" data-i18n="method-page-tag">AI Engineer & Banking Data Scientist</div>
+      <h1 data-i18n-html="method-hero-title">How I <span class="accent">work</span></h1>
       <p class="intro">
-        <h2>From data to reliable results</h2>
-        A model that performs well in a notebook is not an ML system, and anyone can throw an XGBoost model at a bunch of raw data and get something nice out of it.
+        <h2 data-i18n="method-hero-subtitle">From data to reliability</h2>
+        <span data-i18n="method-hero-intro">A model that performs well in a notebook is not an ML system, and anyone can throw an XGBoost model at a bunch of raw data and get something nice out of it.</span>
       </p>
       <br>
-      <p>
+      <p data-i18n-html="method-hero-p1">
         I aim to achieve <strong>top-notch implementations</strong>. I like <strong>complexity</strong>.
       </p>
       <br>
-      <p>
+      <p data-i18n-html="method-hero-p2">
         These are the principles and practices I apply consistently across projects that translate statistical rigor into <strong>reliable business outcomes</strong>.
       </p>
     </header>
@@ -61,85 +61,85 @@
         <div class="method-icon-wrap icon-gold">🔎</div>
         <div class="method-header-text">
           <!-- <div class="method-num">01 — Methodology</div> -->
-          <h2 class="method-title">Data Analysis</h2>
-          <div class="method-subtitle">Understanding is the first and most important step</div>
+          <h2 class="method-title" data-i18n="method-s1-title">Data Analysis</h2>
+          <div class="method-subtitle" data-i18n="method-s1-subtitle">Understanding is the first and most important step</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
     
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Using statistical summaries, tests, and visual diagnostics, such as distributions, correlations and decompositions, to spot
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n="method-s1-what">Using statistical summaries, tests, and visual diagnostics, such as distributions, correlations and decompositions, to spot
           inconsistencies, build an accurate mental model of the problem, and surface where the pain points are before any further decision is made.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Basic summary statistics alone are dangerous: the same mean and variance can hide wildly different distributions, and a single correlation coefficient can mask non-linear or segment-specific relationships. Visualization isn't a reporting step at the end, it's how you discover what questions to even ask.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s1-why">Basic summary statistics alone are dangerous: the same mean and variance can hide wildly different distributions, and a single correlation coefficient can mask non-linear or segment-specific relationships. Visualization isn't a reporting step at the end, it's how you discover <strong>what questions to even ask</strong>.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Univariate profiling → bivariate & multivariate relationships → distributional diagnostics → dimensionality reduction → statistical tests → testing hypothesis and statistical assumptions.</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s1-how">Univariate profiling → bivariate & multivariate relationships → distributional diagnostics → dimensionality reduction → statistical tests → testing hypothesis and statistical assumptions.</div>
         </div>
       </div>
     
       <div class="prose">
-        <p>
+        <p data-i18n="method-s1-p1">
           My approach treats every plot as a hypothesis, not a deliverable. I start with univariate distributions to understand shape, skew, and multimodality — a bimodal distribution often means there are two different populations hiding in one
-          column. From there I move to bivariate relationships, favoring visual diagnostics over correlation coefficients alone, since Pearson's r assumes linearity that real-world data rarely respects. 
+          column. From there I move to bivariate relationships, favoring visual diagnostics over correlation coefficients alone, since for example Pearson's r assumes linearity that real-world data rarely respects. 
         </p>
-        <p>
-          For multivariate problems, I use dimensionality reduction not to build features but to look — projecting high-dimensional data into 2-3 components to check for clusters, outliers, or structure that would be invisible one variable at a time. 
+        <p data-i18n="method-s1-p2">
+          For multivariate problems, I use dimensionality reduction not to build features but to look, projecting high-dimensional data into 2-3 components to check for clusters, outliers, or structure that would be invisible one variable at a time. 
         </p>
-        <p>
+        <p data-i18n-html="method-s1-p3">
           Every statistical claim I make is paired with the plot that supports it, so <strong>the reasoning is auditable, not just asserted</strong>.
         </p>
       </div>
     
       <ul class="technique-list">
         <li class="technique-item">
-          <div class="technique-marker">Analysis</div>
+          <div class="technique-marker" data-i18n="method-marker-analysis">Analysis</div>
           <div class="technique-body">
-            <div class="technique-name">Distributional Diagnostics</div>
-            <div class="technique-desc">Histograms, KDEs, and Q-Q plots to assess normality, skew, and multimodality.</div>
+            <div class="technique-name" data-i18n="method-s1-tech1-name">Distributional Diagnostics</div>
+            <div class="technique-desc" data-i18n="method-s1-tech1-desc">Histograms, KDEs, and Q-Q plots to assess normality, skew, and multimodality.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker">Analysis</div>
+          <div class="technique-marker" data-i18n="method-marker-analysis">Analysis</div>
           <div class="technique-body">
-            <div class="technique-name">Correlation & Dependency Mapping</div>
-            <div class="technique-desc">Pairwise correlation matrices combined with scatter matrices and mutual information scores, to catch non-linear dependencies that a single correlation coefficient would miss.</div>
+            <div class="technique-name" data-i18n="method-s1-tech2-name">Correlation & Dependency Mapping</div>
+            <div class="technique-desc" data-i18n="method-s1-tech2-desc">Pairwise correlation matrices combined with scatter matrices and mutual information scores, to catch non-linear dependencies that a single correlation coefficient would miss.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker">Analysis</div>
+          <div class="technique-marker" data-i18n="method-marker-analysis">Analysis</div>
           <div class="technique-body">
-            <div class="technique-name">Graph & Network Analysis</div>
-            <div class="technique-desc">Modeling entities and their relationships as nodes and edges to surface structure invisible in tabular form, centrality measures to identify influential nodes, community detection to find natural clusters, and path analysis to trace how effects propagate through a system.</div>
+            <div class="technique-name" data-i18n="method-s1-tech3-name">Graph & Network Analysis</div>
+            <div class="technique-desc" data-i18n="method-s1-tech3-desc">Modeling entities and their relationships as nodes and edges to surface structure invisible in tabular form, centrality measures to identify influential nodes, community detection to find natural clusters, and path analysis to trace how effects propagate through a system.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker teal">Decomposition</div>
+          <div class="technique-marker teal" data-i18n="method-marker-decomposition">Decomposition</div>
           <div class="technique-body">
-            <div class="technique-name">Dimensionality Reduction</div>
-            <div class="technique-desc">PCA, Kernel PCA, t-SNE and UMAP used exploratively, not as preprocessing, but to visually surface clusters, separability, and outlier structure in high-dimensional data.</div>
+            <div class="technique-name" data-i18n="method-s1-tech4-name">Dimensionality Reduction</div>
+            <div class="technique-desc" data-i18n="method-s1-tech4-desc">PCA, Kernel PCA, t-SNE, UMAP and other tools used exploratively, not as preprocessing, but to visually surface clusters, separability, and outlier structure in high-dimensional data.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker teal">Decomposition</div>
+          <div class="technique-marker teal" data-i18n="method-marker-decomposition">Decomposition</div>
           <div class="technique-body">
-            <div class="technique-name">Time Series Decomposition</div>
-            <div class="technique-desc">Splitting series into trend, seasonality, and residual components to distinguish genuine signal from cyclical noise before drawing conclusions about behavior or performance.</div>
+            <div class="technique-name" data-i18n="method-s1-tech5-name">Time Series Decomposition</div>
+            <div class="technique-desc" data-i18n="method-s1-tech5-desc">Splitting series into trend, seasonality, and residual components to distinguish genuine signal from cyclical noise before drawing conclusions about behavior or performance.</div>
           </div>
         </li>
       </ul>
     
       <div class="biz-value">
-        <div class="biz-value-icon">⚙️</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
-            Rigorous data analysis prevents the most expensive kind of error: <strong>building the right solution to the wrong problem</strong>. Understanding distributions, segments, and biases before modeling catches misleading signals early, when fixing them costs a day, not a failed production deployment because the model does not work. A well-run exploratory phase routinely surfaces key insights: the "underperforming" segment that's actually a data collection artifact, the trend that's a Simpson's paradox, the outlier that's the most valuable customer cohort. Because <strong>every finding is grounded in a visible, auditable chain of evidence</strong>, decisions survive scrutiny instead of collapsing under the first "Are you sure?".
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s1-biz">
+            Rigorous data analysis prevents the most expensive kind of error: <strong>building the right solution to the wrong problem</strong>. Understanding distributions, segments, and biases before modeling catches misleading signals early, when fixing them costs a day, not a failed production deployment because the model does not work. A well-run exploratory phase routinely surfaces key insights: the "underperforming" segment that's actually a data collection artifact, the trend that's a <a hfref="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson's paradox</a>, the outlier that's the most valuable customer cohort. Because <strong>every finding is grounded in a visible, auditable chain of evidence</strong>, decisions survive scrutiny instead of collapsing under the first "Are you sure?".
           </div>
         </div>
       </div>
@@ -153,36 +153,38 @@
       </div> -->
     </section>
 
+    <div class="method-divider"></div>
+
     <!-- ── 02: FEATURE ENGINEERING ── -->
     <section class="method-section fade-in" id="feature-engineering">
       <div class="method-header">
         <div class="method-icon-wrap icon-gold">⚗️</div>
         <div class="method-header-text">
           <!-- <div class="method-num">02 — Methodology</div> -->
-          <h2 class="method-title">Feature Engineering & Selection</h2>
-          <div class="method-subtitle">Data representation is the leverage point</div>
+          <h2 class="method-title" data-i18n="method-s2-title">Feature Engineering & Selection</h2>
+          <div class="method-subtitle" data-i18n="method-s2-subtitle">Data representation is the leverage point</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
     
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Extracting hidden information from raw data, combining domain knowledge, statistical analysis, and automated selection to surface the signals a model needs.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n="method-s2-what">Extracting hidden information from raw data, combining domain knowledge, statistical analysis, and automated selection to surface the signals a model needs.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Model architecture accounts for perhaps 20% of final performance. The other 80% is data quality and representation. <strong>A mediocre model on great features beats a sophisticated model on raw data</strong>.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s2-why">Model architecture accounts for perhaps 20% of final performance. The other 80% is data quality and representation. <strong>A mediocre model on great features beats a sophisticated model on raw data</strong>.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Domain-driven hypothesis → statistical validation → SHAP-based importance → collinearity analysis → ablation testing. <strong>Every feature must earn its place.</strong></div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n-html="method-s2-how">Domain-driven hypothesis → statistical validation → SHAP-based importance → collinearity analysis → ablation testing. <strong>Every feature must earn its place.</strong></div>
         </div>
       </div>
     
       <div class="prose">
-        <p>
-          My approach to feature engineering is hypothesis-driven: I start from <strong>domain knowledge</strong> to generate candidate features, then use statistical tests and agnostic- and model-based importance criteria to filter them. This avoids the trap of blind feature generation that adds more complexity without improving signal.
+        <p data-i18n-html="method-s2-p1">
+          My approach to feature engineering is hypothesis-driven: I start from <strong>domain knowledge</strong> to generate candidate features, then use statistical tests, model agnostic methods and model-based importance criteria to filter them. This avoids the trap of blind feature generation that adds more complexity without improving signal.
         </p>
         <!-- <p>
           For temporal data specifically, I rely on <strong>rolling window aggregations at multiple timescales</strong> (capturing both short-term anomalies and long-term behavioral drift), lag features for autocorrelation structures, and interaction terms grounded in domain logic.
@@ -191,40 +193,40 @@
     
       <ul class="technique-list">
         <li class="technique-item">
-          <div class="technique-marker">Design</div>
+          <div class="technique-marker" data-i18n="method-marker-design">Design</div>
           <div class="technique-body">
-            <div class="technique-name">Rolling Window Aggregations</div>
-            <div class="technique-desc">Computing statistics (mean, std, count, sum) over multiple temporal and grouped-based windows to capture behavior at different timescales simultaneously.</div>
+            <div class="technique-name" data-i18n="method-s2-tech1-name">Rolling Window Aggregations</div>
+            <div class="technique-desc" data-i18n="method-s2-tech1-desc">Computing statistics (mean, std, count, sum) over multiple temporal and grouped-based windows to capture behavior at different timescales simultaneously.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker">Design</div>
+          <div class="technique-marker" data-i18n="method-marker-design">Design</div>
           <div class="technique-body">
-            <div class="technique-name">Behavioral Deviation Features</div>
-            <div class="technique-desc">Z-scores and percentile ranks computed against both the individual entity's own historical distribution and the whole population distribution, personalizing the signal while also relying on global statistics.</div>
+            <div class="technique-name" data-i18n="method-s2-tech2-name">Behavioral Deviation Features</div>
+            <div class="technique-desc" data-i18n="method-s2-tech2-desc">Z-scores and percentile ranks computed against both the individual entity's own historical distribution and the whole population distribution, personalizing the signal while also relying on global statistics.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker teal">Selection</div>
+          <div class="technique-marker teal" data-i18n="method-marker-selection">Selection</div>
           <div class="technique-body">
-            <div class="technique-name">SHAP-based Feature Selection</div>
-            <div class="technique-desc">Using SHAP mean absolute values as a principled importance metric, combined with correlation analysis to remove redundant features while preserving complementary ones.</div>
+            <div class="technique-name" data-i18n="method-s2-tech3-name">SHAP-based Feature Selection</div>
+            <div class="technique-desc" data-i18n="method-s2-tech3-desc">Using SHAP mean absolute values as a principled importance metric, combined with correlation analysis to remove redundant features while preserving complementary ones.</div>
           </div>
         </li>
         <li class="technique-item">
-          <div class="technique-marker teal">selection</div>
+          <div class="technique-marker teal" data-i18n="method-marker-selection">selection</div>
           <div class="technique-body">
-            <div class="technique-name">Ablation Testing</div>
-            <div class="technique-desc">Removing feature groups one at a time and measuring the impact on validation metrics. Validates importance, reveals redundancy, and informs feature engineering priorities.</div>
+            <div class="technique-name" data-i18n="method-s2-tech4-name">Ablation Testing</div>
+            <div class="technique-desc" data-i18n="method-s2-tech4-desc">Removing feature groups one at a time and measuring the impact on validation metrics. Validates importance, reveals redundancy, and informs feature engineering priorities.</div>
           </div>
         </li>
       </ul>
     
       <div class="biz-value">
-        <div class="biz-value-icon">⚙️</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s2-biz">
             <strong>Better features → smaller models → faster inference → lower infrastructure costs.</strong> A well-engineered feature set often allows simpler models to reach the same performance as complex ones on raw data with less compute, faster latency, and easier maintenance. Feature selection also reduces overfitting and improves out-of-distribution generalization.
           </div>
         </div>
@@ -239,47 +241,49 @@
       </div> -->
     </section>
 
+    <div class="method-divider"></div>
+
     <!-- ── 03: CALIBRATION ── -->
     <section class="method-section fade-in" id="calibration">
       <div class="method-header">
-        <div class="method-icon-wrap icon-coral">🎯</div>
+        <div class="method-icon-wrap icon-coral">⚖️</div>
         <div class="method-header-text">
           <!-- <div class="method-num">03 — Methodology</div> -->
-          <h2 class="method-title">Calibration Methods</h2>
-          <div class="method-subtitle">Calibrating models for reliable outputs</div>
+          <h2 class="method-title" data-i18n="method-s3-title">Calibration Methods</h2>
+          <div class="method-subtitle" data-i18n="method-s3-subtitle">Calibrating models for reliable outputs</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
     
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Calibrating model output to produce <strong>reliable probability estimates</strong> rather than arbitrary scores.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n-html="method-s3-what">Calibrating model output to produce <strong>reliable probability estimates</strong> rather than arbitrary scores.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Calibration ensures that a machine learning model's predicted probabilities genuinely match <strong>real-world likelihoods</strong>.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s3-why">Calibration ensures that a machine learning model's predicted probabilities genuinely match <strong>real-world likelihoods</strong>.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Venn-Abers calibration, validation with ECE and reliability diagrams on held-out data.</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s3-how">Venn-Abers calibration, validation with ECE and reliability diagrams on held-out data.</div>
         </div>
       </div>
     
       <div class="prose">
-        <p>
-          Calibration is the step that turns raw model scores into decision-grade probabilities. In practice, this means a predicted risk of 0.30 should correspond to to a 30% chance of risk, which is not assured by directly using model outputs. 
+        <p data-i18n="method-s3-p1">
+          Calibration is the step that turns raw model scores into decision-grade probabilities. In practice, this means a predicted risk of 0.30 should correspond to to a 30% chance of risk, which is not assured by model outputs. 
         </p>
-        <p>  
+        <!-- <p data-i18n="method-s3-p2">  
           I typically use Venn-Abers when I need stable calibration under class imbalance and distribution shift, because it provides valid probability intervals rather than a single overconfident point estimate. This is especially valuable in fraud and risk systems, where uncertainty must be explicit and operationally usable.
-        </p>
+        </p> -->
       </div>
     
       <div class="biz-value">
-        <div class="biz-value-icon">🛡️</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s3-biz">
             Calibrated probabilities make risk policies economically consistent. Teams can set thresholds based on expected cost, define gray zones for manual review, and adapt actions by segment, channel, or transaction value. The result is fewer unnecessary blocks, better customer experience, and more reliable loss prevention, because decisions are driven by true likelihoods instead of arbitrary scores.
           </div>
         </div>
@@ -300,32 +304,32 @@
         <div class="method-icon-wrap icon-coral">🎯</div>
         <div class="method-header-text">
           <!-- <div class="method-num">04 — Methodology</div> -->
-          <h2 class="method-title">Ensemble Methods</h2>
-          <div class="method-subtitle">Combining models for robust outputs</div>
+          <h2 class="method-title" data-i18n="method-s4-title">Ensemble Methods</h2>
+          <div class="method-subtitle" data-i18n="method-s4-subtitle">Combining models for robust outputs</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
     
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Combining multiple models to reduce variance and bias, canceling out individual weaknesses, while keeping system complexity proportional to the performance gain.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n="method-s4-what">Combining multiple models to reduce variance and bias, canceling out individual weaknesses, while keeping system complexity proportional to the performance gain.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Single models have correlated failure modes. Ensembles with <strong>diverse inductive biases</strong> fail on different examples: their combination is more robust than any individual model.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s4-why">Single models have correlated failure modes. Ensembles with diverse algorithms fail on different examples: their combination is more robust than any individual model.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Soft voting → Stacking with a meta-learner for more complex scenarios.</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s4-how">Soft voting → Bagging → Boosting → Stacking with a meta-learner for more complex scenarios.</div>
         </div>
       </div>
     
       <div class="prose">
-        <p>
-          The choice between bagging, boosting, and stacking depends on the error structure of the problem. For tabular data with complex interactions, I typically start with <strong>diverse boosting implementations</strong> (XGBoost, CatBoost, LightGBM), each with different handling of categorical features, regularization approaches, and tree construction algorithms, giving them genuinely different error patterns.
+        <p data-i18n-html="method-s4-p1">
+          The choice between bagging, boosting, and stacking depends on the error structure of the problem. For tabular data with complex interactions, I typically start with <strong>diverse boosting models</strong> (XGBoost, CatBoost, LightGBM), each with different handling of categorical features, regularization approaches, and tree construction algorithms, giving them genuinely different error patterns.
         </p>
-        <p>
+        <p data-i18n-html="method-s4-p2">
           Ensemble combination is done via <strong>soft voting on calibrated probabilities</strong> rather than raw scores. This is critical: averaging uncalibrated scores is mathematically unsound (the scores are on different scales and distributions). Calibrating first, then averaging, produces a coherent joint probability.
         </p>
       </div>
@@ -338,10 +342,10 @@
       </div> -->
     
       <div class="biz-value">
-        <div class="biz-value-icon">🛡️</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s4-biz">
             <strong>Reduced risk and higher reliability.</strong> Ensembles consistently reduce the variance of predictions, particularly important for rare event detection where a single model's blind spots can be costly. In production, a 1-2% improvement in AUC ROC or AUC PR translates to meaningful reductions in fraud losses or false positive costs at transaction scale.
           </div>
         </div>
@@ -356,35 +360,37 @@
       </div> -->
     </section>
 
+    <div class="method-divider"></div>
+
     <!-- ── 05: UNCERTAINTY QUANTIFICATION ── -->
     <section class="method-section fade-in" id="uncertainty">
       <div class="method-header">
         <div class="method-icon-wrap icon-purple">📐</div>
         <div class="method-header-text">
           <!-- <div class="method-num">05 — Methodology</div> -->
-          <h2 class="method-title">Uncertainty Quantification</h2>
-          <div class="method-subtitle">Knowing what the model doesn't know</div>
+          <h2 class="method-title" data-i18n="method-s5-title">Uncertainty Quantification</h2>
+          <div class="method-subtitle" data-i18n="method-s5-subtitle">Knowing what the model doesn't know</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Quantifying how <strong>confident</strong> a model is in its predictions: not just outputting a decision, but a probability range that reflects the true likelihood of an event.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n-html="method-s5-what">Quantifying how <strong>confident</strong> a model is in its predictions: not just outputting a decision, but a probability range that reflects the true likelihood of an event.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Overconfident models make brittle systems. A model saying "99% fraud" when the true uncertainty is high leads to poor decision-making and <strong>potential harm or losses</strong>.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s5-why">Overconfident models make brittle systems. A model saying "99% fraud" when the true uncertainty is high leads to poor decision-making and <strong>potential harm or losses</strong>.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Conformal Prediction → prediction bands that ensure bounded errors.</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s5-how">Conformal Prediction → prediction bands that ensure bounded errors.</div>
         </div>
       </div>
 
       <div class="prose">
-        <p>
+        <p data-i18n-html="method-s5-p1">
           Beyond single-point calibration, I also apply <strong>conformal prediction</strong> to generate prediction sets with guaranteed coverage: rather than "this is fraud", the model can say "with 95% confidence, this transaction belongs to one of these classes". This is especially useful when the cost of an error is asymmetric.
         </p>
       </div>
@@ -426,10 +432,10 @@
       </ul> -->
 
       <div class="biz-value">
-        <div class="biz-value-icon">📈</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s5-biz">
             A narrow prediction band indicates high certainty and can be auto-routed, while wider sets trigger manual review or additional verification steps. This turns uncertainty into a controllable business signal: confidence determines action intensity, not just model score magnitude.
             <!-- <strong>Risk-proportional automation:</strong> different decision thresholds per transaction segment, customer risk profile, and channel. This directly reduces false positives on low-value transactions while maintaining high recall on high-value fraud — optimizing both user experience and loss prevention simultaneously. -->
           </div>
@@ -445,45 +451,47 @@
       </div> -->
     </section>
 
+    <div class="method-divider"></div>
+
     <!-- ── 06: EXPLAINABILITY ── -->
     <section class="method-section fade-in" id="explainability">
       <div class="method-header">
         <div class="method-icon-wrap icon-teal">🔍</div>
         <div class="method-header-text">
           <!-- <div class="method-num">06 — Methodology</div> -->
-          <h2 class="method-title">Explainability</h2>
-          <div class="method-subtitle">Justifying model decisions</div>
+          <h2 class="method-title" data-i18n="method-s6-title">Explainability</h2>
+          <div class="method-subtitle" data-i18n="method-s6-subtitle">Justifying model decisions</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Techniques that decompose a model's output into <strong>per-feature contributions</strong>, making predictions auditable by managers, compliance teams, and regulators.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n-html="method-s6-what">Techniques that decompose a model's output into <strong>per-feature contributions</strong>, making predictions auditable by managers, compliance teams, and regulators.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">Black-box models erode trust, block regulatory approval, and make debugging nearly impossible. <strong>Explainability is not optional</strong> in production systems, it's a prerequisite for stakeholder adoption.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s6-why">Black-box models erode trust, block regulatory approval, and make debugging nearly impossible. <strong>Explainability is not optional</strong> in production systems, it's a prerequisite for stakeholder adoption.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">SHAP for tree models: consistent, theoretically grounded. LIME as a complementary local approximation for sanity checks and non-tree architectures.</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s6-how">SHAP for tree-based models: consistent, theoretically grounded. LIME as a complementary local approximation for sanity checks and non-tree architectures.</div>
         </div>
       </div>
 
       <div class="prose">
-        <p>
+        <p data-i18n-html="method-s6-p1">
           SHAP values assign each feature a contribution to the prediction. Unlike other simpler methods, SHAP is <strong>per-prediction and directional</strong>: it tells you not just which feature mattered, but by how much and in which direction.
         </p>
-        <p>
+        <p data-i18n-html="method-s6-p2">
           I distinguish between two levels of explanation: <strong>global</strong> (aggregated SHAP values across all predictions, used for model validation, feature selection, and stakeholder communication) and <strong>local</strong> (per-prediction SHAP plots, used in analyst-facing dashboards and audit trails).
         </p>
       </div>
 
       <div class="callout callout-gold">
-        <div class="callout-icon">⚖️</div>
-        <div><strong>Regulatory relevance:</strong> In banking and finance, regulators (EBA, GDPR, AI Act) increasingly require that automated decisions be explainable to affected individuals. A SHAP-powered audit trail is both a technical tool and a compliance asset.</div>
+        <div class="callout-icon">🏦</div>
+        <div data-i18n-html="method-s6-callout"><strong>Regulatory relevance:</strong> In banking and finance, regulators (EBA, GDPR, AI Act) increasingly require that automated decisions be explainable to affected individuals. A SHAP-powered audit trail is both a technical tool and a compliance asset.</div>
       </div>
 
       <!-- <ul class="technique-list">
@@ -511,10 +519,10 @@
       </ul> -->
 
       <div class="biz-value">
-        <div class="biz-value-icon">🏦</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s6-biz">
             <strong>Faster analyst review, higher trust, regulatory compliance.</strong> Fraud analysts who understand why a transaction was flagged resolve cases faster and with higher accuracy. Compliance teams can generate audit reports on demand. Customers who dispute a blocked transaction receive a meaningful explanation rather than "our system flagged it."
           </div>
         </div>
@@ -528,38 +536,40 @@
       </div> -->
     </section>
 
+    <div class="method-divider"></div>
+
     <!-- ── 07: MONITORING & DRIFT ── -->
     <section class="method-section fade-in" id="monitoring">
       <div class="method-header">
         <div class="method-icon-wrap icon-green">📡</div>
         <div class="method-header-text">
           <!-- <div class="method-num">07 — Methodology</div> -->
-          <h2 class="method-title">Model Monitoring & Data Drift</h2>
-          <div class="method-subtitle">Detect model degradation it before it costs you</div>
+          <h2 class="method-title" data-i18n="method-s7-title">Model Monitoring & Data Drift</h2>
+          <div class="method-subtitle" data-i18n="method-s7-subtitle">Detect model degradation it before it costs you</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Continuously tracking the <strong>statistical properties of inputs and outputs</strong> in production, detecting when the data distribution shifts away from the training distribution.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n-html="method-s7-what">Continuously tracking the <strong>statistical properties of inputs and outputs</strong> in production, detecting when the data distribution shifts away from the training distribution.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">The world changes. Fraud patterns evolve, customer behavior shifts, upstream data pipelines break. A model trained 6 months ago on yesterday's distribution <strong>will silently degrade</strong> without monitoring.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s7-why">The world changes. Fraud patterns evolve, customer behavior shifts, upstream data pipelines break. A model trained 6 months ago on yesterday's distribution <strong>will silently degrade</strong> without monitoring.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Statistical tests for distribution shift → Performance monitoring on labeled windows → Automated alerts and retraining triggers when drift thresholds are exceeded.</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s7-how">Statistical tests for distribution shift → Performance monitoring on labeled windows → Automated alerts and retraining triggers when drift thresholds are exceeded.</div>
         </div>
       </div>
 
       <div class="prose">
-        <p>
+        <p data-i18n-html="method-s7-p1">
           I separate <strong>data drift</strong> (input distribution shift), <strong>concept drift</strong> (the relationship between inputs and outputs changes), and <strong>performance drift</strong> (observed metrics degrading). Each requires a different detection and response strategy.
         </p>
-        <p>
+        <p data-i18n-html="method-s7-p2">
           For adversarial domains like fraud, I additionally monitor for <strong>adversarial drift</strong>, intentional shifts where fraudsters have learned to mimic legitimate patterns. This is detected through analysis of the score distribution of flagged transactions over time, not just raw feature distributions.
         </p>
       </div>
@@ -589,10 +599,10 @@
       </ul> -->
 
       <div class="biz-value">
-        <div class="biz-value-icon">⏱️</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s7-biz">
             <strong>Proactive degradation detection vs reactive crisis management.</strong> Without monitoring, performance degradation is discovered through business KPI drops, often weeks after the model started failing. Drift monitoring catches issues before they compound into significant losses or customer experience failures.
           </div>
         </div>
@@ -606,45 +616,47 @@
       </div> -->
     </section>
 
+    <div class="method-divider"></div>
+
     <!-- ── 08: CI/CD FOR ML ── -->
     <section class="method-section fade-in" id="cicd">
       <div class="method-header">
         <div class="method-icon-wrap icon-amber">🔄</div>
         <div class="method-header-text">
           <!-- <div class="method-num">08 — Methodology</div> -->
-          <h2 class="method-title">CI/CD for ML (MLOps)</h2>
-          <div class="method-subtitle">Treating model deployment as software engineering</div>
+          <h2 class="method-title" data-i18n="method-s8-title">CI/CD for ML (MLOps)</h2>
+          <div class="method-subtitle" data-i18n="method-s8-subtitle">Treating model deployment as software engineering</div>
         </div>
       </div>
       <!-- <div class="method-divider"></div> -->
 
       <div class="three-col">
         <div class="three-col-cell">
-          <div class="three-col-label label-what">What</div>
-          <div class="three-col-text">Applying software engineering best practices to the full ML lifecycle: <strong>version control, automated testing, staged deployment, and continuous integration</strong> on data, code, and models.</div>
+          <div class="three-col-label label-what" data-i18n="method-label-what">What</div>
+          <div class="three-col-text" data-i18n-html="method-s8-what">Applying software engineering best practices to the full ML lifecycle: <strong>version control, automated testing, staged deployment, and continuous integration</strong> on data, code, and models.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-why">Why</div>
-          <div class="three-col-text">ML without CI/CD produces <strong>unreproducible results, untestable deployments, and unrecoverable failures</strong>. A model is software — it deserves the same engineering rigor.</div>
+          <div class="three-col-label label-why" data-i18n="method-label-why">Why</div>
+          <div class="three-col-text" data-i18n-html="method-s8-why">ML without CI/CD produces <strong>unreproducible results, untestable deployments, and unrecoverable failures</strong>. A model is software — it deserves the same engineering rigor.</div>
         </div>
         <div class="three-col-cell">
-          <div class="three-col-label label-how">How</div>
-          <div class="three-col-text">Git-based model versioning, automated evaluation gates before promotion, containerized serving with Docker/Kubernetes, and staged rollouts (shadow mode → canary → full traffic).</div>
+          <div class="three-col-label label-how" data-i18n="method-label-how">How</div>
+          <div class="three-col-text" data-i18n="method-s8-how">Git-based model versioning, automated evaluation gates before promotion, containerized serving with Docker/Kubernetes, and staged rollouts (shadow mode → canary → full traffic).</div>
         </div>
       </div>
 
       <div class="prose">
-        <p>
+        <p data-i18n-html="method-s8-p1">
           I treat every model as a software artifact: <strong>versioned, tested, and deployed through a controlled pipeline</strong>. This means data pipelines are code (not notebooks), models are tracked with metadata (training data version, hyperparameters, evaluation metrics), and promotion to production requires passing automated validation gates.
         </p>
-        <p>
+        <p data-i18n-html="method-s8-p2">
           Shadow deployment is a key practice: a new model version runs in parallel with the production model, receiving the same inputs but with its outputs not acted upon. This allows <strong>real-traffic validation before any customer impact</strong>, comparing the new model's predictions against the ground truth as labels arrive.
         </p>
       </div>
 
       <div class="callout callout-gold">
         <div class="callout-icon">✅</div>
-        <div><strong>Reproducibility as a first principle:</strong> Every training run is reproducible — the same code, data version, and random seeds produce the same model. This is enforced through pipeline tooling, not convention. Without this, debugging production issues is guesswork.</div>
+        <div data-i18n-html="method-s8-callout"><strong>Reproducibility as a first principle:</strong> Every training run is reproducible — the same code, data version, and random seeds produce the same model. This is enforced through pipeline tooling, not convention. Without this, debugging production issues is guesswork.</div>
       </div>
 
       <!-- <ul class="technique-list">
@@ -679,10 +691,10 @@
       </ul> -->
 
       <div class="biz-value">
-        <div class="biz-value-icon">🚀</div>
+        <div class="biz-value-icon">💡</div>
         <div class="biz-value-content">
-          <div class="biz-value-title">Business impact</div>
-          <div class="biz-value-text">
+          <div class="biz-value-title" data-i18n="method-business-impact-title">Business impact</div>
+          <div class="biz-value-text" data-i18n-html="method-s8-biz">
             <strong>Faster iteration cycles, zero-downtime deployments, instant rollback capability.</strong> When a new fraud pattern emerges, a retrained model can go from data to production in hours rather than weeks. If a deployment introduces a regression, rollback to the last known-good model happens in minutes. This agility is a direct competitive advantage.
           </div>
         </div>
@@ -696,9 +708,72 @@
       </div> -->
     </section>
 
+    <section id="contact">
+      <div class="container">
+        <div class="contact-inner">
+          <div class="contact-text fade-in">
+            <div class="section-header">
+              <div class="section-tag" data-i18n="contact-tag">Let's talk</div>
+              <h2 class="section-title" data-i18n-html="contact-title">Open to what's <span class="accent">next</span></h2>
+            </div>
+            <p data-i18n="contact-copy">
+              Whether you're building the next generation of AI infrastructure, need someone who can own an ML system
+              end-to-end, or just want to talk data science — I'd love to hear from you.
+            </p>
+            <div class="social-links">
+              <a href="mailto:alessio.boetti@gmail.com" class="social-link">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                alessio.boetti@gmail.com
+              </a>
+              <a href="https://linkedin.com/in/alessio-boetti" target="_blank" class="social-link">
+                <svg viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                linkedin.com/in/alessio-boetti
+              </a>
+              <a href="https://github.com/AlessioBoetti" target="_blank" class="social-link">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                </svg>
+                github.com/AlessioBoetti
+              </a>
+            </div>
+          </div>
+          <div class="contact-cta-box fade-in">
+            <h3 data-i18n="contact-cta-title">Want to work together?</h3>
+            <p data-i18n="contact-cta-copy">I'm currently open to senior AI/ML engineering roles, data science positions,
+              and consulting engagements — especially in FinTech, enterprise AI, and high-impact startups.</p>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <a href="mailto:alessio.boetti@gmail.com" class="btn-primary" style="justify-content:center">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-i18n="contact-email">Send me an email</span>
+              </a>
+              <a href="https://linkedin.com/in/alessio-boetti" target="_blank" class="btn-ghost"
+                style="justify-content:center">
+                <span data-i18n="contact-linkedin">Connect on LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </div>
 
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+<!-- JS SCRIPTS -->
 <script src="assets/js/scripts.js"></script>
 </body>
 </html>
