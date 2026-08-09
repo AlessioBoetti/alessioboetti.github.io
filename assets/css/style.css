@@ -1260,10 +1260,10 @@
     }
 
     .page-header .intro {
-        font-size: 1.05rem;
+        font-size: 1rem;
         color: var(--text2);
         line-height: 1.8;
-        max-width: 620px;
+        max-width: 1260px;
     }
 
     .page-header .intro strong {
